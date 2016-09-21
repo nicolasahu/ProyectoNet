@@ -1,0 +1,2 @@
+c:\users\lab-315\documents\visual studio 2015\Projects\proyectoBanco\proyectoBanco\bin\Debug\proyectoBanco.exe.config
+C:\Users\LAB-315\Desktop\proyecto net\proyectoBanco\proyectoBanco\bin\Debug\proyectoBanco.exe.config
