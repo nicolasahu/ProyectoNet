@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proyectoBanco.bd;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,21 @@ namespace proyectoBanco
         public Form1()
         {
             InitializeComponent();
+            try {
+                Data d = new Data();
+                lblEstadoConexion.Text = "Conectado";
+                lblEstadoConexion.ForeColor = Color.Green;
+            } catch (Exception ex){
+                errorLogin.SetError(lblEstadoConexion, ex.Message);
+            }
+
+            
+        }
+
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            String user = txtUser.Text;
+            String pass = txtPass.Text;
         }
     }
 }

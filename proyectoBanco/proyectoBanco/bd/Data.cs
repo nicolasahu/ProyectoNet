@@ -19,13 +19,23 @@ namespace proyectoBanco.bd
         {
             conexion = new Conexion("banco");
         }
+
+        public Boolean login(String user, String pass) {
+            Boolean acceso = false;
+            
+
+
+            return acceso;
+        }
+
+
+
         /*crear el crud de las tablas*/
 
         /*crud cliente*/
         public void registrarCliente(Cliente cliente)
         {
-
-
+            
         }
 
 
