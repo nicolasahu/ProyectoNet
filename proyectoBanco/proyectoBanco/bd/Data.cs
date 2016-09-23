@@ -20,10 +20,30 @@ namespace proyectoBanco.bd
             conexion = new Conexion("banco");
         }
 
+        public Boolean existeUsuario(String user) {
+            Boolean existe = false;
+            query = "select count(*) from usuario where nombre_login='"+user+"'";
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read()) {
+                existe = Convert.ToBoolean(conexion.rs[0]);
+            }
+
+            conexion.cerrar();
+            return existe;
+        }
+
         public Boolean login(String user, String pass) {
             Boolean acceso = false;
-            
+            query = "select count(*) from usuario where nombre_login='"+user+"' and contraseña='"+pass+"'";
+            conexion.ejecutar(query);
 
+            if (conexion.rs.Read())
+            {
+                acceso = Convert.ToBoolean(conexion.rs[0]);
+            }
+
+            conexion.cerrar();
 
             return acceso;
         }

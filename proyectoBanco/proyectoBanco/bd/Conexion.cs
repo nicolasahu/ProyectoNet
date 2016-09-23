@@ -29,6 +29,7 @@ namespace proyectoBanco.bd
         {
             con.Open();
             sen = new SqlCommand(query, con);
+
             if (query.Contains("select"))
             {
                 rs = sen.ExecuteReader();
@@ -36,7 +37,7 @@ namespace proyectoBanco.bd
             else
             { //insert, update
                 sen.ExecuteNonQuery();
-                cerrar();
+                //cerrar();
             }
         }
 

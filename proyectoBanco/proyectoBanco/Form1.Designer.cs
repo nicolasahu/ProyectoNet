@@ -98,12 +98,12 @@
             // lblEstadoConexion
             // 
             this.lblEstadoConexion.AutoSize = true;
-            this.lblEstadoConexion.ForeColor = System.Drawing.Color.Red;
+            this.lblEstadoConexion.ForeColor = System.Drawing.Color.Black;
             this.lblEstadoConexion.Location = new System.Drawing.Point(8, 156);
             this.lblEstadoConexion.Name = "lblEstadoConexion";
-            this.lblEstadoConexion.Size = new System.Drawing.Size(77, 13);
+            this.lblEstadoConexion.Size = new System.Drawing.Size(92, 13);
             this.lblEstadoConexion.TabIndex = 6;
-            this.lblEstadoConexion.Text = "Desconectado";
+            this.lblEstadoConexion.Text = "[Estado conexion]";
             // 
             // Form1
             // 
