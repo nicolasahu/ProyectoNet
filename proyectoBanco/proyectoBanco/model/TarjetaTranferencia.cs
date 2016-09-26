@@ -10,6 +10,7 @@ namespace proyectoBanco.model
     {
         private int id;
         private String[][] numeros;
+        private int cuenta;
 
         public int Id
         {
@@ -34,6 +35,19 @@ namespace proyectoBanco.model
             set
             {
                 numeros = value;
+            }
+        }
+
+        public int Cuenta
+        {
+            get
+            {
+                return cuenta;
+            }
+
+            set
+            {
+                cuenta = value;
             }
         }
     }
