@@ -29,6 +29,8 @@ insert into usuario values ('admin','admin',1);
 insert into usuario values ('ejec1','ejec',2);
 insert into usuario values ('user1','user1',3);
 
+--select count(*) from usuario where nombre_login='admin' and contraseña='admin';
+
 create table administrador(
 	id int not null identity(1,1),
 	rut varchar(20),
@@ -92,3 +94,9 @@ create table transferencia(
 	foreign key(cuentaO) references cuenta(id),
 	foreign key(cuentaD) references cuenta(id),
 );
+
+
+insert into administrador values('Emilio','111-1',1);
+insert into ejecutivo values('EmilioEjec','222-2',2);
+insert into ciudad values('Rancagua');
+insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);

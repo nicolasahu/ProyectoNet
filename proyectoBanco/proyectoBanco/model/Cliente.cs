@@ -14,7 +14,8 @@ namespace proyectoBanco.model
         private String direccion;
         private String ciudad;
         private String correo;
-        private DateTime fechaNacimiento;
+        private String fechaNacimiento;
+        private int usuario;
 
         public int Id
         {
@@ -94,7 +95,7 @@ namespace proyectoBanco.model
             }
         }
 
-        public DateTime FechaNacimiento
+        public string FechaNacimiento
         {
             get
             {
@@ -104,6 +105,19 @@ namespace proyectoBanco.model
             set
             {
                 fechaNacimiento = value;
+            }
+        }
+
+        public int Usuario
+        {
+            get
+            {
+                return usuario;
+            }
+
+            set
+            {
+                usuario = value;
             }
         }
     }

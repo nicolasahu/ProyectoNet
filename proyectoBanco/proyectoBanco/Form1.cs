@@ -1,4 +1,5 @@
 ﻿using proyectoBanco.bd;
+using proyectoBanco.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,23 +33,37 @@ namespace proyectoBanco
             String user = txtUser.Text;
             String pass = txtPass.Text;
 
-            if (!d.existeUsuario(user))
-            {
+            Usuario u = d.getUsuario(user);
+
+            if (u==null){
                 errorLogin.SetError(txtUser, "Usuario invalido");
-            }
-            else {
-                if (!d.login(user, pass))
-                {
+            }else if (u.Contraseña!=pass){
                     errorLogin.SetError(txtPass, "Contraseña invalida");
+            }else {
+                MessageBox.Show(
+                    "Acceso Concedido",
+                    "Bienvenido",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                    );
+                showMenu(u.Id, u.Privilegio);
                 }
-                else {
-                    MessageBox.Show(
-                        "Acceso Concedido",
-                        "Bienvenido",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                        );
-                }
+        }
+
+        private void showMenu(int idUsuario, int privilegio) {
+            switch (privilegio) {
+                case 1: //admin
+                    FormAdmin fa = new FormAdmin(idUsuario);
+                    fa.Show();
+                    break;
+                case 2: //ejecutivo
+                    FormEjec fe = new FormEjec(idUsuario);
+                    fe.Show();
+                    break;
+                case 3: //cliente
+                    FormCliente fc = new FormCliente(idUsuario);
+                    fc.Show();
+                    break;
             }
         }
     }

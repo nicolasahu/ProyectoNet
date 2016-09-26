@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace proyectoBanco.model
 {
-    class Usuario
+    class Ejecutivo
     {
         private int id;
-        private String nombreLogin;
-        private String contraseña;
-        private int privilegio;
+        private String nombre;
+        private String rut;
+        private int usuario;
 
         public int Id
         {
@@ -26,43 +26,44 @@ namespace proyectoBanco.model
             }
         }
 
-        public string NombreLogin
+        public string Nombre
         {
             get
             {
-                return nombreLogin;
+                return nombre;
             }
 
             set
             {
-                nombreLogin = value;
+                nombre = value;
             }
         }
 
-        public string Contraseña
+        public string Rut
         {
             get
             {
-                return contraseña;
+                return rut;
             }
 
             set
             {
-                contraseña = value;
+                rut = value;
             }
         }
 
-        public int Privilegio
+        public int Usuario
         {
             get
             {
-                return privilegio;
+                return usuario;
             }
 
             set
             {
-                privilegio = value;
+                usuario = value;
             }
         }
+
     }
 }
