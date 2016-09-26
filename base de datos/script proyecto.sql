@@ -14,7 +14,7 @@ create table privilegio(
 	primary key(id)
 );
 
-insert into privilegio values ('Administrador'),('Ejecutivo'),('Usuario');
+insert into privilegio values ('Administrador'),('Ejecutivo'),('Cliente');
 
 create table usuario(
 	id int not null identity(1,1),
@@ -70,6 +70,7 @@ create table cuenta(
 	saldo money,
 	fecha_creacion date,
 	ejecutivo int,
+	activo bit,
 	primary key(id),
 	foreign key (cliente) references cliente(id),
 	foreign key(ejecutivo) references ejecutivo(id),
