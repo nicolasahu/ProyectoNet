@@ -67,7 +67,7 @@ namespace proyectoBanco.model
             }
         }
 
-        public DateTime FechaNacimiento
+        public DateTime fechaCreacion
         {
             get
             {

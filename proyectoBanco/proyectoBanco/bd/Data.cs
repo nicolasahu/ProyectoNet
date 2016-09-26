@@ -156,6 +156,8 @@ namespace proyectoBanco.bd
         }
 
         /*crud administrador*/
+        
+
         public Administrador getAdministrador(int idUsuario) {
             Administrador a= null;
             query = "select*from administrador where usuario="+idUsuario+"";
@@ -177,19 +179,28 @@ namespace proyectoBanco.bd
         
 
         /*crud cuentas*/
-
+        /*true =1/false=0*/
         public void registrarCuenta(Cuenta cuenta)
         {
             query = "insert into cuenta values('"+cuenta.NumCuenta+ "','"+cuenta.Cliente
-                + "','"+cuenta.Saldo+ "','"+cuenta.FechaCreacion+ "','"+cuenta.Ejecutivo+"')";
+                + "','"+cuenta.Saldo+ "','"+cuenta.fechaCreacion+ "','"+cuenta.Ejecutivo+"','1')";
+            conexion.ejecutar(query);
+        }
+        public void desabilitarCuenta(int numCuenta)
+        {
+            query = "update cuenta set activo='0' where num_cuenta='"+numCuenta+"'";
             conexion.ejecutar(query);
         }
 
         public void actualizarCuenta(Cuenta cuenta)
         {
             query = "update cuenta set saldo='"+cuenta.Saldo+
-                "'";
+                "' where num_cuenta='"+cuenta.NumCuenta+"'";
+            conexion.ejecutar(query);
+
         }
+
+
 
     }
 }
