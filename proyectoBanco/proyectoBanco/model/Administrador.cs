@@ -9,8 +9,9 @@ namespace proyectoBanco.model
     class Administrador
     {
         private int id;
-        private String nombre;
+
         private String rut;
+        private String nombre;
         private int usuario;
 
         public int Id

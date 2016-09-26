@@ -12,3 +12,6 @@ C:\Users\Emilio\Documents\Santo Tomas\Asignaturas\IV\NET\Proyecto\GitHub\Proyect
 C:\Users\Emilio\Documents\Santo Tomas\Asignaturas\IV\NET\Proyecto\GitHub\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.FormAdmin.resources
 C:\Users\Emilio\Documents\Santo Tomas\Asignaturas\IV\NET\Proyecto\GitHub\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.FormEjec.resources
 C:\Users\Emilio\Documents\Santo Tomas\Asignaturas\IV\NET\Proyecto\GitHub\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.FormCliente.resources
+C:\Users\LAB-315\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\bin\Debug\proyectoBanco.exe.config
+C:\Users\LAB-315\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.exe
+C:\Users\LAB-315\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.pdb

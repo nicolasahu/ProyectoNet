@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace proyectoBanco.model
 {
-    class Cuenta
+    class Tranferencia
     {
         private int id;
-        private int numCuenta;
-        private Cliente cliente;
-        private int saldo;
-        private DateTime fechaNacimiento;
-        private int ejecutivo;
-        private Boolean activo;
+        private int monto;
+        private DateTime fecha;
+        private int cuentaOrigen;
+        private int cuentaDestino;
+        private String comentario;
 
         public int Id
         {
@@ -28,81 +28,68 @@ namespace proyectoBanco.model
             }
         }
 
-        public int NumCuenta
+        public int Monto
         {
             get
             {
-                return numCuenta;
+                return monto;
             }
 
             set
             {
-                numCuenta = value;
+                monto = value;
             }
         }
 
-        internal Cliente Cliente
+        public DateTime Fecha
         {
             get
             {
-                return cliente;
+                return fecha;
             }
 
             set
             {
-                cliente = value;
+                fecha = value;
             }
         }
 
-        public int Saldo
+        public int CuentaOrigen
         {
             get
             {
-                return saldo;
+                return cuentaOrigen;
             }
 
             set
             {
-                saldo = value;
+                cuentaOrigen = value;
             }
         }
 
-        public DateTime fechaCreacion
+        public int CuentaDestino
         {
             get
             {
-                return fechaNacimiento;
+                return cuentaDestino;
             }
 
             set
             {
-                fechaNacimiento = value;
+                cuentaDestino = value;
             }
         }
 
-        public int Ejecutivo
+        public string Comentario
         {
             get
             {
-                return ejecutivo;
+                return comentario;
             }
 
             set
             {
-                ejecutivo = value;
-            }
-        }
-
-        public bool Activo
-        {
-            get
-            {
-                return activo;
-            }
-
-            set
-            {
-                activo = value;
+                comentario = value;
             }
         }
     }
