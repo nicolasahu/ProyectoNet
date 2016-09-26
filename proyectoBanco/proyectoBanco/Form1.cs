@@ -29,25 +29,7 @@ namespace proyectoBanco
         }
 
         private void btnIngresar_Click(object sender, EventArgs e){
-            errorLogin.Clear();
-            String user = txtUser.Text;
-            String pass = txtPass.Text;
-
-            Usuario u = d.getUsuario(user);
-
-            if (u==null){
-                errorLogin.SetError(txtUser, "Usuario invalido");
-            }else if (u.Contraseña!=pass){
-                    errorLogin.SetError(txtPass, "Contraseña invalida");
-            }else {
-                MessageBox.Show(
-                    "Acceso Concedido",
-                    "Bienvenido",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                    );
-                showMenu(u.Id, u.Privilegio);
-                }
+            login();
         }
 
         private void showMenu(int idUsuario, int privilegio) {
@@ -64,6 +46,49 @@ namespace proyectoBanco
                     FormCliente fc = new FormCliente(idUsuario);
                     fc.Show();
                     break;
+            }
+        }
+
+        private void login() {
+            errorLogin.Clear();
+            String user = txtUser.Text;
+            String pass = txtPass.Text;
+
+            Usuario u = d.getUsuario(user);
+
+            if (u == null)
+            {
+                errorLogin.SetError(txtUser, "Usuario invalido");
+            }
+            else if (u.Contraseña != pass)
+            {
+                errorLogin.SetError(txtPass, "Contraseña invalida");
+            }
+            else
+            {
+                //MessageBox.Show(
+                //    "Acceso Concedido",
+                //    "Bienvenido",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information
+                //    );
+                showMenu(u.Id, u.Privilegio);
+            }
+        }
+
+        private void txtUser_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter) {
+                login();
+            }
+            
+        }
+
+        private void txtPass_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                login();
             }
         }
     }

@@ -37,7 +37,7 @@ namespace proyectoBanco.bd
             else
             { //insert, update
                 sen.ExecuteNonQuery();
-                //cerrar();
+                cerrar();
             }
         }
 

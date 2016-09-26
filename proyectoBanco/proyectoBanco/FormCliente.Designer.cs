@@ -59,6 +59,7 @@
             this.Controls.Add(this.lblClienteRUT);
             this.Controls.Add(this.lblClienteNombre);
             this.Name = "FormCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();

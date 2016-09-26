@@ -59,6 +59,7 @@
             this.Controls.Add(this.lblEjecRUT);
             this.Controls.Add(this.lblEjecNombre);
             this.Name = "FormEjec";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Ejecutivo";
             this.ResumeLayout(false);
             this.PerformLayout();
