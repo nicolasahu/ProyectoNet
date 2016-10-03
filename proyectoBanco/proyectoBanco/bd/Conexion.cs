@@ -18,7 +18,7 @@ namespace proyectoBanco.bd
         public Conexion(String bd)
         {
             con = new SqlConnection(
-                    "Data Source=LAB-315-PC\\SQLEXPRESS;" + //autenticacion de windows
+                    //"Data Source=LAB-315-PC\\SQLEXPRESS;" + //autenticacion de windows
                     "Data Source=localhost;" + //localhost
                     "Initial Catalog=" + bd + "; " +
                     "Integrated Security=True;"

@@ -39,6 +39,10 @@
             this.btnCiudadCrear = new System.Windows.Forms.Button();
             this.gridCiudad = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtEjecutivoRut = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEjecutivoNombre = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnEjecutivoCancelar = new System.Windows.Forms.Button();
             this.btnEjecutivoActualizar = new System.Windows.Forms.Button();
             this.btnEjecutivoCrear = new System.Windows.Forms.Button();
@@ -75,10 +79,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(17, 47);
+            this.tabControl1.Location = new System.Drawing.Point(17, 49);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(399, 211);
+            this.tabControl1.Size = new System.Drawing.Size(526, 279);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -92,7 +96,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(391, 185);
+            this.tabPage1.Size = new System.Drawing.Size(518, 253);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ciudades";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -116,7 +120,7 @@
             // btnCiudadCancelar
             // 
             this.btnCiudadCancelar.Enabled = false;
-            this.btnCiudadCancelar.Location = new System.Drawing.Point(310, 156);
+            this.btnCiudadCancelar.Location = new System.Drawing.Point(437, 224);
             this.btnCiudadCancelar.Name = "btnCiudadCancelar";
             this.btnCiudadCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCiudadCancelar.TabIndex = 7;
@@ -127,7 +131,7 @@
             // btnCiudadActualizar
             // 
             this.btnCiudadActualizar.Enabled = false;
-            this.btnCiudadActualizar.Location = new System.Drawing.Point(310, 35);
+            this.btnCiudadActualizar.Location = new System.Drawing.Point(437, 35);
             this.btnCiudadActualizar.Name = "btnCiudadActualizar";
             this.btnCiudadActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnCiudadActualizar.TabIndex = 5;
@@ -137,7 +141,7 @@
             // 
             // btnCiudadCrear
             // 
-            this.btnCiudadCrear.Location = new System.Drawing.Point(310, 6);
+            this.btnCiudadCrear.Location = new System.Drawing.Point(437, 6);
             this.btnCiudadCrear.Name = "btnCiudadCrear";
             this.btnCiudadCrear.Size = new System.Drawing.Size(75, 23);
             this.btnCiudadCrear.TabIndex = 4;
@@ -152,12 +156,16 @@
             this.gridCiudad.Name = "gridCiudad";
             this.gridCiudad.ReadOnly = true;
             this.gridCiudad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCiudad.Size = new System.Drawing.Size(301, 144);
+            this.gridCiudad.Size = new System.Drawing.Size(428, 212);
             this.gridCiudad.TabIndex = 0;
             this.gridCiudad.DoubleClick += new System.EventHandler(this.gridCiudad_DoubleClick);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtEjecutivoRut);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.txtEjecutivoNombre);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.btnEjecutivoCancelar);
             this.tabPage2.Controls.Add(this.btnEjecutivoActualizar);
             this.tabPage2.Controls.Add(this.btnEjecutivoCrear);
@@ -165,15 +173,47 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(391, 185);
+            this.tabPage2.Size = new System.Drawing.Size(518, 253);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ejecutivos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // txtEjecutivoRut
+            // 
+            this.txtEjecutivoRut.Location = new System.Drawing.Point(88, 35);
+            this.txtEjecutivoRut.Name = "txtEjecutivoRut";
+            this.txtEjecutivoRut.Size = new System.Drawing.Size(100, 20);
+            this.txtEjecutivoRut.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Rut:";
+            // 
+            // txtEjecutivoNombre
+            // 
+            this.txtEjecutivoNombre.Location = new System.Drawing.Point(88, 3);
+            this.txtEjecutivoNombre.Name = "txtEjecutivoNombre";
+            this.txtEjecutivoNombre.Size = new System.Drawing.Size(201, 20);
+            this.txtEjecutivoNombre.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Nombre:";
+            // 
             // btnEjecutivoCancelar
             // 
             this.btnEjecutivoCancelar.Enabled = false;
-            this.btnEjecutivoCancelar.Location = new System.Drawing.Point(308, 137);
+            this.btnEjecutivoCancelar.Location = new System.Drawing.Point(437, 224);
             this.btnEjecutivoCancelar.Name = "btnEjecutivoCancelar";
             this.btnEjecutivoCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnEjecutivoCancelar.TabIndex = 12;
@@ -183,7 +223,7 @@
             // btnEjecutivoActualizar
             // 
             this.btnEjecutivoActualizar.Enabled = false;
-            this.btnEjecutivoActualizar.Location = new System.Drawing.Point(308, 36);
+            this.btnEjecutivoActualizar.Location = new System.Drawing.Point(437, 35);
             this.btnEjecutivoActualizar.Name = "btnEjecutivoActualizar";
             this.btnEjecutivoActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnEjecutivoActualizar.TabIndex = 10;
@@ -192,29 +232,31 @@
             // 
             // btnEjecutivoCrear
             // 
-            this.btnEjecutivoCrear.Location = new System.Drawing.Point(308, 6);
+            this.btnEjecutivoCrear.Location = new System.Drawing.Point(437, 6);
             this.btnEjecutivoCrear.Name = "btnEjecutivoCrear";
             this.btnEjecutivoCrear.Size = new System.Drawing.Size(75, 23);
             this.btnEjecutivoCrear.TabIndex = 9;
             this.btnEjecutivoCrear.Text = "Crear";
             this.btnEjecutivoCrear.UseVisualStyleBackColor = true;
+            this.btnEjecutivoCrear.Click += new System.EventHandler(this.btnEjecutivoCrear_Click);
             // 
             // gridEjecutivo
             // 
             this.gridEjecutivo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridEjecutivo.Location = new System.Drawing.Point(3, 3);
+            this.gridEjecutivo.Location = new System.Drawing.Point(6, 64);
             this.gridEjecutivo.Name = "gridEjecutivo";
             this.gridEjecutivo.ReadOnly = true;
             this.gridEjecutivo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridEjecutivo.Size = new System.Drawing.Size(299, 157);
+            this.gridEjecutivo.Size = new System.Drawing.Size(425, 183);
             this.gridEjecutivo.TabIndex = 8;
+            this.gridEjecutivo.DoubleClick += new System.EventHandler(this.gridEjecutivo_DoubleClick);
             // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(391, 185);
+            this.tabPage3.Size = new System.Drawing.Size(518, 253);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Estadisticas";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -223,7 +265,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 270);
+            this.ClientSize = new System.Drawing.Size(555, 340);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lblAdminRUT);
             this.Controls.Add(this.lblAdminNombre);
@@ -235,6 +277,7 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCiudad)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEjecutivo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -259,5 +302,9 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNombreCiudad;
+        private System.Windows.Forms.TextBox txtEjecutivoRut;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtEjecutivoNombre;
+        private System.Windows.Forms.Label label2;
     }
 }

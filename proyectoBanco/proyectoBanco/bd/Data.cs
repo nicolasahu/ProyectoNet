@@ -21,11 +21,24 @@ namespace proyectoBanco.bd
         }
 
         /*crud usuario*/
-        public void registrarUsuarioCliente(Usuario usu)
+        public void registrarUsuario(Usuario usu)
         {
             query = "insert into usuario values('"+usu.NombreLogin+"','"+usu.Contraseña+"','"+usu.Privilegio+"') ";
             conexion.ejecutar(query);
         }
+
+        public void crearUsuario(String nombreCompleto) {
+            String[] vectorNombre = nombreCompleto.Split(' ');
+            String nombre, apellido, usuario;
+            nombre = vectorNombre[0];
+            apellido = vectorNombre[1];
+            usuario = nombre.ElementAt(0).ToString() + apellido;
+            usuario = usuario.ToLower();
+
+            //si existe usuario con mismo nombre--->agregar un 1
+            //si no---->insert.
+        }
+
         public int generarDatosUsuario(String nombreCompleto)
         {
             String[] vectorNombre = nombreCompleto.Split(' ');
@@ -34,7 +47,7 @@ namespace proyectoBanco.bd
             apellido = vectorNombre[1];
             usuario = nombre.ElementAt(0).ToString()+apellido;
             usuario = usuario.ToLower();
-            
+
             Boolean existe = false;
             int cont = 0;
             String usuariofinal=usuario;
@@ -53,9 +66,7 @@ namespace proyectoBanco.bd
                     usuariofinal = usuario + cont;
                 }                
             }
-            String contraseña = generadorClave();
-
-            
+            String contraseña = generadorClave();          
 
             return 0;
         }
@@ -222,7 +233,6 @@ namespace proyectoBanco.bd
 
 
 
-<<<<<<< HEAD
         /*crud privilegio*/
 
         /*crud ciudad*/
@@ -252,7 +262,6 @@ namespace proyectoBanco.bd
             conexion.cerrar();
             return ciudades;
         }
-=======
->>>>>>> cee380cb8b6db311115f1f1caf79e38251367de4
+
     }
 }

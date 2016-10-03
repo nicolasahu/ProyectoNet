@@ -67,6 +67,7 @@ namespace proyectoBanco
         {
             String id = gridCiudad.CurrentRow.Cells[0].Value.ToString();
             String nombre = gridCiudad.CurrentRow.Cells[1].Value.ToString();
+
             Ciudad c = new Ciudad();
             c.Id = Convert.ToInt32(id);
             c.Nombre = nombre;
@@ -77,6 +78,34 @@ namespace proyectoBanco
             gridCiudad.DataSource = null;
             gridCiudad.DataSource = d.getCiudades();
 
+        }
+
+        private void gridEjecutivo_DoubleClick(object sender, EventArgs e)
+        {
+            btnEjecutivoActualizar.Enabled = true;
+            btnEjecutivoCrear.Enabled = false;
+            btnEjecutivoCancelar.Enabled = true;
+
+            String nombre = gridEjecutivo.CurrentRow.Cells[1].Value.ToString();
+            String rut = gridEjecutivo.CurrentRow.Cells[2].Value.ToString();
+            txtEjecutivoNombre.Text = nombre;
+            txtEjecutivoRut.Text = rut;
+        }
+
+        private void btnEjecutivoCrear_Click(object sender, EventArgs e)
+        {
+            String nombre = txtEjecutivoNombre.Text;
+            String rut = txtEjecutivoRut.Text;
+            Ejecutivo ejec = new Ejecutivo();
+            ejec.Nombre = nombre;
+            ejec.Rut = rut;
+
+            //d.registrarUsuarioCliente
+
+            //d.registrarEjecutivo();
+            //gridCiudad.DataSource = d.getCiudades();
+
+            //txtNombreCiudad.ResetText();
         }
     }
 }

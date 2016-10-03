@@ -47,6 +47,9 @@ namespace proyectoBanco
                     fc.Show();
                     break;
             }
+
+            txtUser.ResetText();
+            txtPass.ResetText();
         }
 
         private void login() {

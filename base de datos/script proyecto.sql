@@ -99,5 +99,13 @@ create table transferencia(
 
 insert into administrador values('Emilio','111-1',1);
 insert into ejecutivo values('EmilioEjec','222-2',2);
+insert into ejecutivo values('222-2','EmilioEjec',2);
 insert into ciudad values('Rancagua');
 insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);
+
+select*from ciudad;
+select*from ejecutivo;
+
+select*from usuario;
+delete from ejecutivo where id=1;
+update ciudad set nombre='Valparaiso' where id=3;
