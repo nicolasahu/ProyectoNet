@@ -79,6 +79,7 @@
     <Compile Include="model\Ejecutivo.cs" />
     <Compile Include="model\Privilegio.cs" />
     <Compile Include="model\TarjetaTranferencia.cs" />
+    <Compile Include="model\Transferencia.cs" />
     <Compile Include="model\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

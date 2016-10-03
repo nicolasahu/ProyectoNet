@@ -214,7 +214,7 @@ namespace proyectoBanco.bd
         public void registrarCuenta(Cuenta cuenta)
         {
             query = "insert into cuenta values('"+cuenta.NumCuenta+ "','"+cuenta.Cliente
-                + "','"+cuenta.Saldo+ "','"+cuenta.fechaCreacion+ "','"+cuenta.Ejecutivo+"','1')";
+                + "','"+cuenta.Saldo+ "','"+cuenta.FechaCreacion+ "','"+cuenta.Ejecutivo+"','1')";
             conexion.ejecutar(query);
         }
         public void desabilitarCuenta(int numCuenta)
@@ -263,5 +263,67 @@ namespace proyectoBanco.bd
             return ciudades;
         }
 
+        public void crearEjecutivo(Ejecutivo e) {
+            query = "insert into ejecutivo values('"+e.Nombre+"','"+e.Rut+"',"+e.Usuario+")";
+            conexion.ejecutar(query);
+        }
+
+        public void actualizarEjecutivo(Ejecutivo e) {
+            query = "update ejecutivo set nombre='"+e.Nombre+"', rut='"+e.Rut+"', usuario='"+e.Usuario+"' where id='"+e.Rut+"'";
+            conexion.ejecutar(query);
+        }
+
+        public Transferencia getTransferencia(String id) {
+            Transferencia t=null;
+            query = "select*from transferencia where id="+id+"";
+            conexion.ejecutar(query);
+            if (conexion.rs.Read()) {
+                t = new Transferencia();
+                t.Id = Convert.ToInt32(conexion.rs[0]);
+                t.Monto = conexion.rs[1].ToString();
+                t.Fecha = conexion.rs[2].ToString();
+                t.CuentaOrigen = Convert.ToInt32(conexion.rs[3]);
+                t.CuentaDestino = Convert.ToInt32(conexion.rs[4]);
+                t.Comentario = conexion.rs[5].ToString();
+            }
+
+            conexion.cerrar();
+            return t;
+        }
+
+        public Cuenta getCuenta(String id) {
+            Cuenta c = null;
+            query = "select*from cuenta where id='"+id+"'";
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read()) {
+                c = new Cuenta();
+                c.Id = Convert.ToInt32(conexion.rs[0]);
+                c.NumCuenta = Convert.ToInt32(conexion.rs[1]);
+                c.Cliente = Convert.ToInt32(conexion.rs[2]);
+                c.Saldo = Convert.ToInt32(conexion.rs[3]);
+                c.FechaCreacion = conexion.rs[4].ToString();
+                c.Ejecutivo = Convert.ToInt32(conexion.rs[5]);
+            }
+
+            conexion.cerrar();
+            return c;
+        }
+
+        public TarjetaTranferencia getTarjeta() {
+            TarjetaTranferencia t= null;
+            query = "select*from tarjeta_tranferencia";
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read()) {
+                t = new TarjetaTranferencia();
+                t.Id = Convert.ToInt32(conexion.rs[0]);
+                t.Numeros = conexion.rs[1].ToString();
+                t.Cuenta = Convert.ToInt32(conexion.rs[2]);
+            }
+
+            conexion.cerrar();
+            return t;
+        }        
     }
 }

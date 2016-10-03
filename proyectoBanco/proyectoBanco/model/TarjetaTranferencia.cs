@@ -9,7 +9,7 @@ namespace proyectoBanco.model
     class TarjetaTranferencia
     {
         private int id;
-        private String[][] numeros;
+        private String numeros;
         private int cuenta;
 
         public int Id
@@ -25,19 +25,6 @@ namespace proyectoBanco.model
             }
         }
 
-        public string[][] Numeros
-        {
-            get
-            {
-                return numeros;
-            }
-
-            set
-            {
-                numeros = value;
-            }
-        }
-
         public int Cuenta
         {
             get
@@ -48,6 +35,19 @@ namespace proyectoBanco.model
             set
             {
                 cuenta = value;
+            }
+        }
+
+        public string Numeros
+        {
+            get
+            {
+                return numeros;
+            }
+
+            set
+            {
+                numeros = value;
             }
         }
     }

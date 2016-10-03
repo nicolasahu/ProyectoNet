@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace proyectoBanco.model
 {
-    class Cuenta
+    class Transferencia
     {
         private int id;
-        private int numCuenta;
-        private int cliente;
-        private int saldo;
-        private String fechaCreacion;
-        private int ejecutivo;
-        private Boolean activo;
+        private String monto;
+        private String fecha;
+        private int cuentaOrigen;
+        private int cuentaDestino;
+        private String comentario;
 
         public int Id
         {
@@ -28,69 +28,70 @@ namespace proyectoBanco.model
             }
         }
 
-        public int NumCuenta
+        public string Monto
         {
             get
             {
-                return numCuenta;
+                return monto;
             }
 
             set
             {
-                numCuenta = value;
+                monto = value;
             }
         }
 
-        public int Cliente
+        public string Fecha
         {
             get
             {
-                return cliente;
+                return fecha;
             }
 
             set
             {
-                cliente = value;
+                fecha = value;
             }
         }
 
-        public int Saldo
+        public int CuentaOrigen
         {
             get
             {
-                return saldo;
+                return cuentaOrigen;
             }
 
             set
             {
-                saldo = value;
+                cuentaOrigen = value;
             }
         }
 
-        public int Ejecutivo
+        public int CuentaDestino
         {
             get
             {
-                return ejecutivo;
+                return cuentaDestino;
             }
 
             set
             {
-                ejecutivo = value;
+                cuentaDestino = value;
             }
         }
 
-        public string FechaCreacion
+        public string Comentario
         {
             get
             {
-                return fechaCreacion;
+                return comentario;
             }
 
             set
             {
-                fechaCreacion = value;
+                comentario = value;
             }
         }
     }
 }
+

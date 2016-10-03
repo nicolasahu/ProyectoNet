@@ -84,6 +84,8 @@ create table tarjeta_tranferencia(
 	foreign key(cuenta) references cuenta(id),
 );
 
+--select*from tarjeta_tranferencia;
+
 create table transferencia(
 	id int not null identity(1,1),
 	monto money,
@@ -95,8 +97,20 @@ create table transferencia(
 	foreign key(cuentaO) references cuenta(id),
 	foreign key(cuentaD) references cuenta(id),
 );
+--select*from cuenta;
+--select*from transferencia;
+create table credito(
+	id int not null identity(1,1),
+	cuenta int,
+	estado bit,
+	ejecutivo int,
+	primary key(id),
+	foreign key(cuenta) references cuenta(id),
+	foreign key(ejecutivo) references ejecutivo(id),
+);
 
-
+update ejecutivo set nombre='EmilioEjecutivox', rut='222-2', usuario='2' where id='2'
+select*from ejecutivo;
 insert into administrador values('Emilio','111-1',1);
 insert into ejecutivo values('EmilioEjec','222-2',2);
 insert into ejecutivo values('222-2','EmilioEjec',2);
