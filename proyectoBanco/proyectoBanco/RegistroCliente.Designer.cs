@@ -115,7 +115,7 @@
             this.txtCrearCliente_RUT.Name = "txtCrearCliente_RUT";
             this.txtCrearCliente_RUT.Size = new System.Drawing.Size(176, 20);
             this.txtCrearCliente_RUT.TabIndex = 7;
-            this.txtCrearCliente_RUT.Validated += new System.EventHandler(this.txtCrearCliente_RUT_Validated);
+            //this.txtCrearCliente_RUT.Validated += new System.EventHandler(this.txtCrearCliente_RUT_Validated);
             // 
             // txtCrearCliente_Nombre
             // 
@@ -123,6 +123,7 @@
             this.txtCrearCliente_Nombre.Name = "txtCrearCliente_Nombre";
             this.txtCrearCliente_Nombre.Size = new System.Drawing.Size(176, 20);
             this.txtCrearCliente_Nombre.TabIndex = 8;
+            //this.txtCrearCliente_Nombre.Validated += new System.EventHandler(this.txtCrearCliente_Nombre_Validated);
             // 
             // txtCrearCliente_Apellido
             // 
@@ -130,6 +131,7 @@
             this.txtCrearCliente_Apellido.Name = "txtCrearCliente_Apellido";
             this.txtCrearCliente_Apellido.Size = new System.Drawing.Size(176, 20);
             this.txtCrearCliente_Apellido.TabIndex = 9;
+            //this.txtCrearCliente_Apellido.Validated += new System.EventHandler(this.txtCrearCliente_Apellido_Validated);
             // 
             // txtCrearCliente_Direccion
             // 
@@ -137,6 +139,7 @@
             this.txtCrearCliente_Direccion.Name = "txtCrearCliente_Direccion";
             this.txtCrearCliente_Direccion.Size = new System.Drawing.Size(176, 20);
             this.txtCrearCliente_Direccion.TabIndex = 10;
+            //this.txtCrearCliente_Direccion.Validated += new System.EventHandler(this.txtCrearCliente_Direccion_Validated);
             // 
             // txtCrearCliente_Correo
             // 
@@ -144,6 +147,7 @@
             this.txtCrearCliente_Correo.Name = "txtCrearCliente_Correo";
             this.txtCrearCliente_Correo.Size = new System.Drawing.Size(176, 20);
             this.txtCrearCliente_Correo.TabIndex = 12;
+            //this.txtCrearCliente_Correo.Validated += new System.EventHandler(this.txtCrearCliente_Correo_Validated);
             // 
             // label7
             // 
@@ -166,7 +170,9 @@
             // 
             // cboCrearCliente_Ciudad
             // 
+            this.cboCrearCliente_Ciudad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCrearCliente_Ciudad.FormattingEnabled = true;
+            this.cboCrearCliente_Ciudad.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.cboCrearCliente_Ciudad.Location = new System.Drawing.Point(127, 115);
             this.cboCrearCliente_Ciudad.Name = "cboCrearCliente_Ciudad";
             this.cboCrearCliente_Ciudad.Size = new System.Drawing.Size(176, 21);

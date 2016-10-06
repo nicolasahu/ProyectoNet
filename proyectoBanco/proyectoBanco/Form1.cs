@@ -94,5 +94,11 @@ namespace proyectoBanco
                 login();
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegistroCliente reg = new RegistroCliente();
+            reg.Show();
+        }
     }
 }

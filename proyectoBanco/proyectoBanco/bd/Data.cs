@@ -87,7 +87,7 @@ namespace proyectoBanco.bd
             return 0;
         }
 
-        private string generarClave()
+        public string generarClave()
         {
             int cont = 0, limite = 12;
             String contraseñaFinal="";

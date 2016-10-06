@@ -36,5 +36,10 @@ namespace proyectoBanco.model
                 nombre = value;
             }
         }
+
+        public override string ToString()
+        {
+            return nombre;
+        }
     }
 }
