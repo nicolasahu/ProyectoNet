@@ -107,6 +107,7 @@ create table credito(
 	cuenta int,
 	estado bit,
 	ejecutivo int,
+	monto money,
 	primary key(id),
 	foreign key(cuenta) references cuenta(id),
 	foreign key(ejecutivo) references ejecutivo(id),
@@ -126,5 +127,6 @@ insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'corre
 
 --select*from usuario;
 --delete from ejecutivo where id=1;
+--select*from cliente;select*from usuario;
 
 --update ciudad set nombre='Valparaiso' where id=3;
