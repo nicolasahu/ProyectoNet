@@ -84,6 +84,7 @@ namespace proyectoBanco.bd
             }
             String contraseña = generarClave();
 
+            conexion.cerrar();
             return 0;
         }
 
@@ -194,6 +195,8 @@ namespace proyectoBanco.bd
         public int getIDUduario() {
             int id=0;
             query = "select count(*) from usuario";
+            conexion.ejecutar(query);
+
             if (conexion.rs.Read()) {
                 id = Convert.ToInt32(conexion.rs[0]);
             }
@@ -220,9 +223,7 @@ namespace proyectoBanco.bd
         /*rango simbolo codigo ascuii 33-47*/
         public String GenerarSimbolo()
         {
-
-
-            int numsimbolo = random.Next(33, 48);
+            int numsimbolo = random.Next(35, 38);
             String simbolo = Convert.ToChar(numsimbolo).ToString();
             return simbolo;
         }        
@@ -257,7 +258,7 @@ namespace proyectoBanco.bd
                 c.Rut = conexion.rs[1].ToString();
                 c.NombreCompleto = conexion.rs[2].ToString();
                 c.Direccion = conexion.rs[3].ToString();
-                c.Ciudad = conexion.rs[4].ToString();
+                c.Ciudad = Convert.ToInt32(conexion.rs[4]);
                 c.Correo = conexion.rs[5].ToString();
                 c.FechaNacimiento = conexion.rs[6].ToString();
                 c.Usuario = Convert.ToInt32(conexion.rs[7]);

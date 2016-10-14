@@ -37,7 +37,7 @@ namespace proyectoBanco
 
             if (c == null)
             {
-                //Generar Usuario
+                /*Crear Usuario*/
                 Usuario usuario = new Usuario();
                 String nombre = txtCrearCliente_Nombre.Text + " " + txtCrearCliente_Apellido.Text;
                 usuario.NombreLogin = d.generarNombreUsuario(nombre);
@@ -45,21 +45,37 @@ namespace proyectoBanco
                 usuario.Privilegio = 3; //privilegio cliente
                 d.registrarUsuario(usuario);
 
-                //Generar Cliente
+                /*Crear Cliente*/
                 Cliente cliente = new Cliente();
                 Ciudad ciudad= (Ciudad)cboCrearCliente_Ciudad.SelectedItem;
-                cliente.Ciudad = ciudad.Nombre;
+                cliente.Ciudad = ciudad.Id;
                 cliente.Correo = txtCrearCliente_Correo.Text;
                 cliente.Direccion = txtCrearCliente_Direccion.Text;
                 cliente.Usuario = d.getIDUduario();
                 cliente.Rut = rut;                
                 cliente.NombreCompleto = nombre;
                 cliente.FechaNacimiento = dtCrearCliente_Nacimiento.Value.ToString();
+                //metodo data
+                d.RegistrarCliente(cliente);
+
+                limpiarCreacionCliente();
+                MessageBox.Show("Cliente ha sido creado exitosamente!");
             }
             else {
                 MessageBox.Show("Usuario ya existe");
             }
 
+        }
+
+        private void limpiarCreacionCliente()
+        {
+            txtCrearCliente_Apellido.ResetText();
+            txtCrearCliente_Correo.ResetText();
+            txtCrearCliente_Direccion.ResetText();
+            txtCrearCliente_Nombre.ResetText();
+            txtCrearCliente_RUT.ResetText();
+            dtCrearCliente_Nacimiento.ResetText();
+            cboCrearCliente_Ciudad.SelectedIndex = 0 ;
         }
 
         //private void txtCrearCliente_RUT_Validated(object sender, EventArgs e)

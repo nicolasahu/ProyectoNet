@@ -12,7 +12,7 @@ namespace proyectoBanco.model
         private String rut;
         private String nombreCompleto;
         private String direccion;
-        private String ciudad;
+        private int ciudad;
         private String correo;
         private String fechaNacimiento;
         private int usuario;
@@ -69,19 +69,6 @@ namespace proyectoBanco.model
             }
         }
 
-        public string Ciudad
-        {
-            get
-            {
-                return ciudad;
-            }
-
-            set
-            {
-                ciudad = value;
-            }
-        }
-
         public string Correo
         {
             get
@@ -118,6 +105,19 @@ namespace proyectoBanco.model
             set
             {
                 usuario = value;
+            }
+        }
+
+        public int Ciudad
+        {
+            get
+            {
+                return ciudad;
+            }
+
+            set
+            {
+                ciudad = value;
             }
         }
     }
