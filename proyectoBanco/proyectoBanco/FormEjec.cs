@@ -22,6 +22,12 @@ namespace proyectoBanco
             d = new Data();
             e = d.getEjecutivo(idUsuario);
             cargarDatos();
+            cargarClientes(e);
+        }
+
+        private void cargarClientes(Ejecutivo e)
+        {
+            cboClientesAdjudicado.DataSource = d.getClientes(e);
         }
 
         private void cargarDatos()

@@ -30,6 +30,13 @@ namespace proyectoBanco.bd
             conexion.ejecutar(query);
         }
 
+        public List<Cliente> getClientes(Ejecutivo e)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            query = "select*from cliente";
+            return clientes;
+        }
+
         /*Oficial*/
         public String generarNombreUsuario(String nombreCompleto) {
             String[] vectorNombre = nombreCompleto.Split(' ');

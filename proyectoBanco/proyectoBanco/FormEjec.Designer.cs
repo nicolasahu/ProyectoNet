@@ -33,16 +33,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gridCuentasCorrientes = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.cboClientesAdjudicado = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -105,6 +105,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Creditos Aprobados";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(68, 68);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Nuevo Credito";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(68, 32);
@@ -124,15 +133,15 @@
             // gridCuentasCorrientes
             // 
             this.gridCuentasCorrientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCuentasCorrientes.Location = new System.Drawing.Point(183, 19);
+            this.gridCuentasCorrientes.Location = new System.Drawing.Point(183, 32);
             this.gridCuentasCorrientes.Name = "gridCuentasCorrientes";
-            this.gridCuentasCorrientes.Size = new System.Drawing.Size(288, 174);
+            this.gridCuentasCorrientes.Size = new System.Drawing.Size(288, 161);
             this.gridCuentasCorrientes.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(15, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 7;
@@ -143,7 +152,7 @@
             this.cboClientesAdjudicado.FormattingEnabled = true;
             this.cboClientesAdjudicado.Location = new System.Drawing.Point(191, 9);
             this.cboClientesAdjudicado.Name = "cboClientesAdjudicado";
-            this.cboClientesAdjudicado.Size = new System.Drawing.Size(294, 21);
+            this.cboClientesAdjudicado.Size = new System.Drawing.Size(288, 21);
             this.cboClientesAdjudicado.TabIndex = 6;
             // 
             // tabPage2
@@ -159,23 +168,14 @@
             this.tabPage2.Text = "Crear Cuenta Corriente";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(68, 68);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Nuevo Credito";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Clientes Disponibles:";
+            this.button2.Location = new System.Drawing.Point(20, 101);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(448, 73);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Adjudicar";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -185,14 +185,14 @@
             this.comboBox1.Size = new System.Drawing.Size(323, 21);
             this.comboBox1.TabIndex = 1;
             // 
-            // button2
+            // label3
             // 
-            this.button2.Location = new System.Drawing.Point(20, 101);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(448, 73);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Adjudicar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Clientes Disponibles:";
             // 
             // FormEjec
             // 

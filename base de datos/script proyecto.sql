@@ -1,3 +1,6 @@
+IF EXISTS(select * from sys.databases where name='banco')
+drop database banco;
+
 create database banco;
 go
 use banco;
@@ -75,6 +78,10 @@ create table cuenta(
 	foreign key(ejecutivo) references ejecutivo(id),
 );
 
+insert into cuenta values(123, 2, '$10000', getDate(), 1, 1);
+
+--select*from ejecutivo;
+--select*from cuenta;
 --select*from cuenta;
 --select*from cliente;
 
