@@ -27,7 +27,7 @@ namespace proyectoBanco
 
         private void cargarClientes(Ejecutivo e)
         {
-            cboCuentasAdjudicadas.DataSource = d.getClientes(e);
+            cboCuentasAdjudicadas.DataSource = d.getCuentas(e);
         }
 
         private void cargarDatos()

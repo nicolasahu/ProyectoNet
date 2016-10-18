@@ -30,19 +30,37 @@ namespace proyectoBanco.bd
             conexion.ejecutar(query);
         }
 
-        public List<Cliente> getClientes(Ejecutivo e)
+        public List<Cuenta> getCuentas(Ejecutivo e)
         {
-            List<Cliente> clientes = new List<Cliente>();
-            query = "select*from cliente where ejecutivo="+e.Id+"";
+            List<Cuenta> cuentas = new List<Cuenta>();
+            query = "select*from cuenta where ejecutivo="+e.Id+"";
             conexion.ejecutar(query);
 
-            Cliente c;
+            /*
+             *  private int id;
+                private int numCuenta;
+                private int cliente;
+                private int saldo;
+                private String fechaCreacion;
+                private int ejecutivo;
+                private Boolean activo;
+            */
+            
+            Cuenta c;
             while (conexion.rs.Read()) {
-                c = new Cliente();
+                c = new Cuenta();
                 c.Id = Convert.ToInt16(conexion.rs[0]);
+                c.NumCuenta = Convert.ToInt32(conexion.rs[1]);
+                c.Cliente = Convert.ToInt16(conexion.rs[2]);
+                c.Saldo = conexion.rs[3].ToString();
+                //c.FechaCreacion = conexion.rs[4].ToString();
+                //c.Ejecutivo = Convert.ToInt16(conexion.rs[5]);
+                //c.Activo = bool.Parse(conexion.rs[6].ToString());
+                cuentas.Add(c);
             }
 
-            return clientes;
+            conexion.cerrar();
+            return cuentas;
         }
 
         /*Oficial*/
@@ -404,7 +422,7 @@ namespace proyectoBanco.bd
                 c.Id = Convert.ToInt32(conexion.rs[0]);
                 c.NumCuenta = Convert.ToInt32(conexion.rs[1]);
                 c.Cliente = Convert.ToInt32(conexion.rs[2]);
-                c.Saldo = Convert.ToInt32(conexion.rs[3]);
+                c.Saldo = conexion.rs[3].ToString();
                 c.FechaCreacion = conexion.rs[4].ToString();
                 c.Ejecutivo = Convert.ToInt32(conexion.rs[5]);
             }
