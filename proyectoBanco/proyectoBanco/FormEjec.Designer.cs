@@ -34,19 +34,19 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMonto_AprobarCredito = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.gridCuentasCorrientes = new System.Windows.Forms.DataGridView();
+            this.gridCreditosAprobados = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboClientesAdjudicado = new System.Windows.Forms.ComboBox();
+            this.cboCuentasAdjudicadas = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboClientesDisponibles = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCuentasCorrientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCreditosAprobados)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,21 +83,21 @@
             // 
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.cboClientesAdjudicado);
+            this.tabPage1.Controls.Add(this.cboCuentasAdjudicadas);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(492, 260);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Clientes";
+            this.tabPage1.Text = "Creditos de Consumo";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtMonto_AprobarCredito);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.gridCuentasCorrientes);
+            this.groupBox1.Controls.Add(this.gridCreditosAprobados);
             this.groupBox1.Location = new System.Drawing.Point(8, 42);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(477, 210);
@@ -114,12 +114,12 @@
             this.button1.Text = "Nuevo Credito";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtMonto_AprobarCredito
             // 
-            this.textBox1.Location = new System.Drawing.Point(68, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.txtMonto_AprobarCredito.Location = new System.Drawing.Point(68, 32);
+            this.txtMonto_AprobarCredito.Name = "txtMonto_AprobarCredito";
+            this.txtMonto_AprobarCredito.Size = new System.Drawing.Size(100, 20);
+            this.txtMonto_AprobarCredito.TabIndex = 7;
             // 
             // label2
             // 
@@ -130,35 +130,35 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Monto";
             // 
-            // gridCuentasCorrientes
+            // gridCreditosAprobados
             // 
-            this.gridCuentasCorrientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCuentasCorrientes.Location = new System.Drawing.Point(183, 32);
-            this.gridCuentasCorrientes.Name = "gridCuentasCorrientes";
-            this.gridCuentasCorrientes.Size = new System.Drawing.Size(288, 161);
-            this.gridCuentasCorrientes.TabIndex = 5;
+            this.gridCreditosAprobados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridCreditosAprobados.Location = new System.Drawing.Point(183, 32);
+            this.gridCreditosAprobados.Name = "gridCreditosAprobados";
+            this.gridCreditosAprobados.Size = new System.Drawing.Size(288, 161);
+            this.gridCreditosAprobados.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
+            this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Seleccione cliente:";
+            this.label1.Text = "Seleccione cuenta:";
             // 
-            // cboClientesAdjudicado
+            // cboCuentasAdjudicadas
             // 
-            this.cboClientesAdjudicado.FormattingEnabled = true;
-            this.cboClientesAdjudicado.Location = new System.Drawing.Point(191, 9);
-            this.cboClientesAdjudicado.Name = "cboClientesAdjudicado";
-            this.cboClientesAdjudicado.Size = new System.Drawing.Size(288, 21);
-            this.cboClientesAdjudicado.TabIndex = 6;
+            this.cboCuentasAdjudicadas.FormattingEnabled = true;
+            this.cboCuentasAdjudicadas.Location = new System.Drawing.Point(191, 9);
+            this.cboCuentasAdjudicadas.Name = "cboCuentasAdjudicadas";
+            this.cboCuentasAdjudicadas.Size = new System.Drawing.Size(288, 21);
+            this.cboCuentasAdjudicadas.TabIndex = 6;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.cboClientesDisponibles);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -177,13 +177,13 @@
             this.button2.Text = "Adjudicar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cboClientesDisponibles
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(145, 9);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(323, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cboClientesDisponibles.FormattingEnabled = true;
+            this.cboClientesDisponibles.Location = new System.Drawing.Point(145, 9);
+            this.cboClientesDisponibles.Name = "cboClientesDisponibles";
+            this.cboClientesDisponibles.Size = new System.Drawing.Size(323, 21);
+            this.cboClientesDisponibles.TabIndex = 1;
             // 
             // label3
             // 
@@ -210,7 +210,7 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridCuentasCorrientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCreditosAprobados)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -225,15 +225,15 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboClientesAdjudicado;
+        private System.Windows.Forms.ComboBox cboCuentasAdjudicadas;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView gridCuentasCorrientes;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView gridCreditosAprobados;
+        private System.Windows.Forms.TextBox txtMonto_AprobarCredito;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboClientesDisponibles;
         private System.Windows.Forms.Label label3;
     }
 }

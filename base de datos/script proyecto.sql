@@ -1,6 +1,5 @@
-IF EXISTS(select * from sys.databases where name='banco')
-drop database banco;
-
+--drop database banco;
+--use bd_cds;
 create database banco;
 go
 use banco;
@@ -10,6 +9,8 @@ create table ciudad(
 	nombre varchar(100),
 	primary key(id),
 );
+
+insert into ciudad values('Rancagua'),('Valparaiso'),('Santiago'),('Vina del mar');
 
 create table privilegio(
 	id int not null identity(1,1),
@@ -42,6 +43,9 @@ create table administrador(
 	primary key(id),
 );
 
+insert into administrador values('Emilio','111-1',1);
+
+
 create table ejecutivo(
 	id int not null identity(1,1),
 	rut varchar(20),
@@ -50,6 +54,8 @@ create table ejecutivo(
 	foreign key(usuario) references usuario(id),
 	primary key(id),
 );
+
+insert into ejecutivo values('222-2','EmilioEjec',2);
 
 create table cliente(
 	id int not null identity(1,1),
@@ -65,6 +71,8 @@ create table cliente(
 	foreign key(ciudad) references ciudad(id),
 );
 
+insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);
+
 create table cuenta(
 	id int not null identity(1,1),
 	num_cuenta int,
@@ -78,13 +86,8 @@ create table cuenta(
 	foreign key(ejecutivo) references ejecutivo(id),
 );
 
-insert into cuenta values(123, 2, '$10000', getDate(), 1, 1);
-
---select*from ejecutivo;
---select*from cuenta;
---select*from cuenta;
 --select*from cliente;
-
+insert into cuenta values(123, 1, '$10000', getDate(), 1, 1);
 
 create table tarjeta_tranferencia(
 	id int not null identity (1,1),
@@ -107,6 +110,7 @@ create table transferencia(
 	foreign key(cuentaO) references cuenta(id),
 	foreign key(cuentaD) references cuenta(id),
 );
+
 --select*from cuenta;
 --select*from transferencia;
 create table credito(
@@ -119,21 +123,3 @@ create table credito(
 	foreign key(cuenta) references cuenta(id),
 	foreign key(ejecutivo) references ejecutivo(id),
 );
-
---update ejecutivo set nombre='EmilioEjecutivox', rut='222-2', usuario='2' where id='2'
---select*from ejecutivo;
-
-insert into administrador values('Emilio','111-1',1);
-insert into ejecutivo values('EmilioEjec','222-2',2);
-insert into ejecutivo values('222-2','EmilioEjec',2);
-insert into ciudad values('Rancagua');
-insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);
-
---select*from ciudad;
---select*from ejecutivo;
-
---select*from usuario;
---delete from ejecutivo where id=1;
---select*from cliente;select*from usuario;
-
---update ciudad set nombre='Valparaiso' where id=3;

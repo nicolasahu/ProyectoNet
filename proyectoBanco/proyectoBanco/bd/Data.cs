@@ -33,7 +33,15 @@ namespace proyectoBanco.bd
         public List<Cliente> getClientes(Ejecutivo e)
         {
             List<Cliente> clientes = new List<Cliente>();
-            query = "select*from cliente";
+            query = "select*from cliente where ejecutivo="+e.Id+"";
+            conexion.ejecutar(query);
+
+            Cliente c;
+            while (conexion.rs.Read()) {
+                c = new Cliente();
+                c.Id = Convert.ToInt16(conexion.rs[0]);
+            }
+
             return clientes;
         }
 
