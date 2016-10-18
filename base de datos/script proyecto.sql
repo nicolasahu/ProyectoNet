@@ -124,6 +124,7 @@ insert into transferencia values('40000', getDate(), 2, 1, 'Pago Servicios');
 create table credito(
 	id int not null identity(1,1),
 	cuenta int,
+	fecha date,
 	estado bit,
 	ejecutivo int,
 	monto money,
@@ -135,7 +136,7 @@ create table credito(
 --select*from cuenta;
 --select*from ejecutivo;
 --select*from credito;
-insert into credito values(2,1,1,'100000');
+insert into credito values(2, getDate(), 1,1,'100000');
 --hacer insert transferencia, cuenta origen :banco cuenta destino: cuenta, comentario: aprobacion credito
 insert into transferencia values('1000000', getDate(), 3, 1, 'Credito de consumo aprobado');
 

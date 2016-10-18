@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,7 +26,11 @@ namespace proyectoBanco
             //} catch (Exception ex){
             //    errorLogin.SetError(lblEstadoConexion, ex.Message);
             //}
-            d = new Data();            
+            d = new Data();  
+        }
+
+        private enum Sonido{
+            INICIO, ERROR
         }
 
         private void btnIngresar_Click(object sender, EventArgs e){
@@ -62,10 +67,12 @@ namespace proyectoBanco
             if (u == null)
             {
                 errorLogin.SetError(txtUser, "Usuario invalido");
+                //reproducirSonido(Sonido.ERROR);
             }
             else if (u.Contraseña != pass)
             {
                 errorLogin.SetError(txtPass, "Contraseña invalida");
+                //reproducirSonido(Sonido.ERROR);
             }
             else
             {
@@ -76,6 +83,7 @@ namespace proyectoBanco
                 //    MessageBoxIcon.Information
                 //    );
                 showMenu(u.Id, u.Privilegio);
+                //reproducirSonido(Sonido.INICIO);
             }
         }
 
@@ -100,5 +108,19 @@ namespace proyectoBanco
             RegistroCliente reg = new RegistroCliente();
             reg.Show();
         }
+
+        //private void reproducirSonido(Sonido sonido)
+        //{
+        //    if (sonido == Sonido.INICIO)
+        //    {
+        //        SoundPlayer inicio = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+        //        inicio.Play();
+        //    }
+        //    else {
+        //        SoundPlayer error = new SoundPlayer(@"c:\Windows\Media\Error de Windows.wav");
+        //        error.Play();
+        //    }
+            
+        //}
     }
 }

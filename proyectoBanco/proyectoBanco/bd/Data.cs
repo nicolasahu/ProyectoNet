@@ -53,9 +53,9 @@ namespace proyectoBanco.bd
                 c.NumCuenta = Convert.ToInt32(conexion.rs[1]);
                 c.Cliente = Convert.ToInt16(conexion.rs[2]);
                 c.Saldo = conexion.rs[3].ToString();
-                //c.FechaCreacion = conexion.rs[4].ToString();
-                //c.Ejecutivo = Convert.ToInt16(conexion.rs[5]);
-                //c.Activo = bool.Parse(conexion.rs[6].ToString());
+                c.FechaCreacion = conexion.rs[4].ToString();
+                c.Ejecutivo = Convert.ToInt16(conexion.rs[5]);
+                c.Activo = bool.Parse(conexion.rs[6].ToString());
                 cuentas.Add(c);
             }
 
@@ -575,9 +575,28 @@ namespace proyectoBanco.bd
 
             conexion.cerrar();
             return t;
-        }        
+        }
 
         //realizar transferencia
 
+
+        /*------------------------crud credito--------------------------*/
+        public List<Credito> getCreditos(int id) {
+            List<Credito> creditos = new List<Credito>();
+            query = "select*from credito where cuenta="+id;
+            conexion.ejecutar(query);
+
+            Credito c;
+            while (conexion.rs.Read()) {
+                c = new Credito();
+                c.Id = Convert.ToInt32(conexion.rs[0]);
+                c.Fecha = conexion.rs[2].ToString();
+                c.Monto = conexion.rs[5].ToString();
+                creditos.Add(c);
+            }
+
+            conexion.cerrar();
+            return creditos;
+        }
     }
 }

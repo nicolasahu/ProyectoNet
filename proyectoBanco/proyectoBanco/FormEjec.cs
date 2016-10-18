@@ -27,13 +27,24 @@ namespace proyectoBanco
 
         private void cargarClientes(Ejecutivo e)
         {
-            cboCuentasAdjudicadas.DataSource = d.getCuentas(e);
+            gridCuentasAdjudicadas.DataSource = d.getCuentas(e);
         }
 
         private void cargarDatos()
         {
             lblEjecNombre.Text = "Bienvenido(a) " + e.Nombre;
             lblEjecRUT.Text = e.Rut;
+        }
+
+        private void gridCuentasAdjudicadas_Click(object sender, EventArgs e)
+        {
+            //rescatar id cuenta.
+            int id = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value);
+
+            //obetener creditos asociados
+            List<Credito> creditos = d.getCreditos(id);
+            gridCreditosAprobados.DataSource = null;
+            gridCreditosAprobados.DataSource = creditos;
         }
     }
 }

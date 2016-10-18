@@ -106,9 +106,9 @@ namespace proyectoBanco.model
             }
         }
 
-        public override string ToString()
-        {
-            return "N°"+numCuenta.ToString()+"\t"+"Cliente:"+Cliente.ToString();
-        }
+        //public override string ToString()
+        //{
+        //    return "N°"+numCuenta.ToString()+"\t"+"Cliente:"+Cliente.ToString();
+        //}
     }
 }
