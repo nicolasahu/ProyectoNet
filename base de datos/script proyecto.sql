@@ -58,6 +58,8 @@ create table ejecutivo(
 
 insert into ejecutivo values('222-2','EmilioEjec',2);
 
+--select*from cliente;
+
 create table cliente(
 	id int not null identity(1,1),
 	rut varchar(20),
@@ -75,6 +77,7 @@ create table cliente(
 insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);
 insert into cliente values('444-4','ElMejorCliente2', 'NuncaMuerta123', 1, 'correo2@dominio.cl', '21/10/1982',4);
 insert into cliente values('000-0','RepresentanteLegal', 'BancoEstado123', 1, 'correo2@dominio.cl', '21/10/1882',1);
+insert into cliente values('444-4','ElMejorCliente3', 'NuncaMuerta321', 1, 'correo2@dominio.cl', '21/10/1991',4);
 
 create table cuenta(
 	id int not null identity(1,1),
@@ -90,6 +93,8 @@ create table cuenta(
 );
 
 --select*from cuenta where ejecutivo=1;
+--select cliente from cuenta;
+--select*from cliente where id not in (select cliente from cuenta);
 insert into cuenta values(123, 1, '$10000', getDate(), 1, 1);
 insert into cuenta values(132, 2, '$10000', getDate(), 1, 1);
 insert into cuenta values(112, 3, '$10000000000000', getDate(), 1, 1);
@@ -134,8 +139,10 @@ create table credito(
 );
 
 --select*from cuenta;
+--select*from cliente;
 --select*from ejecutivo;
 --select*from credito;
+--select*from credito where cuenta=2;
 insert into credito values(2, getDate(), 1,1,'100000');
 --hacer insert transferencia, cuenta origen :banco cuenta destino: cuenta, comentario: aprobacion credito
 insert into transferencia values('1000000', getDate(), 3, 1, 'Credito de consumo aprobado');

@@ -9,7 +9,9 @@ namespace proyectoBanco.model
     class Credito
     {
         private int id;
+        private int cuenta;
         private String fecha;
+        private int ejecutivo;
         private String monto;
 
         public int Id
@@ -48,6 +50,32 @@ namespace proyectoBanco.model
             set
             {
                 monto = value;
+            }
+        }
+
+        public int Cuenta
+        {
+            get
+            {
+                return cuenta;
+            }
+
+            set
+            {
+                cuenta = value;
+            }
+        }
+
+        public int Ejecutivo
+        {
+            get
+            {
+                return ejecutivo;
+            }
+
+            set
+            {
+                ejecutivo = value;
             }
         }
     }

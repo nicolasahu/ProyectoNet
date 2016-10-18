@@ -8,7 +8,7 @@ namespace proyectoBanco.model
     class Cuenta
     {
         private int id;
-        private int numCuenta;
+        private String numCuenta;
         private int cliente;
         private String saldo;
         private String fechaCreacion;
@@ -25,19 +25,6 @@ namespace proyectoBanco.model
             set
             {
                 id = value;
-            }
-        }
-
-        public int NumCuenta
-        {
-            get
-            {
-                return numCuenta;
-            }
-
-            set
-            {
-                numCuenta = value;
             }
         }
 
@@ -103,6 +90,19 @@ namespace proyectoBanco.model
             set
             {
                 saldo = value;
+            }
+        }
+
+        public string NumCuenta
+        {
+            get
+            {
+                return numCuenta;
+            }
+
+            set
+            {
+                numCuenta = value;
             }
         }
 

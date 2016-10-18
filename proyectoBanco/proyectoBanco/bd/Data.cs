@@ -50,7 +50,7 @@ namespace proyectoBanco.bd
             while (conexion.rs.Read()) {
                 c = new Cuenta();
                 c.Id = Convert.ToInt16(conexion.rs[0]);
-                c.NumCuenta = Convert.ToInt32(conexion.rs[1]);
+                c.NumCuenta = conexion.rs[1].ToString();
                 c.Cliente = Convert.ToInt16(conexion.rs[2]);
                 c.Saldo = conexion.rs[3].ToString();
                 c.FechaCreacion = conexion.rs[4].ToString();
@@ -88,50 +88,50 @@ namespace proyectoBanco.bd
             return usuario;
         }
 
-        public int generarNombreUsuario2(String nombreCompleto)
-        {
-            String[] vectorNombre = nombreCompleto.Split(' ');
-            String nombre, apellido, usuario;
-            nombre = vectorNombre[0];
-            apellido = vectorNombre[1];
-            usuario = nombre.ElementAt(0).ToString() + apellido;
-            usuario = usuario.ToLower();
+        //public int generarNombreUsuario2(String nombreCompleto)
+        //{
+        //    String[] vectorNombre = nombreCompleto.Split(' ');
+        //    String nombre, apellido, usuario;
+        //    nombre = vectorNombre[0];
+        //    apellido = vectorNombre[1];
+        //    usuario = nombre.ElementAt(0).ToString() + apellido;
+        //    usuario = usuario.ToLower();
 
-            Boolean existe = false;
-            int cont = 0;
-            String usuariofinal = usuario;
-            while (true)
-            {
-                query = "select * from usuario where nombre_login ='" + usuariofinal + "'";
-                conexion.ejecutar(query);
-                if (conexion.rs.Read())
-                {
-                    existe = true;
-                    break;
-                }
-                else
-                {
-                    cont++;
-                    usuariofinal = usuario + cont;
-                }
-            }
-            String contraseña = generarClave();
+        //    Boolean existe = false;
+        //    int cont = 0;
+        //    String usuariofinal = usuario;
+        //    while (true)
+        //    {
+        //        query = "select * from usuario where nombre_login ='" + usuariofinal + "'";
+        //        conexion.ejecutar(query);
+        //        if (conexion.rs.Read())
+        //        {
+        //            existe = true;
+        //            break;
+        //        }
+        //        else
+        //        {
+        //            cont++;
+        //            usuariofinal = usuario + cont;
+        //        }
+        //    }
+        //    String contraseña = generarClave();
 
-            conexion.cerrar();
-            return 0;
-        }
+        //    conexion.cerrar();
+        //    return 0;
+        //}
 
-        public string generarClave()
-        {
-            int cont = 0, limite = 12;
-            String contraseñaFinal="";
-            while (cont < limite)
-            {
-                Random ran = new Random(33 - 166);
-                contraseñaFinal += Convert.ToChar(ran).ToString();
-            }
-            return "";
-        }
+        //public string generarClave()
+        //{
+        //    int cont = 0, limite = 12;
+        //    String contraseñaFinal="";
+        //    while (cont < limite)
+        //    {
+        //        Random ran = new Random(33 - 166);
+        //        contraseñaFinal += Convert.ToChar(ran).ToString();
+        //    }
+        //    return "";
+        //}
 
         /*oficial*/
         public string generarClave2()
@@ -315,6 +315,29 @@ namespace proyectoBanco.bd
             return c;
         }
 
+        public List<Cliente> getClientesSinCuenta() {
+            List<Cliente> clientes = new List<Cliente>();
+            query = "select*from cliente where id not in (select cliente from cuenta)";
+            conexion.ejecutar(query);
+
+            Cliente c;
+            while (conexion.rs.Read()) {
+                c = new Cliente();
+                c.Id = Convert.ToInt32(conexion.rs[0]);
+                c.Rut = conexion.rs[1].ToString();
+                c.NombreCompleto = conexion.rs[2].ToString();
+                c.Direccion = conexion.rs[3].ToString();
+                c.Ciudad = Convert.ToInt32(conexion.rs[4]);
+                c.Correo = conexion.rs[5].ToString();
+                c.FechaNacimiento = conexion.rs[6].ToString();
+                c.Usuario = Convert.ToInt32(conexion.rs[7]);
+                clientes.Add(c);
+            }
+
+            conexion.cerrar();
+            return clientes;
+        }
+
 
         /*-----------------------crud ejecutivo---------------------------*/
         public Ejecutivo getEjecutivo(int idUsuario)
@@ -392,7 +415,7 @@ namespace proyectoBanco.bd
         public void registrarCuenta(Cuenta cuenta)
         {
             query = "insert into cuenta values('"+cuenta.NumCuenta+ "','"+cuenta.Cliente
-                + "','"+cuenta.Saldo+ "','"+cuenta.FechaCreacion+ "','"+cuenta.Ejecutivo+"','1')";
+                + "','"+cuenta.Saldo+ "', getDate() ,'"+cuenta.Ejecutivo+"','1')";
             conexion.ejecutar(query);
         }
 
@@ -420,7 +443,7 @@ namespace proyectoBanco.bd
             {
                 c = new Cuenta();
                 c.Id = Convert.ToInt32(conexion.rs[0]);
-                c.NumCuenta = Convert.ToInt32(conexion.rs[1]);
+                c.NumCuenta = conexion.rs[1].ToString();
                 c.Cliente = Convert.ToInt32(conexion.rs[2]);
                 c.Saldo = conexion.rs[3].ToString();
                 c.FechaCreacion = conexion.rs[4].ToString();
@@ -452,9 +475,16 @@ namespace proyectoBanco.bd
                 query = "select count(*) from cuenta where num_cuenta='"+numeros+"'";
                 conexion.ejecutar(query);
 
+                int bit;
                 if (conexion.rs.Read()) {
-                    disponible = (bool)conexion.rs[0];
-                    conexion.cerrar();
+                    bit = Convert.ToInt32(conexion.rs[0]);
+                    if (bit == 0)
+                    {
+                        disponible = false;
+                    }
+                    else {
+                        disponible = true;
+                    }
                 }
 
                 conexion.cerrar();
@@ -464,7 +494,38 @@ namespace proyectoBanco.bd
 
 
         }
-        
+
+        public String generarSaldo(Cliente c)
+        {
+            String saldo=null;
+            int edad = getEdad(c);
+
+            if (edad < 30)
+            {
+                saldo = "30000";
+            }
+            else {
+                saldo = "10000";
+            }
+
+            return saldo;
+        }
+
+        private int getEdad(Cliente c)
+        {
+            int edad=0;
+
+            query = "select DATEDIFF(YEAR, '"+c.FechaNacimiento+"', GETDATE());";
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read()) {
+                edad = Convert.ToInt32(conexion.rs[0]);
+            }
+
+            conexion.cerrar();
+            return edad;
+        }
+
         /*-----------------------crud tarjeta---------------------------*/
         public void RegistrarTarjetaTranferenciaCliente(int idCuenta)
         {
@@ -590,13 +651,23 @@ namespace proyectoBanco.bd
             while (conexion.rs.Read()) {
                 c = new Credito();
                 c.Id = Convert.ToInt32(conexion.rs[0]);
+                c.Cuenta = Convert.ToInt32(conexion.rs[1]);
                 c.Fecha = conexion.rs[2].ToString();
+                c.Ejecutivo = Convert.ToInt32(conexion.rs[4]);
                 c.Monto = conexion.rs[5].ToString();
                 creditos.Add(c);
             }
 
             conexion.cerrar();
             return creditos;
+        }
+
+        public void aprobarCredito(Credito c) {
+            query = "insert into credito values("+c.Cuenta+", getDate(), 1, "+c.Ejecutivo+",'"+c.Monto+"')";
+            conexion.ejecutar(query);
+
+            query = "insert into transferencia values('"+c.Monto+"', getDate(), "+c.Cuenta+", 1, 'Credito de consumo aprobado')";
+            conexion.ejecutar(query);
         }
     }
 }

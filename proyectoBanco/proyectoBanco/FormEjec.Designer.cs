@@ -41,14 +41,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
-            this.cboClientesDisponibles = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.gridClientesDisponibles = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCuentasAdjudicadas)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCreditosAprobados)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClientesDisponibles)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEjecRUT
@@ -97,8 +98,10 @@
             // 
             this.gridCuentasAdjudicadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCuentasAdjudicadas.Location = new System.Drawing.Point(120, 12);
+            this.gridCuentasAdjudicadas.MultiSelect = false;
             this.gridCuentasAdjudicadas.Name = "gridCuentasAdjudicadas";
             this.gridCuentasAdjudicadas.ReadOnly = true;
+            this.gridCuentasAdjudicadas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridCuentasAdjudicadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCuentasAdjudicadas.Size = new System.Drawing.Size(360, 114);
             this.gridCuentasAdjudicadas.TabIndex = 9;
@@ -125,6 +128,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Nuevo Credito";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtMonto_AprobarCredito
             // 
@@ -146,6 +150,7 @@
             // 
             this.gridCreditosAprobados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCreditosAprobados.Location = new System.Drawing.Point(141, 32);
+            this.gridCreditosAprobados.MultiSelect = false;
             this.gridCreditosAprobados.Name = "gridCreditosAprobados";
             this.gridCreditosAprobados.ReadOnly = true;
             this.gridCreditosAprobados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -163,8 +168,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.gridClientesDisponibles);
             this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.cboClientesDisponibles);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -176,20 +181,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(20, 101);
+            this.button2.Location = new System.Drawing.Point(20, 280);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(448, 73);
+            this.button2.Size = new System.Drawing.Size(448, 42);
             this.button2.TabIndex = 2;
             this.button2.Text = "Adjudicar";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // cboClientesDisponibles
-            // 
-            this.cboClientesDisponibles.FormattingEnabled = true;
-            this.cboClientesDisponibles.Location = new System.Drawing.Point(145, 9);
-            this.cboClientesDisponibles.Name = "cboClientesDisponibles";
-            this.cboClientesDisponibles.Size = new System.Drawing.Size(323, 21);
-            this.cboClientesDisponibles.TabIndex = 1;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -199,6 +197,17 @@
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Clientes Disponibles:";
+            // 
+            // gridClientesDisponibles
+            // 
+            this.gridClientesDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridClientesDisponibles.Location = new System.Drawing.Point(20, 47);
+            this.gridClientesDisponibles.MultiSelect = false;
+            this.gridClientesDisponibles.Name = "gridClientesDisponibles";
+            this.gridClientesDisponibles.ReadOnly = true;
+            this.gridClientesDisponibles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridClientesDisponibles.Size = new System.Drawing.Size(448, 227);
+            this.gridClientesDisponibles.TabIndex = 3;
             // 
             // FormEjec
             // 
@@ -220,6 +229,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridCreditosAprobados)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridClientesDisponibles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,8 +249,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cboClientesDisponibles;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView gridCuentasAdjudicadas;
+        private System.Windows.Forms.DataGridView gridClientesDisponibles;
     }
 }
