@@ -379,13 +379,13 @@ namespace proyectoBanco.bd
 
         public void crearEjecutivo(Ejecutivo e)
         {
-            query = "insert into ejecutivo values('" + e.Nombre + "','" + e.Rut + "'," + e.Usuario + ")";
+            query = "insert into ejecutivo values('"+e.Rut+"','"+e.Nombre+"', "+e.Usuario+")";
             conexion.ejecutar(query);
         }
 
         public void actualizarEjecutivo(Ejecutivo e)
         {
-            query = "update ejecutivo set nombre='" + e.Nombre + "', rut='" + e.Rut + "', usuario='" + e.Usuario + "' where id='" + e.Rut + "'";
+            query = "update ejecutivo set nombre='" + e.Nombre + "', rut='" + e.Rut + "', usuario='" + e.Usuario + "' where id='" + e.Id + "'";
             conexion.ejecutar(query);
         }
 
@@ -590,7 +590,7 @@ namespace proyectoBanco.bd
 
         /*-------------------------crud ciudad--------------------------*/
         public void actualizarCiudad(Ciudad c) {
-            query = "update ciudad set nombre='"+c.Nombre+"' where id='"+c.Id+"'";
+            query = "update ciudad set nombre='"+c.Nombre+"' where id="+c.Id;
             conexion.ejecutar(query);
         }
 

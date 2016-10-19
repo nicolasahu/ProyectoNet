@@ -10,8 +10,9 @@ create table ciudad(
 	primary key(id),
 );
 
+--select*from ciudad;
 insert into ciudad values('Rancagua'),('Valparaiso'),('Santiago'),('Vina del mar');
-
+--update ciudad set nombre='Rancagua2' where id=1
 create table privilegio(
 	id int not null identity(1,1),
 	Descripcion varchar(100),
@@ -56,7 +57,8 @@ create table ejecutivo(
 	primary key(id),
 );
 
-insert into ejecutivo values('222-2','EmilioEjec',2);
+--select*from ejecutivo
+insert into ejecutivo values('222-2','Emilio Ejec',2);
 
 --select*from cliente;
 --select DATEDIFF(YEAR, '1987/05/22', GETDATE());

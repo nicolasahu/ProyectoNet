@@ -66,7 +66,7 @@ namespace proyectoBanco
         private void btnCiudadActualizar_Click(object sender, EventArgs e)
         {
             String id = gridCiudad.CurrentRow.Cells[0].Value.ToString();
-            String nombre = gridCiudad.CurrentRow.Cells[1].Value.ToString();
+            String nombre = txtNombreCiudad.Text;
 
             Ciudad c = new Ciudad();
             c.Id = Convert.ToInt32(id);
@@ -86,26 +86,88 @@ namespace proyectoBanco
             btnEjecutivoCrear.Enabled = false;
             btnEjecutivoCancelar.Enabled = true;
 
-            String nombre = gridEjecutivo.CurrentRow.Cells[1].Value.ToString();
             String rut = gridEjecutivo.CurrentRow.Cells[2].Value.ToString();
-            txtEjecutivoNombre.Text = nombre;
+
+            String[] nombreCompleto = gridEjecutivo.CurrentRow.Cells[1].Value.ToString().Split(' ');
+
+            txtEjecutivoNombre.Text = nombreCompleto[0];
+            txtEjecutivoApellido.Text = nombreCompleto[1];
             txtEjecutivoRut.Text = rut;
+            txtEjecutivoRut.Enabled = false;
         }
 
         private void btnEjecutivoCrear_Click(object sender, EventArgs e)
         {
             String nombre = txtEjecutivoNombre.Text;
+            String apellido = txtEjecutivoApellido.Text;
             String rut = txtEjecutivoRut.Text;
+
+            Usuario usuario = new Usuario();
+            usuario.NombreLogin = d.generarNombreUsuario(nombre+" "+apellido);
+            usuario.Privilegio = 2;
+            usuario.Contraseña = d.generarClave2();
+
+            d.registrarUsuario(usuario);
+
             Ejecutivo ejec = new Ejecutivo();
-            ejec.Nombre = nombre;
+            ejec.Nombre = nombre+" "+apellido;
             ejec.Rut = rut;
+            ejec.Usuario = d.getIDUduario();
 
-            //d.registrarUsuarioCliente
+            d.crearEjecutivo(ejec);
 
-            //d.registrarEjecutivo();
-            //gridCiudad.DataSource = d.getCiudades();
+            limpiarEjecutivoCrear();
 
-            //txtNombreCiudad.ResetText();
+            txtEjecutivoNombre.ResetText();
+            txtEjecutivoApellido.ResetText();
+            txtEjecutivoRut.ResetText();
+
+            gridEjecutivo.DataSource = d.getEjecutivos();
+        }
+
+        private void limpiarEjecutivoCrear()
+        {
+            txtEjecutivoNombre.ResetText();
+            txtEjecutivoApellido.ResetText();
+            txtEjecutivoRut.ResetText();
+
+            gridEjecutivo.DataSource = d.getEjecutivos();
+        }
+
+        private void btnEjecutivoActualizar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(gridEjecutivo.CurrentRow.Cells[0].Value);
+            String nombre = txtEjecutivoNombre.Text;
+            String apellido = txtEjecutivoApellido.Text;
+            String rut = txtEjecutivoRut.Text;
+
+            Ejecutivo ejec = new Ejecutivo();
+            ejec.Id = id;
+            ejec.Nombre = nombre + " " + apellido;
+            ejec.Rut = rut;
+            ejec.Usuario = d.getIDUduario();
+
+            d.actualizarEjecutivo(ejec);
+
+            limpiarEjecutivoCrear();
+        }
+
+        private void btnEjecutivoCancelar_Click(object sender, EventArgs e)
+        {
+            /*          
+            txtNombreCiudad.ResetText();
+            btnCiudadCancelar.Enabled = false;
+            btnCiudadActualizar.Enabled = false;
+            btnCiudadCrear.Enabled = true;
+             */
+
+            txtEjecutivoApellido.ResetText();
+            txtEjecutivoNombre.ResetText();
+            txtEjecutivoRut.ResetText();
+            gridEjecutivo.ClearSelection();
+            btnEjecutivoCrear.Enabled = true;
+            btnEjecutivoActualizar.Enabled = false;
+            btnEjecutivoCancelar.Enabled = false;
         }
     }
 }

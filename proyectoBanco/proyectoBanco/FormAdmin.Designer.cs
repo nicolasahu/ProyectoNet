@@ -48,6 +48,8 @@
             this.btnEjecutivoCrear = new System.Windows.Forms.Button();
             this.gridEjecutivo = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtEjecutivoApellido = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCiudad)).BeginInit();
@@ -68,7 +70,7 @@
             // lblAdminRUT
             // 
             this.lblAdminRUT.AutoSize = true;
-            this.lblAdminRUT.Location = new System.Drawing.Point(370, 18);
+            this.lblAdminRUT.Location = new System.Drawing.Point(477, 21);
             this.lblAdminRUT.Name = "lblAdminRUT";
             this.lblAdminRUT.Size = new System.Drawing.Size(42, 13);
             this.lblAdminRUT.TabIndex = 1;
@@ -153,6 +155,7 @@
             // 
             this.gridCiudad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCiudad.Location = new System.Drawing.Point(3, 35);
+            this.gridCiudad.MultiSelect = false;
             this.gridCiudad.Name = "gridCiudad";
             this.gridCiudad.ReadOnly = true;
             this.gridCiudad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -162,6 +165,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtEjecutivoApellido);
+            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.txtEjecutivoRut);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txtEjecutivoNombre);
@@ -196,15 +201,15 @@
             // 
             // txtEjecutivoNombre
             // 
-            this.txtEjecutivoNombre.Location = new System.Drawing.Point(88, 3);
+            this.txtEjecutivoNombre.Location = new System.Drawing.Point(88, 8);
             this.txtEjecutivoNombre.Name = "txtEjecutivoNombre";
-            this.txtEjecutivoNombre.Size = new System.Drawing.Size(201, 20);
+            this.txtEjecutivoNombre.Size = new System.Drawing.Size(100, 20);
             this.txtEjecutivoNombre.TabIndex = 14;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 6);
+            this.label2.Location = new System.Drawing.Point(6, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 13;
@@ -219,6 +224,7 @@
             this.btnEjecutivoCancelar.TabIndex = 12;
             this.btnEjecutivoCancelar.Text = "Cancelar";
             this.btnEjecutivoCancelar.UseVisualStyleBackColor = true;
+            this.btnEjecutivoCancelar.Click += new System.EventHandler(this.btnEjecutivoCancelar_Click);
             // 
             // btnEjecutivoActualizar
             // 
@@ -229,6 +235,7 @@
             this.btnEjecutivoActualizar.TabIndex = 10;
             this.btnEjecutivoActualizar.Text = "Actualizar";
             this.btnEjecutivoActualizar.UseVisualStyleBackColor = true;
+            this.btnEjecutivoActualizar.Click += new System.EventHandler(this.btnEjecutivoActualizar_Click);
             // 
             // btnEjecutivoCrear
             // 
@@ -260,6 +267,22 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Estadisticas";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtEjecutivoApellido
+            // 
+            this.txtEjecutivoApellido.Location = new System.Drawing.Point(291, 8);
+            this.txtEjecutivoApellido.Name = "txtEjecutivoApellido";
+            this.txtEjecutivoApellido.Size = new System.Drawing.Size(100, 20);
+            this.txtEjecutivoApellido.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(209, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Apellido:";
             // 
             // FormAdmin
             // 
@@ -306,5 +329,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtEjecutivoNombre;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtEjecutivoApellido;
+        private System.Windows.Forms.Label label4;
     }
 }
