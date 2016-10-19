@@ -87,6 +87,7 @@ namespace proyectoBanco
             d.registrarCuenta(c);
 
             cargarClientesDisponibles();
+            cargarClientes(ejec);
         }
     }
 }

@@ -460,8 +460,7 @@ namespace proyectoBanco.bd
             while (!disponible) {                
                 int contador = 0;
                 int n = 0;
-                while (contador < 5)
-                {
+                while (contador < 5){
                     n = random.Next(9);
                     while (n == 0)
                     {
@@ -480,10 +479,10 @@ namespace proyectoBanco.bd
                     bit = Convert.ToInt32(conexion.rs[0]);
                     if (bit == 0)
                     {
-                        disponible = false;
+                        disponible = true;
                     }
                     else {
-                        disponible = true;
+                        disponible = false;
                     }
                 }
 
@@ -491,8 +490,6 @@ namespace proyectoBanco.bd
             }
 
             return numeros;
-
-
         }
 
         public String generarSaldo(Cliente c)

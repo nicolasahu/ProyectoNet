@@ -59,7 +59,7 @@ create table ejecutivo(
 insert into ejecutivo values('222-2','EmilioEjec',2);
 
 --select*from cliente;
-
+--select DATEDIFF(YEAR, '1987/05/22', GETDATE());
 create table cliente(
 	id int not null identity(1,1),
 	rut varchar(20),
@@ -81,7 +81,7 @@ insert into cliente values('444-4','ElMejorCliente3', 'NuncaMuerta321', 1, 'corr
 
 create table cuenta(
 	id int not null identity(1,1),
-	num_cuenta int,
+	num_cuenta varchar(5),
 	cliente int,
 	saldo money,
 	fecha_creacion date,
@@ -94,10 +94,11 @@ create table cuenta(
 
 --select*from cuenta where ejecutivo=1;
 --select cliente from cuenta;
+--select*from cuenta;
 --select*from cliente where id not in (select cliente from cuenta);
-insert into cuenta values(123, 1, '$10000', getDate(), 1, 1);
-insert into cuenta values(132, 2, '$10000', getDate(), 1, 1);
-insert into cuenta values(112, 3, '$10000000000000', getDate(), 1, 1);
+insert into cuenta values('12345', 1, '$10000', getDate(), 1, 1);
+insert into cuenta values('13354', 2, '$10000', getDate(), 1, 1);
+insert into cuenta values('11223', 3, '$10000000000000', getDate(), 1, 1);
 
 create table tarjeta_tranferencia(
 	id int not null identity (1,1),
