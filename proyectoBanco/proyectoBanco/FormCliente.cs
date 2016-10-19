@@ -20,7 +20,7 @@ namespace proyectoBanco
         {
             InitializeComponent();
             d = new Data();
-            c = d.getCliente(idUsuario);
+            c = d.getClientePorUsuario(idUsuario);
             cargarDatos();
         }
 

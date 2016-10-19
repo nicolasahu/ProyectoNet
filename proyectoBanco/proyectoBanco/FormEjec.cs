@@ -76,7 +76,7 @@ namespace proyectoBanco
         private void button2_Click(object sender, EventArgs e)
         {
             int id_cliente = Convert.ToInt32(gridClientesDisponibles.CurrentRow.Cells[0].Value);
-            Cliente cliente = d.getCliente(id_cliente);
+            Cliente cliente = d.getClientePorID(id_cliente);
 
             //adjudicar
             Cuenta c=new Cuenta();

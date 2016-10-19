@@ -39,6 +39,8 @@
             this.btnCiudadCrear = new System.Windows.Forms.Button();
             this.gridCiudad = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtEjecutivoApellido = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtEjecutivoRut = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEjecutivoNombre = new System.Windows.Forms.TextBox();
@@ -48,8 +50,6 @@
             this.btnEjecutivoCrear = new System.Windows.Forms.Button();
             this.gridEjecutivo = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txtEjecutivoApellido = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCiudad)).BeginInit();
@@ -161,6 +161,7 @@
             this.gridCiudad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCiudad.Size = new System.Drawing.Size(428, 212);
             this.gridCiudad.TabIndex = 0;
+            this.gridCiudad.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCiudad_CellContentClick);
             this.gridCiudad.DoubleClick += new System.EventHandler(this.gridCiudad_DoubleClick);
             // 
             // tabPage2
@@ -182,6 +183,22 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ejecutivos";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtEjecutivoApellido
+            // 
+            this.txtEjecutivoApellido.Location = new System.Drawing.Point(291, 8);
+            this.txtEjecutivoApellido.Name = "txtEjecutivoApellido";
+            this.txtEjecutivoApellido.Size = new System.Drawing.Size(100, 20);
+            this.txtEjecutivoApellido.TabIndex = 18;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(209, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Apellido:";
             // 
             // txtEjecutivoRut
             // 
@@ -267,22 +284,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Estadisticas";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // txtEjecutivoApellido
-            // 
-            this.txtEjecutivoApellido.Location = new System.Drawing.Point(291, 8);
-            this.txtEjecutivoApellido.Name = "txtEjecutivoApellido";
-            this.txtEjecutivoApellido.Size = new System.Drawing.Size(100, 20);
-            this.txtEjecutivoApellido.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(209, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Apellido:";
             // 
             // FormAdmin
             // 

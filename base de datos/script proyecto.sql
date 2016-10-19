@@ -94,6 +94,12 @@ create table cuenta(
 	foreign key(ejecutivo) references ejecutivo(id),
 );
 
+/*
+select * from usuario
+
+select*from cliente where id=5
+*/
+
 --select*from cuenta where ejecutivo=1;
 --select cliente from cuenta;
 --select*from cuenta;

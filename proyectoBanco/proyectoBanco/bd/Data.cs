@@ -279,10 +279,11 @@ namespace proyectoBanco.bd
             conexion.ejecutar(query);
         }
         
-        public Cliente getCliente(int idUsuario)
+        public Cliente getClientePorUsuario(int idUsuario)
         {
             Cliente c = null;
             query = "select*from cliente where usuario=" + idUsuario + "";
+            Console.Write(query);
             conexion.ejecutar(query);
 
             if (conexion.rs.Read()) {
@@ -300,6 +301,31 @@ namespace proyectoBanco.bd
             conexion.cerrar();
             return c;
         }
+
+        public Cliente getClientePorID(int idCliente)
+        {
+            Cliente c = null;
+            query = "select*from cliente where id="+idCliente;
+            Console.Write(query);
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read())
+            {
+                c = new Cliente();
+                c.Id = Convert.ToInt32(conexion.rs[0]);
+                c.Rut = conexion.rs[1].ToString();
+                c.NombreCompleto = conexion.rs[2].ToString();
+                c.Direccion = conexion.rs[3].ToString();
+                c.Ciudad = Convert.ToInt32(conexion.rs[4]);
+                c.Correo = conexion.rs[5].ToString();
+                c.FechaNacimiento = conexion.rs[6].ToString();
+                c.Usuario = Convert.ToInt32(conexion.rs[7]);
+            }
+
+            conexion.cerrar();
+            return c;
+        }
+
 
         public Cliente getClientePorRut(String rut) {
             Cliente c = null;
@@ -416,6 +442,7 @@ namespace proyectoBanco.bd
         {
             query = "insert into cuenta values('"+cuenta.NumCuenta+ "','"+cuenta.Cliente
                 + "','"+cuenta.Saldo+ "', getDate() ,'"+cuenta.Ejecutivo+"','1')";
+            Console.WriteLine(query);
             conexion.ejecutar(query);
         }
 
@@ -512,7 +539,7 @@ namespace proyectoBanco.bd
         {
             int edad=0;
 
-            query = "select DATEDIFF(YEAR, '"+c.FechaNacimiento+"', GETDATE());";
+            query = "select DATEDIFF(YEAR, '"+c.FechaNacimiento+"', GETDATE())";
             conexion.ejecutar(query);
 
             if (conexion.rs.Read()) {

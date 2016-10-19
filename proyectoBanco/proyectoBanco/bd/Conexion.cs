@@ -16,19 +16,19 @@ namespace proyectoBanco.bd
 
         public Conexion(String bd)
         {
-            con = new SqlConnection(
-                    "Data Source=localhost;" + //localhost
-                    "Initial Catalog=" + bd + "; " +
-                    "Integrated Security=True;"
-                );
-
-            //con = new SqlConnection(/*conexion intituto*/
-            //        "Data Source=RA52PCALU-31512;" + //autenticacion de windows
+            //con = new SqlConnection(
             //        "Data Source=localhost;" + //localhost
             //        "Initial Catalog=" + bd + "; " +
-            //        "user id= sa; " +
-            //        "password=" + "123456;"
+            //        "Integrated Security=True;"
             //    );
+
+            con = new SqlConnection(/*conexion intituto*/
+                    "Data Source=RA52PCALU-31512;" + //autenticacion de windows
+                    "Data Source=localhost;" + //localhost
+                    "Initial Catalog=" + bd + "; " +
+                    "user id= sa; " +
+                    "password=" + "123456;"
+                );
         }
 
         public void ejecutar(String query)

@@ -39,9 +39,20 @@ namespace proyectoBanco
 
         private void btnCiudadCrear_Click(object sender, EventArgs e)
         {
+
             String nombreCiudad = txtNombreCiudad.Text;
-            d.crearCiudad(nombreCiudad);
-            gridCiudad.DataSource = d.getCiudades();
+
+            if (nombreCiudad != "")
+            {
+                d.crearCiudad(nombreCiudad);
+                gridCiudad.DataSource = d.getCiudades();
+            }
+            else
+            {
+                MessageBox.Show("la casilla de ciudad esta en blanco", "faltan datos", MessageBoxButtons.OK);
+            }
+                    
+            
 
             txtNombreCiudad.ResetText();
         }
@@ -102,27 +113,39 @@ namespace proyectoBanco
             String apellido = txtEjecutivoApellido.Text;
             String rut = txtEjecutivoRut.Text;
 
-            Usuario usuario = new Usuario();
-            usuario.NombreLogin = d.generarNombreUsuario(nombre+" "+apellido);
-            usuario.Privilegio = 2;
-            usuario.Contraseña = d.generarClave2();
+            if (nombre!=""|| apellido != ""|| rut != "")
+            {
+                Usuario usuario = new Usuario();
+                usuario.NombreLogin = d.generarNombreUsuario(nombre + " " + apellido);
+                usuario.Privilegio = 2;
+                usuario.Contraseña = d.generarClave2();
 
-            d.registrarUsuario(usuario);
+                d.registrarUsuario(usuario);
 
-            Ejecutivo ejec = new Ejecutivo();
-            ejec.Nombre = nombre+" "+apellido;
-            ejec.Rut = rut;
-            ejec.Usuario = d.getIDUduario();
+                Ejecutivo ejec = new Ejecutivo();
+                ejec.Nombre = nombre + " " + apellido;
+                ejec.Rut = rut;
+                ejec.Usuario = d.getIDUduario();
 
-            d.crearEjecutivo(ejec);
+                d.crearEjecutivo(ejec);
 
-            limpiarEjecutivoCrear();
+                limpiarEjecutivoCrear();
+
+
+            }
+            else
+            {
+                MessageBox.Show("alguna casilla de dato se encuentra en blanco", "faltan datos", MessageBoxButtons.OK);
+            }
+
 
             txtEjecutivoNombre.ResetText();
             txtEjecutivoApellido.ResetText();
             txtEjecutivoRut.ResetText();
 
             gridEjecutivo.DataSource = d.getEjecutivos();
+
+
         }
 
         private void limpiarEjecutivoCrear()
@@ -168,6 +191,11 @@ namespace proyectoBanco
             btnEjecutivoCrear.Enabled = true;
             btnEjecutivoActualizar.Enabled = false;
             btnEjecutivoCancelar.Enabled = false;
+        }
+
+        private void gridCiudad_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
