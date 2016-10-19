@@ -96,7 +96,7 @@ create table cuenta(
 
 /*
 select * from usuario
-
+select * from ejecutivo
 select*from cliente where id=5
 */
 

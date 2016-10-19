@@ -374,10 +374,10 @@ namespace proyectoBanco.bd
             if (conexion.rs.Read())
             {
                 e = new Ejecutivo();
-                e.Id = Convert.ToInt32(conexion.rs[0]);
-                e.Nombre = conexion.rs[1].ToString();
-                e.Rut = conexion.rs[2].ToString();
-                e.Usuario = Convert.ToInt32(conexion.rs[3]);
+                e.Id = Convert.ToInt32(conexion.rs[0]);//id
+                e.Nombre = conexion.rs[2].ToString();//rut
+                e.Rut = conexion.rs[1].ToString();//nombre
+                e.Usuario = Convert.ToInt32(conexion.rs[3]);//usuario
             }
 
             conexion.cerrar();

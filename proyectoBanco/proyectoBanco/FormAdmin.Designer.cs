@@ -66,6 +66,7 @@
             this.lblAdminNombre.Size = new System.Drawing.Size(212, 25);
             this.lblAdminNombre.TabIndex = 0;
             this.lblAdminNombre.Text = "Bienvenido: [$Nombre]";
+            this.lblAdminNombre.Click += new System.EventHandler(this.lblAdminNombre_Click);
             // 
             // lblAdminRUT
             // 

@@ -171,6 +171,9 @@ namespace proyectoBanco
             ejec.Usuario = d.getIDUduario();
 
             d.actualizarEjecutivo(ejec);
+            txtEjecutivoNombre.ResetText();
+            txtEjecutivoApellido.ResetText();
+            txtEjecutivoRut.ResetText();
 
             limpiarEjecutivoCrear();
         }
@@ -194,6 +197,11 @@ namespace proyectoBanco
         }
 
         private void gridCiudad_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblAdminNombre_Click(object sender, EventArgs e)
         {
 
         }
