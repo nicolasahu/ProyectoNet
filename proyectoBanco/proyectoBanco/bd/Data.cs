@@ -369,8 +369,10 @@ namespace proyectoBanco.bd
         public Ejecutivo getEjecutivo(int idUsuario)
         {
             Ejecutivo e = null;
-            query = "select*from ejecutivo where usuario=" + idUsuario + "";
+            query = "select*from ejecutivo where usuario="+idUsuario;
+            Console.WriteLine(query);
             conexion.ejecutar(query);
+
             if (conexion.rs.Read())
             {
                 e = new Ejecutivo();

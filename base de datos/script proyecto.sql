@@ -57,6 +57,7 @@ create table ejecutivo(
 	primary key(id),
 );
 
+--select*from usuario;
 --select*from ejecutivo
 insert into ejecutivo values('222-2','Emilio Ejec',2);
 
@@ -75,6 +76,8 @@ create table cliente(
 	foreign key(usuario) references usuario(id),
 	foreign key(ciudad) references ciudad(id),
 );
+
+--select*from ejecutivo where usuario=2
 
 insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);
 insert into cliente values('444-4','ElMejorCliente2', 'NuncaMuerta123', 1, 'correo2@dominio.cl', '21/10/1982',4);
