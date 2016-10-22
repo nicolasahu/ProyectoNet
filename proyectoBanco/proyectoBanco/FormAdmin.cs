@@ -112,12 +112,13 @@ namespace proyectoBanco
             String nombre = txtEjecutivoNombre.Text;
             String apellido = txtEjecutivoApellido.Text;
             String rut = txtEjecutivoRut.Text;
-
-            if (nombre!=""|| apellido != ""|| rut != "")
+            String correo = txtCorreoEjecutivo.Text;
+            if (nombre!=""|| apellido != ""|| rut != "" ||correo!="")
             {
                 Usuario usuario = new Usuario();
                 usuario.NombreLogin = d.generarNombreUsuario(nombre + " " + apellido);
                 usuario.Privilegio = 2;
+                
                 usuario.Contraseña = d.generarClave2();
 
                 d.registrarUsuario(usuario);
@@ -125,6 +126,7 @@ namespace proyectoBanco
                 Ejecutivo ejec = new Ejecutivo();
                 ejec.Nombre = nombre + " " + apellido;
                 ejec.Rut = rut;
+                ejec.Correo = correo;
                 ejec.Usuario = d.getIDUduario();
 
                 d.crearEjecutivo(ejec);
@@ -163,12 +165,21 @@ namespace proyectoBanco
             String nombre = txtEjecutivoNombre.Text;
             String apellido = txtEjecutivoApellido.Text;
             String rut = txtEjecutivoRut.Text;
+            String correo = txtCorreoEjecutivo.Text;
+            if (nombre != "" || apellido != "" || rut != "" || correo != "")
+            {
+                Ejecutivo ejec = new Ejecutivo();
+                ejec.Id = id;
+                ejec.Nombre = nombre + " " + apellido;
+                ejec.Rut = rut;
+                ejec.Usuario = d.getIDUduario();
+            }
+            else
+            {
+                MessageBox.Show("alguna casilla de dato se encuentra en blanco", "faltan datos", MessageBoxButtons.OK);
 
-            Ejecutivo ejec = new Ejecutivo();
-            ejec.Id = id;
-            ejec.Nombre = nombre + " " + apellido;
-            ejec.Rut = rut;
-            ejec.Usuario = d.getIDUduario();
+            }
+
 
             d.actualizarEjecutivo(ejec);
             txtEjecutivoNombre.ResetText();
@@ -202,6 +213,11 @@ namespace proyectoBanco
         }
 
         private void lblAdminNombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

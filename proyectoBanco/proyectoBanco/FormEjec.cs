@@ -83,8 +83,11 @@ namespace proyectoBanco
             c.Cliente = id_cliente;
             c.Ejecutivo = ejec.Id;
             c.NumCuenta = d.generarNumeroCuenta();
+            
             c.Saldo = d.generarSaldo(cliente); //definir segun edad
             d.registrarCuenta(c);
+            //d.RegistrarTarjetaTranferenciaCliente
+
 
             cargarClientesDisponibles();
             cargarClientes(ejec);

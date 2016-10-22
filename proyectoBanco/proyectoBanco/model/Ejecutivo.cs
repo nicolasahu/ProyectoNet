@@ -11,6 +11,7 @@ namespace proyectoBanco.model
         private int id;
         private String nombre;
         private String rut;
+        private String correo;
         private int usuario;
 
         public int Id
@@ -52,6 +53,19 @@ namespace proyectoBanco.model
             }
         }
 
+        public string Correo
+        {
+            get
+            {
+                return correo;
+            }
+
+            set
+            {
+                correo = value;
+            }
+        }
+
         public int Usuario
         {
             get
@@ -64,6 +78,5 @@ namespace proyectoBanco.model
                 usuario = value;
             }
         }
-
     }
 }

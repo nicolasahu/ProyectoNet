@@ -9,9 +9,9 @@ namespace proyectoBanco.model
     class Administrador
     {
         private int id;
-
         private String rut;
         private String nombre;
+        private String correo;
         private int usuario;
 
         public int Id
@@ -24,6 +24,19 @@ namespace proyectoBanco.model
             set
             {
                 id = value;
+            }
+        }
+
+        public string Rut
+        {
+            get
+            {
+                return rut;
+            }
+
+            set
+            {
+                rut = value;
             }
         }
 
@@ -40,16 +53,16 @@ namespace proyectoBanco.model
             }
         }
 
-        public string Rut
+        public string Correo
         {
             get
             {
-                return rut;
+                return correo;
             }
 
             set
             {
-                rut = value;
+                correo = value;
             }
         }
 

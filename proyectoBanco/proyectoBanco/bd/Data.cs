@@ -380,7 +380,8 @@ namespace proyectoBanco.bd
                 e.Id = Convert.ToInt32(conexion.rs[0]);//id
                 e.Nombre = conexion.rs[2].ToString();//rut
                 e.Rut = conexion.rs[1].ToString();//nombre
-                e.Usuario = Convert.ToInt32(conexion.rs[3]);//usuario
+                e.Correo = conexion.rs[3].ToString();//nombre
+                e.Usuario = Convert.ToInt32(conexion.rs[4]);//usuario
             }
 
             conexion.cerrar();
@@ -398,7 +399,8 @@ namespace proyectoBanco.bd
                 e.Id = Convert.ToInt32(conexion.rs[0]);
                 e.Rut = conexion.rs[1].ToString();
                 e.Nombre = conexion.rs[2].ToString();
-                e.Usuario = Convert.ToInt32(conexion.rs[3]);
+                e.Correo = conexion.rs[3].ToString();
+                e.Usuario = Convert.ToInt32(conexion.rs[4]);
                 ejecutivos.Add(e);
             }
 
@@ -408,7 +410,7 @@ namespace proyectoBanco.bd
 
         public void crearEjecutivo(Ejecutivo e)
         {
-            query = "insert into ejecutivo values('"+e.Rut+"','"+e.Nombre+"', "+e.Usuario+")";
+            query = "insert into ejecutivo values('"+e.Rut+"','"+e.Nombre+ "','" + e.Correo + "', " + e.Usuario+")";
             conexion.ejecutar(query);
         }
 
@@ -431,22 +433,41 @@ namespace proyectoBanco.bd
                 a.Id = Convert.ToInt32(conexion.rs[0]);
                 a.Nombre = conexion.rs[1].ToString();
                 a.Rut= conexion.rs[2].ToString();
-                a.Usuario= Convert.ToInt32(conexion.rs[3]);
+                a.Usuario= Convert.ToInt32(conexion.rs[4]);
             }
 
             conexion.cerrar();
             return a;
         }
-               
+
 
         /*.......................crud cuentas............................*/
+
+        public int getIDCuenta()
+        {
+            int id = 0;
+            query = "select count(*) from cuenta";
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read())
+            {
+                id = Convert.ToInt32(conexion.rs[0]);
+            }
+
+            conexion.cerrar();
+            return id;
+        }
+
         /*true =1/false=0*/
         public void registrarCuenta(Cuenta cuenta)
         {
             query = "insert into cuenta values('"+cuenta.NumCuenta+ "','"+cuenta.Cliente
                 + "','"+cuenta.Saldo+ "', getDate() ,'"+cuenta.Ejecutivo+"','1')";
-            Console.WriteLine(query);
+            
             conexion.ejecutar(query);
+            int idCuenta = getIDCuenta();
+            RegistrarTarjetaTranferenciaCliente(idCuenta);
+
         }
 
         public void desabilitarCuenta(int numCuenta)
@@ -556,6 +577,7 @@ namespace proyectoBanco.bd
         /*-----------------------crud tarjeta---------------------------*/
         public void RegistrarTarjetaTranferenciaCliente(int idCuenta)
         {
+
             query = "insert into tarjeta_tranferencia values('" + generarTarjeta() + "','" + idCuenta + "')";
             conexion.ejecutar(query);
         }
@@ -571,7 +593,7 @@ namespace proyectoBanco.bd
                 if (cont != 49)
                 {
                     num = random.Next(01, 99);
-                    if (num > 10)
+                    if (num >= 10)
                     {
                         tarjeta += num + "-";
                     }
@@ -584,9 +606,9 @@ namespace proyectoBanco.bd
                 else
                 {
                     num = random.Next(01, 99);
-                    if (num > 10)
+                    if (num >= 10)
                     {
-                        tarjeta += num + "-";
+                        tarjeta += num + "";
                     }
                     else
                     {
@@ -602,10 +624,10 @@ namespace proyectoBanco.bd
         
 
 
-        public TarjetaTranferencia getTarjeta(int id)
+        public TarjetaTranferencia getTarjeta(int idCuenta)
         {
             TarjetaTranferencia t = null;
-            query = "select*from tarjeta_tranferencia where id='"+id+"'";
+            query = "select*from tarjeta_tranferencia where cuenta='" + idCuenta + "'";
             conexion.ejecutar(query);
 
             if (conexion.rs.Read())
@@ -619,10 +641,70 @@ namespace proyectoBanco.bd
             conexion.cerrar();
             return t;
         }
-        public String mostarTarjetaCorreo(int id)
+        public Boolean verificarCodigoTarjeta(char columna, char fila, int num, int idCuenta)
+        {
+            String numvalidacion ;
+            Boolean existe = false;
+            TarjetaTranferencia t = getTarjeta(idCuenta);
+            String[] vectornumeros = t.Numeros.Split('-');
+
+            if (columna.Equals('a'))
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    
+
+
+
+                }
+
+
+
+            }
+            else if (columna.Equals('b'))
+            {
+
+            }
+            else if (columna.Equals('c'))
+            {
+
+            }
+            else if (columna.Equals('d'))
+            {
+
+            }
+            else if (columna.Equals('e'))
+            {
+
+            }
+            else if (columna.Equals('f'))
+            {
+
+            }
+            else if (columna.Equals('g'))
+            {
+
+            }
+            else if (columna.Equals('h'))
+            {
+
+            }
+            else if (columna.Equals('i'))
+            {
+
+            }
+            else if (columna.Equals('j'))
+            {
+
+            }
+
+            return existe;
+
+        }
+        public String mostarTarjetaCorreo(int idCuenta)
         {
             String tabla="";
-            TarjetaTranferencia t = getTarjeta(id);
+            TarjetaTranferencia t = getTarjeta(idCuenta);
             
             String[] vectornumeros = t.Numeros.Split('-');
             int cont=1;
@@ -734,6 +816,8 @@ namespace proyectoBanco.bd
             return tabla;
             
         }
+        /*correo*/
+
         public void enviarMensaje(string correoEmisor, string clave, string correoReseptor, string asunto, string mensaje)
         {
             MailMessage correo = new MailMessage();
@@ -741,12 +825,6 @@ namespace proyectoBanco.bd
             correo.From = new MailAddress(correoReseptor);
             correo.Subject = asunto;
             correo.Body = "<h1>bienvenido a este banco</h1>"+//mensaje
-
-
-
-
-                    
-
                         "";
             correo.IsBodyHtml = true;
             correo.Priority = MailPriority.Normal;
