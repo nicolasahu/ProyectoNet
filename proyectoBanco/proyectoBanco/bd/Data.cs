@@ -326,7 +326,6 @@ namespace proyectoBanco.bd
             return c;
         }
 
-
         public Cliente getClientePorRut(String rut) {
             Cliente c = null;
             query = "select*from cliente where rut='"+rut+"'";
@@ -376,10 +375,10 @@ namespace proyectoBanco.bd
             if (conexion.rs.Read())
             {
                 e = new Ejecutivo();
-                e.Id = Convert.ToInt32(conexion.rs[0]);
-                e.Nombre = conexion.rs[1].ToString();
-                e.Rut = conexion.rs[2].ToString();
-                e.Usuario = Convert.ToInt32(conexion.rs[3]);
+                e.Id = Convert.ToInt32(conexion.rs[0]);//id
+                e.Nombre = conexion.rs[2].ToString();//rut
+                e.Rut = conexion.rs[1].ToString();//nombre
+                e.Usuario = Convert.ToInt32(conexion.rs[3]);//usuario
             }
 
             conexion.cerrar();
@@ -665,6 +664,10 @@ namespace proyectoBanco.bd
         }
 
         //realizar transferencia
+        public void realizarTransferencia(Transferencia trans) {
+            query = "insert into transferencia values('"+trans.Monto+"', getDate(), "+trans.CuentaOrigen+", "+trans.CuentaDestino+", "+trans.Tipo+", '"+trans.Comentario+"')";
+            conexion.ejecutar(query);
+        }
 
 
         /*------------------------crud credito--------------------------*/
@@ -690,9 +693,6 @@ namespace proyectoBanco.bd
 
         public void aprobarCredito(Credito c) {
             query = "insert into credito values("+c.Cuenta+", getDate(), 1, "+c.Ejecutivo+",'"+c.Monto+"')";
-            conexion.ejecutar(query);
-
-            query = "insert into transferencia values('"+c.Monto+"', getDate(), "+c.Cuenta+", 1, 'Credito de consumo aprobado')";
             conexion.ejecutar(query);
         }
     }

@@ -14,6 +14,7 @@ namespace proyectoBanco.model
         private String fechaCreacion;
         private int ejecutivo;
         private Boolean activo;
+        public static int ADMIN = 1;
 
         public int Id
         {

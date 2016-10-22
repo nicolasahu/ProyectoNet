@@ -14,7 +14,12 @@ namespace proyectoBanco.model
         private int cuentaOrigen;
         private int cuentaDestino;
         private String comentario;
+        private int tipo;
 
+        public static int TRANSFERENCIA=1;
+        public static int ABONO = 2;
+        public static int CREDITO = 3;
+        
         public int Id
         {
             get
@@ -90,6 +95,19 @@ namespace proyectoBanco.model
             set
             {
                 comentario = value;
+            }
+        }
+
+        public int Tipo
+        {
+            get
+            {
+                return tipo;
+            }
+
+            set
+            {
+                tipo = value;
             }
         }
     }

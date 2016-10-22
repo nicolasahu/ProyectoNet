@@ -1,5 +1,8 @@
---drop database banco;
---use bd_cds;
+USE master;
+IF EXISTS(select * from sys.databases where name='banco')
+DROP DATABASE banco;
+go
+
 create database banco;
 go
 use banco;
@@ -34,19 +37,6 @@ insert into usuario values ('admin','admin',1);
 insert into usuario values ('ejec1','ejec',2);
 insert into usuario values ('user1','user1',3);
 insert into usuario values ('user2','user2',3);
-
-
-create table administrador(
-	id int not null identity(1,1),
-	rut varchar(20),
-	nombre varchar(50),
-	usuario int,
-	foreign key(usuario) references usuario(id),
-	primary key(id),
-);
-
-insert into administrador values('Emilio','111-1',1);
-
 
 create table ejecutivo(
 	id int not null identity(1,1),
@@ -99,7 +89,7 @@ create table cuenta(
 
 /*
 select * from usuario
-
+select * from ejecutivo
 select*from cliente where id=5
 */
 
@@ -107,9 +97,24 @@ select*from cliente where id=5
 --select cliente from cuenta;
 --select*from cuenta;
 --select*from cliente where id not in (select cliente from cuenta);
+insert into cuenta values('11111', null, '$10000000000000', getDate(), null, 1);
 insert into cuenta values('12345', 1, '$10000', getDate(), 1, 1);
-insert into cuenta values('13354', 2, '$10000', getDate(), 1, 1);
-insert into cuenta values('11223', 3, '$10000000000000', getDate(), 1, 1);
+insert into cuenta values('13354', 2, '$20000', getDate(), 1, 1);
+insert into cuenta values('11223', 3, '$30000', getDate(), 1, 1);
+
+create table administrador(
+	id int not null identity(1,1),
+	rut varchar(20),
+	nombre varchar(50),
+	usuario int,
+	cuenta int,
+	foreign key(usuario) references usuario(id),
+	foreign key(cuenta) references cuenta(id),
+	primary key(id),
+);
+
+insert into administrador values('Emilio','111-1',1, 1);
+
 
 create table tarjeta_tranferencia(
 	id int not null identity (1,1),
@@ -120,6 +125,14 @@ create table tarjeta_tranferencia(
 );
 
 --select*from tarjeta_tranferencia;
+--drop table tipoTransferencia;
+create table tipoTransferencia(
+	id int not null identity(1,1),
+	tipo varchar(50),
+	primary key(id),
+);
+
+insert into tipoTransferencia values('Transferencia'),('Credito de Consumo Aprobado'),('Abono inicial');
 
 create table transferencia(
 	id int not null identity(1,1),
@@ -127,15 +140,16 @@ create table transferencia(
 	fecha date,
 	cuentaO int,
 	cuentaD int,
+	tipo int,
 	comentario varchar(500),
 	primary key(id),
+	foreign key(tipo) references tipoTransferencia(id),
 	foreign key(cuentaO) references cuenta(id),
 	foreign key(cuentaD) references cuenta(id),
 );
 
 --select*from cuenta;
-insert into transferencia values('40000', getDate(), 2, 1, 'Pago Servicios');
-
+insert into transferencia values('40000', getDate(), 2, 1, 1,'Pago Servicios');
 
 --select*from transferencia;
 create table credito(
@@ -157,5 +171,5 @@ create table credito(
 --select*from credito where cuenta=2;
 insert into credito values(2, getDate(), 1,1,'100000');
 --hacer insert transferencia, cuenta origen :banco cuenta destino: cuenta, comentario: aprobacion credito
-insert into transferencia values('1000000', getDate(), 3, 1, 'Credito de consumo aprobado');
+insert into transferencia values('1000000', getDate(), 1, 3, 2, 'Credito de consumo aprobado');
 

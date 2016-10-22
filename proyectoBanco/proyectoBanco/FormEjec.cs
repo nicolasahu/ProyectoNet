@@ -68,6 +68,13 @@ namespace proyectoBanco
             
             d.aprobarCredito(c);
 
+            Transferencia trans = new Transferencia();
+            trans.CuentaOrigen = Cuenta.ADMIN;
+            trans.CuentaDestino = cuenta;
+            trans.Monto = monto;
+
+            d.realizarTransferencia(trans);
+
             //cambios
             txtMonto_AprobarCredito.ResetText();
             actualizarCreditos();
@@ -83,8 +90,16 @@ namespace proyectoBanco
             c.Cliente = id_cliente;
             c.Ejecutivo = ejec.Id;
             c.NumCuenta = d.generarNumeroCuenta();
-            c.Saldo = d.generarSaldo(cliente); //definir segun edad
+            c.Saldo = "0";
             d.registrarCuenta(c);
+
+            Transferencia trans = new Transferencia();
+            trans.Monto= d.generarSaldo(cliente); //definir segun edad
+            trans.CuentaOrigen = Cuenta.ADMIN;
+            trans.CuentaDestino = c.Id;
+            trans.Comentario = "Abono inicial";
+            trans.Tipo = Transferencia.ABONO;
+            d.realizarTransferencia(trans);
 
             cargarClientesDisponibles();
             cargarClientes(ejec);

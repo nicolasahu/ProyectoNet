@@ -34,26 +34,26 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateHistoricoHasta = new System.Windows.Forms.DateTimePicker();
+            this.dateHistoricoDesde = new System.Windows.Forms.DateTimePicker();
             this.gridHistorico = new System.Windows.Forms.DataGridView();
             this.txtSaldo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Transferencia = new System.Windows.Forms.TabPage();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnRealizarTransferencia = new System.Windows.Forms.Button();
+            this.txtCodigoTransferencia3 = new System.Windows.Forms.TextBox();
+            this.txtCodigoTransferencia2 = new System.Windows.Forms.TextBox();
+            this.txtCodigoTransferencia1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtComentarioTransferencia = new System.Windows.Forms.TextBox();
+            this.txtMontoTransferencia = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtNumCuentaDestinatario = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridHistorico)).BeginInit();
@@ -93,15 +93,15 @@
             // 
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.dateTimePicker2);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.dateHistoricoHasta);
+            this.tabPage1.Controls.Add(this.dateHistoricoDesde);
             this.tabPage1.Controls.Add(this.gridHistorico);
             this.tabPage1.Controls.Add(this.txtSaldo);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(539, 386);
+            this.tabPage1.Size = new System.Drawing.Size(539, 397);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Historico";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -124,19 +124,19 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Desde";
             // 
-            // dateTimePicker2
+            // dateHistoricoHasta
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(331, 40);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 27;
+            this.dateHistoricoHasta.Location = new System.Drawing.Point(331, 40);
+            this.dateHistoricoHasta.Name = "dateHistoricoHasta";
+            this.dateHistoricoHasta.Size = new System.Drawing.Size(200, 20);
+            this.dateHistoricoHasta.TabIndex = 27;
             // 
-            // dateTimePicker1
+            // dateHistoricoDesde
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(60, 40);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 26;
+            this.dateHistoricoDesde.Location = new System.Drawing.Point(60, 40);
+            this.dateHistoricoDesde.Name = "dateHistoricoDesde";
+            this.dateHistoricoDesde.Size = new System.Drawing.Size(200, 20);
+            this.dateHistoricoDesde.TabIndex = 26;
             // 
             // gridHistorico
             // 
@@ -165,20 +165,20 @@
             // 
             // Transferencia
             // 
-            this.Transferencia.Controls.Add(this.button1);
-            this.Transferencia.Controls.Add(this.textBox6);
-            this.Transferencia.Controls.Add(this.textBox5);
-            this.Transferencia.Controls.Add(this.textBox4);
+            this.Transferencia.Controls.Add(this.btnRealizarTransferencia);
+            this.Transferencia.Controls.Add(this.txtCodigoTransferencia3);
+            this.Transferencia.Controls.Add(this.txtCodigoTransferencia2);
+            this.Transferencia.Controls.Add(this.txtCodigoTransferencia1);
             this.Transferencia.Controls.Add(this.label10);
             this.Transferencia.Controls.Add(this.label9);
             this.Transferencia.Controls.Add(this.label8);
             this.Transferencia.Controls.Add(this.label7);
-            this.Transferencia.Controls.Add(this.textBox3);
-            this.Transferencia.Controls.Add(this.textBox2);
+            this.Transferencia.Controls.Add(this.txtComentarioTransferencia);
+            this.Transferencia.Controls.Add(this.txtMontoTransferencia);
             this.Transferencia.Controls.Add(this.label6);
             this.Transferencia.Controls.Add(this.label5);
             this.Transferencia.Controls.Add(this.label1);
-            this.Transferencia.Controls.Add(this.textBox1);
+            this.Transferencia.Controls.Add(this.txtNumCuentaDestinatario);
             this.Transferencia.Location = new System.Drawing.Point(4, 22);
             this.Transferencia.Name = "Transferencia";
             this.Transferencia.Padding = new System.Windows.Forms.Padding(3);
@@ -187,26 +187,35 @@
             this.Transferencia.Text = "Realizar transferencia";
             this.Transferencia.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // btnRealizarTransferencia
             // 
-            this.textBox6.Location = new System.Drawing.Point(329, 252);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(36, 20);
-            this.textBox6.TabIndex = 12;
+            this.btnRealizarTransferencia.Location = new System.Drawing.Point(97, 316);
+            this.btnRealizarTransferencia.Name = "btnRealizarTransferencia";
+            this.btnRealizarTransferencia.Size = new System.Drawing.Size(320, 23);
+            this.btnRealizarTransferencia.TabIndex = 13;
+            this.btnRealizarTransferencia.Text = "Realizar Transferencia";
+            this.btnRealizarTransferencia.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // txtCodigoTransferencia3
             // 
-            this.textBox5.Location = new System.Drawing.Point(226, 252);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(36, 20);
-            this.textBox5.TabIndex = 11;
+            this.txtCodigoTransferencia3.Location = new System.Drawing.Point(329, 252);
+            this.txtCodigoTransferencia3.Name = "txtCodigoTransferencia3";
+            this.txtCodigoTransferencia3.Size = new System.Drawing.Size(36, 20);
+            this.txtCodigoTransferencia3.TabIndex = 12;
             // 
-            // textBox4
+            // txtCodigoTransferencia2
             // 
-            this.textBox4.Location = new System.Drawing.Point(118, 252);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(36, 20);
-            this.textBox4.TabIndex = 10;
+            this.txtCodigoTransferencia2.Location = new System.Drawing.Point(226, 252);
+            this.txtCodigoTransferencia2.Name = "txtCodigoTransferencia2";
+            this.txtCodigoTransferencia2.Size = new System.Drawing.Size(36, 20);
+            this.txtCodigoTransferencia2.TabIndex = 11;
+            // 
+            // txtCodigoTransferencia1
+            // 
+            this.txtCodigoTransferencia1.Location = new System.Drawing.Point(118, 252);
+            this.txtCodigoTransferencia1.Name = "txtCodigoTransferencia1";
+            this.txtCodigoTransferencia1.Size = new System.Drawing.Size(36, 20);
+            this.txtCodigoTransferencia1.TabIndex = 10;
             // 
             // label10
             // 
@@ -244,19 +253,19 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Codigo Transferencia:";
             // 
-            // textBox3
+            // txtComentarioTransferencia
             // 
-            this.textBox3.Location = new System.Drawing.Point(197, 114);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(282, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtComentarioTransferencia.Location = new System.Drawing.Point(197, 114);
+            this.txtComentarioTransferencia.Name = "txtComentarioTransferencia";
+            this.txtComentarioTransferencia.Size = new System.Drawing.Size(282, 20);
+            this.txtComentarioTransferencia.TabIndex = 5;
             // 
-            // textBox2
+            // txtMontoTransferencia
             // 
-            this.textBox2.Location = new System.Drawing.Point(197, 73);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtMontoTransferencia.Location = new System.Drawing.Point(197, 73);
+            this.txtMontoTransferencia.Name = "txtMontoTransferencia";
+            this.txtMontoTransferencia.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoTransferencia.TabIndex = 4;
             // 
             // label6
             // 
@@ -285,21 +294,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Numero Cuenta Destinatario:";
             // 
-            // textBox1
+            // txtNumCuentaDestinatario
             // 
-            this.textBox1.Location = new System.Drawing.Point(197, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(97, 316);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(320, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Realizar Transferencia";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txtNumCuentaDestinatario.Location = new System.Drawing.Point(197, 31);
+            this.txtNumCuentaDestinatario.Name = "txtNumCuentaDestinatario";
+            this.txtNumCuentaDestinatario.Size = new System.Drawing.Size(100, 20);
+            this.txtNumCuentaDestinatario.TabIndex = 0;
             // 
             // FormCliente
             // 
@@ -332,24 +332,24 @@
         private System.Windows.Forms.TabPage Transferencia;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateHistoricoHasta;
+        private System.Windows.Forms.DateTimePicker dateHistoricoDesde;
         private System.Windows.Forms.DataGridView gridHistorico;
         private System.Windows.Forms.TextBox txtSaldo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNumCuentaDestinatario;
+        private System.Windows.Forms.TextBox txtMontoTransferencia;
+        private System.Windows.Forms.TextBox txtComentarioTransferencia;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtCodigoTransferencia1;
+        private System.Windows.Forms.TextBox txtCodigoTransferencia3;
+        private System.Windows.Forms.TextBox txtCodigoTransferencia2;
+        private System.Windows.Forms.Button btnRealizarTransferencia;
     }
 }
