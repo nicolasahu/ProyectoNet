@@ -220,3 +220,11 @@ where cuenta.id=(select max(id) from cuenta);
 go
 
 --exec correoNuevaCuenta;
+--select*from transferencia;
+
+create procedure correoTransferencia @idTransferencia int as
+select t.id , cO.cliente as 'Cliente origen', cD.cliente as 'Cliente destino', t.monto, cO.num_cuenta, cD.num_cuenta, t.comentario from transferencia t, cuenta cO, cuenta cD where cO.id = t.cuentaO and cD.id=t.cuentaD and t.id=1;
+go
+
+--exec correoTransferencia 1;
+--select nombre_completo from cliente where id=(select cO.cliente as 'Cliente origen' from transferencia t, cuenta cO, cuenta cD where cO.id = t.cuentaO and cD.id=t.cuentaD and t.id=1);

@@ -850,7 +850,7 @@ namespace proyectoBanco.bd
 
             CorreoNuevaCuenta correo = new CorreoNuevaCuenta();
 
-            while (conexion.rs.Read()) {
+            if (conexion.rs.Read()) {
                 correo.NumeroCuenta = conexion.rs[0].ToString();
                 correo.Saldo_Actual = conexion.rs[1].ToString();
                 correo.NombreUsuario = conexion.rs[2].ToString();
@@ -860,6 +860,30 @@ namespace proyectoBanco.bd
             }
 
             conexion.cerrar();
+            return correo;
+        }
+
+        public CorreoTransferencia getCorreoTransferencia(Transferencia trans) {
+            CorreoTransferencia correo = new CorreoTransferencia();
+            query = "exec correoTransferencia "+trans.Id;
+            conexion.ejecutar(query);
+
+            Cliente clienteOrigen=new Cliente();
+            Cliente clienteDestino = new Cliente();
+            if (conexion.rs.Read()) {
+                clienteOrigen = getClientePorID(Convert.ToInt32(conexion.rs[1]));
+                clienteDestino = getClientePorID(Convert.ToInt32(conexion.rs[2]));
+                correo.MontoTransferencia = conexion.rs[3].ToString();
+                correo.NumeroCuenta_origen = conexion.rs[4].ToString();
+                correo.NumeroCuenta_destino = conexion.rs[4].ToString();
+                correo.Comentario_Transferencia = conexion.rs[5].ToString();
+                correo.NombreCliente_origen = clienteOrigen.NombreCompleto;
+                correo.NombreCliente_destino = clienteDestino.NombreCompleto;
+                correo.RutCliente_origen = clienteOrigen.Rut;
+                correo.RutCliente_destino = clienteDestino.Rut;
+            }
+
+            conexion.cerrar();            
             return correo;
         }
 
