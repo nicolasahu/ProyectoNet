@@ -59,24 +59,25 @@ namespace proyectoBanco
         private void button1_Click(object sender, EventArgs e)
         {
             String monto = txtMonto_AprobarCredito.Text;
-<<<<<<< HEAD
+//<<<<<<< HEAD
             if (monto != "")
             {
-                int cuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value); ;
+                int idcuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value); ;
 
-                Credito c = new Credito();
-                c.Cuenta = cuenta;
-                c.Monto = monto;
-                c.Ejecutivo = ejec.Id;
+                Credito credito = new Credito();
+                credito.Cuenta = idcuenta;
+                credito.Monto = monto;
+                credito.Ejecutivo = ejec.Id;
 
-                d.aprobarCredito(c);
+                d.aprobarCredito(credito);
 
-                Transferencia trans = new Transferencia();
-                trans.CuentaOrigen = Cuenta.ADMIN;
-                trans.CuentaDestino = cuenta;
-                trans.Monto = monto;
-
-                d.realizarTransferencia(trans);
+                Transferencia transferencia = new Transferencia();
+                transferencia.CuentaOrigen = Cuenta.ADMIN;
+                transferencia.CuentaDestino = idcuenta;
+                transferencia.Monto = monto;
+                transferencia.Tipo = Transferencia.CREDITO;
+                transferencia.Comentario = "Credito de Consumo Aprobado";
+                d.realizarTransferencia(transferencia);
 
                 //cambios
                 txtMonto_AprobarCredito.ResetText();
@@ -87,30 +88,30 @@ namespace proyectoBanco
                 MessageBox.Show("casilla de monto vacia", "casilla en blanco", MessageBoxButtons.OK);
             }
             
-=======
-            int cuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value);
+//=======
+            //int cuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value);
 
-            Credito c = new Credito();
-            c.Cuenta = cuenta;
-            c.Monto = monto;
-            c.Ejecutivo = ejec.Id;
+            //Credito c = new Credito();
+            //c.Cuenta = cuenta;
+            //c.Monto = monto;
+            //c.Ejecutivo = ejec.Id;
             
-            d.aprobarCredito(c);
+            //d.aprobarCredito(c);
 
-            Transferencia trans = new Transferencia();
-            trans.CuentaOrigen = Cuenta.ADMIN;
-            trans.CuentaDestino = cuenta;
-            trans.Tipo = Transferencia.CREDITO;
-            trans.Comentario = "Credito consumo aprobado";
-            trans.Monto = monto;
+            //Transferencia trans = new Transferencia();
+            //trans.CuentaOrigen = Cuenta.ADMIN;
+            //trans.CuentaDestino = cuenta;
+            //trans.Tipo = Transferencia.CREDITO;
+            //trans.Comentario = "Credito consumo aprobado";
+            //trans.Monto = monto;
 
-            d.realizarTransferencia(trans);
+            //d.realizarTransferencia(trans);
 
-            //cambios
-            txtMonto_AprobarCredito.ResetText();
+            ////cambios
+            //txtMonto_AprobarCredito.ResetText();
             actualizarCreditos();
             cargarClientes(ejec);
->>>>>>> 395abdbaf09d4f82e62cc805155d6005366e05b7
+//>>>>>>> 395abdbaf09d4f82e62cc805155d6005366e05b7
         }
 
         private void button2_Click(object sender, EventArgs e)
