@@ -65,7 +65,6 @@ namespace proyectoBanco.bd
             conexion.cerrar();
             return cuentas;
         }
-
         /*Oficial*/
         public String generarNombreUsuario(String nombreCompleto) {
             String[] vectorNombre = nombreCompleto.Split(' ');
@@ -280,10 +279,6 @@ namespace proyectoBanco.bd
                 "',fecha_nacimiento='"+cliente.FechaNacimiento+ "',usuario='"+cliente.Usuario+
                 "' where id='"+cliente.Id+"'";
             conexion.ejecutar(query);
-        }
-
-        public void getClientePorCuenta(Cuenta cuenta){
-
         }
 
         public Cliente getClientePorUsuario(int idUsuario)
@@ -625,9 +620,7 @@ namespace proyectoBanco.bd
             }
 
             return tarjeta;
-        }
-        
-
+        }     
 
         public TarjetaTranferencia getTarjeta(int idCuenta)
         {
@@ -646,6 +639,7 @@ namespace proyectoBanco.bd
             conexion.cerrar();
             return t;
         }
+
         public Boolean verificarCodigoTarjeta(char columna, char fila, int num, int idCuenta)
         {
             String numvalidacion ;
@@ -706,6 +700,7 @@ namespace proyectoBanco.bd
             return existe;
 
         }
+
         public String mostarTarjetaCorreo(int idCuenta)
         {
             String tabla="";
@@ -821,7 +816,7 @@ namespace proyectoBanco.bd
             return tabla;
             
         }
-        /*correo*/
+        /*-------------------------CRUD CORREO*/
 
         public void enviarMensaje(string correoEmisor, string clave, string correoReseptor, string asunto, string mensaje)
         {
@@ -846,6 +841,26 @@ namespace proyectoBanco.bd
 
             smtp.Send(correo);
             correo.Dispose();
+        }
+
+        public CorreoNuevaCuenta getCorreoCuenta()
+        {
+            query = "exec correoNuevaCuenta";
+            conexion.ejecutar(query);
+
+            CorreoNuevaCuenta correo = new CorreoNuevaCuenta();
+
+            while (conexion.rs.Read()) {
+                correo.NumeroCuenta = conexion.rs[0].ToString();
+                correo.Saldo_Actual = conexion.rs[1].ToString();
+                correo.NombreUsuario = conexion.rs[2].ToString();
+                correo.Contrasennia = conexion.rs[3].ToString();
+                correo.NombreEjecutivo = conexion.rs[4].ToString();
+                correo.Tarjeta = conexion.rs[5].ToString();
+            }
+
+            conexion.cerrar();
+            return correo;
         }
 
         /*-------------------------crud ciudad--------------------------*/

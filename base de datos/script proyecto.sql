@@ -33,6 +33,9 @@ create table usuario(
 	primary key (id),
 	foreign key(privilegio) references privilegio(id),
 );
+--select*from cuenta where id=(
+--select*from cuenta where id=(select max(id) from cuenta);
+ 
 
 insert into usuario values ('admin','admin',1);
 insert into usuario values ('ejec1','ejec',2);
@@ -116,6 +119,9 @@ select*from cliente where id=5
 --select cliente from cuenta;
 --select*from cuenta;
 --select*from cliente where id not in (select cliente from cuenta);
+
+
+
 insert into cuenta values('11111', null, '$10000000000000', getDate(), null, 1);
 insert into cuenta values('12345', 1, '$10000', getDate(), 1, 1);
 insert into cuenta values('13354', 2, '$20000', getDate(), 1, 1);
@@ -128,6 +134,8 @@ create table tarjeta_tranferencia(
 	primary key (id),
 	foreign key(cuenta) references cuenta(id),
 );
+
+insert into tarjeta_tranferencia values('NuMeRosTaRjEtA123',4);
 
 --select*from tarjeta_tranferencia;
 --drop table tipoTransferencia;
@@ -178,3 +186,37 @@ insert into credito values(2, getDate(), 1,1,'100000');
 --hacer insert transferencia, cuenta origen :banco cuenta destino: cuenta, comentario: aprobacion credito
 insert into transferencia values('1000000', getDate(), 1, 3, 2, 'Credito de consumo aprobado');
 
+/*
+select 
+	num_cuenta,  
+	saldo,
+	usuario.nombre_login,
+	ejecutivo.nombre,
+	usuario.contraseña,	
+	tarjeta_tranferencia.numeros
+from cuenta 
+	inner join ejecutivo on ejecutivo.id = cuenta.ejecutivo 
+	inner join cliente on cliente.id=cuenta.cliente
+	inner join usuario on usuario.id=cliente.usuario
+	inner join tarjeta_tranferencia on tarjeta_tranferencia.cuenta=cuenta.id
+where cuenta.id=(select max(id) from cuenta);
+*/
+
+go
+create procedure correoNuevaCuenta as
+select 
+	num_cuenta,  
+	saldo,
+	usuario.nombre_login,
+	ejecutivo.nombre,
+	usuario.contraseña,	
+	tarjeta_tranferencia.numeros
+from cuenta 
+	inner join ejecutivo on ejecutivo.id = cuenta.ejecutivo 
+	inner join cliente on cliente.id=cuenta.cliente
+	inner join usuario on usuario.id=cliente.usuario
+	inner join tarjeta_tranferencia on tarjeta_tranferencia.cuenta=cuenta.id
+where cuenta.id=(select max(id) from cuenta);
+go
+
+--exec correoNuevaCuenta;

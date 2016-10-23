@@ -75,6 +75,7 @@
     <Compile Include="model\Administrador.cs" />
     <Compile Include="model\Ciudad.cs" />
     <Compile Include="model\Cliente.cs" />
+    <Compile Include="model\CorreoNuevaCuenta.cs" />
     <Compile Include="model\Credito.cs" />
     <Compile Include="model\Cuenta.cs" />
     <Compile Include="model\Ejecutivo.cs" />
