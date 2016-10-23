@@ -29,3 +29,16 @@ C:\Users\nahumada\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proy
 C:\Users\nahumada\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.Properties.Resources.resources
 C:\Users\nahumada\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.RegistroCliente.resources
 C:\Users\nahumada\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.csproj.GenerateResource.Cache
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\bin\Debug\proyectoBanco.exe.config
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.exe
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.pdb
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\bin\Debug\proyectoBanco.exe
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\bin\Debug\proyectoBanco.pdb
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.csprojResolveAssemblyReference.cache
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.Form1.resources
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.FormAdmin.resources
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.FormCliente.resources
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.FormEjec.resources
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.Properties.Resources.resources
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.RegistroCliente.resources
+C:\Users\nico\Desktop\ProyectoNet\proyectoBanco\proyectoBanco\obj\Debug\proyectoBanco.csproj.GenerateResource.Cache

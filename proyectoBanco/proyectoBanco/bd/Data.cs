@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+using System.Net;
+using System.Net.Mail;
 using System.Data;
 using System.Data.SqlClient;
 using proyectoBanco.model;
@@ -278,7 +281,11 @@ namespace proyectoBanco.bd
                 "' where id='"+cliente.Id+"'";
             conexion.ejecutar(query);
         }
-        
+
+        public void getClientePorCuenta(Cuenta cuenta){
+
+        }
+
         public Cliente getClientePorUsuario(int idUsuario)
         {
             Cliente c = null;
@@ -378,7 +385,8 @@ namespace proyectoBanco.bd
                 e.Id = Convert.ToInt32(conexion.rs[0]);//id
                 e.Nombre = conexion.rs[2].ToString();//rut
                 e.Rut = conexion.rs[1].ToString();//nombre
-                e.Usuario = Convert.ToInt32(conexion.rs[3]);//usuario
+                e.Correo = conexion.rs[3].ToString();//nombre
+                e.Usuario = Convert.ToInt32(conexion.rs[4]);//usuario
             }
 
             conexion.cerrar();
@@ -396,7 +404,8 @@ namespace proyectoBanco.bd
                 e.Id = Convert.ToInt32(conexion.rs[0]);
                 e.Rut = conexion.rs[1].ToString();
                 e.Nombre = conexion.rs[2].ToString();
-                e.Usuario = Convert.ToInt32(conexion.rs[3]);
+                e.Correo = conexion.rs[3].ToString();
+                e.Usuario = Convert.ToInt32(conexion.rs[4]);
                 ejecutivos.Add(e);
             }
 
@@ -406,7 +415,7 @@ namespace proyectoBanco.bd
 
         public void crearEjecutivo(Ejecutivo e)
         {
-            query = "insert into ejecutivo values('"+e.Rut+"','"+e.Nombre+"', "+e.Usuario+")";
+            query = "insert into ejecutivo values('"+e.Rut+"','"+e.Nombre+ "','" + e.Correo + "', " + e.Usuario+")";
             conexion.ejecutar(query);
         }
 
@@ -429,22 +438,41 @@ namespace proyectoBanco.bd
                 a.Id = Convert.ToInt32(conexion.rs[0]);
                 a.Nombre = conexion.rs[1].ToString();
                 a.Rut= conexion.rs[2].ToString();
-                a.Usuario= Convert.ToInt32(conexion.rs[3]);
+                a.Usuario= Convert.ToInt32(conexion.rs[4]);
             }
 
             conexion.cerrar();
             return a;
         }
-               
+
 
         /*.......................crud cuentas............................*/
+
+        public int getIDCuenta()
+        {
+            int id = 0;
+            query = "select count(*) from cuenta";
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read())
+            {
+                id = Convert.ToInt32(conexion.rs[0]);
+            }
+
+            conexion.cerrar();
+            return id;
+        }
+
         /*true =1/false=0*/
         public void registrarCuenta(Cuenta cuenta)
         {
             query = "insert into cuenta values('"+cuenta.NumCuenta+ "','"+cuenta.Cliente
                 + "','"+cuenta.Saldo+ "', getDate() ,'"+cuenta.Ejecutivo+"','1')";
-            Console.WriteLine(query);
+            
             conexion.ejecutar(query);
+            int idCuenta = getIDCuenta();
+            RegistrarTarjetaTranferenciaCliente(idCuenta);
+
         }
 
         public void desabilitarCuenta(int numCuenta)
@@ -554,6 +582,7 @@ namespace proyectoBanco.bd
         /*-----------------------crud tarjeta---------------------------*/
         public void RegistrarTarjetaTranferenciaCliente(int idCuenta)
         {
+
             query = "insert into tarjeta_tranferencia values('" + generarTarjeta() + "','" + idCuenta + "')";
             conexion.ejecutar(query);
         }
@@ -569,7 +598,7 @@ namespace proyectoBanco.bd
                 if (cont != 49)
                 {
                     num = random.Next(01, 99);
-                    if (num > 10)
+                    if (num >= 10)
                     {
                         tarjeta += num + "-";
                     }
@@ -582,9 +611,9 @@ namespace proyectoBanco.bd
                 else
                 {
                     num = random.Next(01, 99);
-                    if (num > 10)
+                    if (num >= 10)
                     {
-                        tarjeta += num + "-";
+                        tarjeta += num + "";
                     }
                     else
                     {
@@ -597,11 +626,13 @@ namespace proyectoBanco.bd
 
             return tarjeta;
         }
+        
 
-        public TarjetaTranferencia getTarjeta()
+
+        public TarjetaTranferencia getTarjeta(int idCuenta)
         {
             TarjetaTranferencia t = null;
-            query = "select*from tarjeta_tranferencia";
+            query = "select*from tarjeta_tranferencia where cuenta='" + idCuenta + "'";
             conexion.ejecutar(query);
 
             if (conexion.rs.Read())
@@ -614,6 +645,207 @@ namespace proyectoBanco.bd
 
             conexion.cerrar();
             return t;
+        }
+        public Boolean verificarCodigoTarjeta(char columna, char fila, int num, int idCuenta)
+        {
+            String numvalidacion ;
+            Boolean existe = false;
+            TarjetaTranferencia t = getTarjeta(idCuenta);
+            String[] vectornumeros = t.Numeros.Split('-');
+
+            if (columna.Equals('a'))
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    
+
+
+
+                }
+
+
+
+            }
+            else if (columna.Equals('b'))
+            {
+
+            }
+            else if (columna.Equals('c'))
+            {
+
+            }
+            else if (columna.Equals('d'))
+            {
+
+            }
+            else if (columna.Equals('e'))
+            {
+
+            }
+            else if (columna.Equals('f'))
+            {
+
+            }
+            else if (columna.Equals('g'))
+            {
+
+            }
+            else if (columna.Equals('h'))
+            {
+
+            }
+            else if (columna.Equals('i'))
+            {
+
+            }
+            else if (columna.Equals('j'))
+            {
+
+            }
+
+            return existe;
+
+        }
+        public String mostarTarjetaCorreo(int idCuenta)
+        {
+            String tabla="";
+            TarjetaTranferencia t = getTarjeta(idCuenta);
+            
+            String[] vectornumeros = t.Numeros.Split('-');
+            int cont=1;
+            tabla = "<table BORDER=1>";
+            for (int i = 0; i < 6; i++)
+            {
+                
+                if (i == 0){
+                    tabla += "<tr>" +
+                        "<td>  </td>" +
+                        "<td>A</td>" +
+                        "<td>B</td>" +
+                        "<td>C</td>" +
+                        "<td>D</td>" +
+                        "<td>E</td>" +
+                        "<td>F</td>" +
+                        "<td>G</td>" +
+                        "<td>H</td>" +
+                        "<td>I</td>" +
+                        "<td>J</td>" +
+                        "</tr>";
+                }
+                else if(i == 1){
+                    
+                    tabla += "<tr>" +
+                        "<td>1</td>" +
+                        "<td>" + vectornumeros[0] + "</td>" +
+                        "<td>" + vectornumeros[1] + "</td>" +
+                        "<td>" + vectornumeros[2] + "</td>" +
+                        "<td>" + vectornumeros[3] + "</td>" +
+                        "<td>" + vectornumeros[4] + "</td>" +
+                        "<td>" + vectornumeros[5] + "</td>" +
+                        "<td>" + vectornumeros[6] + "</td>" +
+                        "<td>" + vectornumeros[7] + "</td>" +
+                        "<td>" + vectornumeros[8] + "</td>" +
+                        "<td>" + vectornumeros[9] + "</td>" +
+                        "</tr>";
+                }
+                else if (i == 2)
+                {
+                    tabla += "<tr>" +
+                        "<td>2</td>" +
+                        "<td>" + vectornumeros[10] + "</td>" +
+                        "<td>" + vectornumeros[11] + "</td>" +
+                        "<td>" + vectornumeros[12] + "</td>" +
+                        "<td>" + vectornumeros[13] + "</td>" +
+                        "<td>" + vectornumeros[14] + "</td>" +
+                        "<td>" + vectornumeros[15] + "</td>" +
+                        "<td>" + vectornumeros[16] + "</td>" +
+                        "<td>" + vectornumeros[17] + "</td>" +
+                        "<td>" + vectornumeros[18] + "</td>" +
+                        "<td>" + vectornumeros[19] + "</td>" +
+                        "</tr>";
+
+                }
+                else if (i == 3)
+                {
+                    tabla += "<tr>" +
+                        "<td>3</td>" +
+                        "<td>" + vectornumeros[20] + "</td>" +
+                        "<td>" + vectornumeros[21] + "</td>" +
+                        "<td>" + vectornumeros[22] + "</td>" +
+                        "<td>" + vectornumeros[23] + "</td>" +
+                        "<td>" + vectornumeros[24] + "</td>" +
+                        "<td>" + vectornumeros[25] + "</td>" +
+                        "<td>" + vectornumeros[26] + "</td>" +
+                        "<td>" + vectornumeros[27] + "</td>" +
+                        "<td>" + vectornumeros[28] + "</td>" +
+                        "<td>" + vectornumeros[29] + "</td>" +
+                        "</tr>";
+
+                }
+                else if (i == 4)
+                {
+                    tabla += "<tr>" +
+                        "<td>4</td>" +
+                        "<td>" + vectornumeros[30] + "</td>" +
+                        "<td>" + vectornumeros[31] + "</td>" +
+                        "<td>" + vectornumeros[32] + "</td>" +
+                        "<td>" + vectornumeros[33] + "</td>" +
+                        "<td>" + vectornumeros[34] + "</td>" +
+                        "<td>" + vectornumeros[35] + "</td>" +
+                        "<td>" + vectornumeros[36] + "</td>" +
+                        "<td>" + vectornumeros[37] + "</td>" +
+                        "<td>" + vectornumeros[38] + "</td>" +
+                        "<td>" + vectornumeros[39] + "</td>" +
+                        "</tr>";
+                }
+                else if (i == 5)
+                {
+                    tabla += "<tr>" +
+                        "<td>5</td>" +
+                        "<td>" + vectornumeros[40] + "</td>" +
+                        "<td>" + vectornumeros[41] + "</td>" +
+                        "<td>" + vectornumeros[42] + "</td>" +
+                        "<td>" + vectornumeros[43] + "</td>" +
+                        "<td>" + vectornumeros[44] + "</td>" +
+                        "<td>" + vectornumeros[45] + "</td>" +
+                        "<td>" + vectornumeros[46] + "</td>" +
+                        "<td>" + vectornumeros[47] + "</td>" +
+                        "<td>" + vectornumeros[48] + "</td>" +
+                        "<td>" + vectornumeros[49] + "</td>" +
+                        "</tr>";
+                }
+
+
+            }
+            tabla += "</table>";
+            return tabla;
+            
+        }
+        /*correo*/
+
+        public void enviarMensaje(string correoEmisor, string clave, string correoReseptor, string asunto, string mensaje)
+        {
+            MailMessage correo = new MailMessage();
+            correo.To.Add(new MailAddress(correoEmisor));
+            correo.From = new MailAddress(correoReseptor);
+            correo.Subject = asunto;
+            correo.Body = "<h1>bienvenido a este banco</h1>"+//mensaje
+                        "";
+            correo.IsBodyHtml = true;
+            correo.Priority = MailPriority.Normal;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "Banco.com";
+            smtp.Port = 2525;
+            smtp.EnableSsl = false;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential(correoEmisor, clave);
+
+
+
+
+            smtp.Send(correo);
+            correo.Dispose();
         }
 
         /*-------------------------crud ciudad--------------------------*/

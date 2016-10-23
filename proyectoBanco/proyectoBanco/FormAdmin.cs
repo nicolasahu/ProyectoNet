@@ -112,12 +112,14 @@ namespace proyectoBanco
             String nombre = txtEjecutivoNombre.Text;
             String apellido = txtEjecutivoApellido.Text;
             String rut = txtEjecutivoRut.Text;
+            String correo = txtCorreoEjecutivo.Text;
 
-            if (nombre!=""|| apellido != ""|| rut != "")
+            if (nombre!=""|| apellido != ""|| rut != "" ||correo!="")
             {
                 Usuario usuario = new Usuario();
                 usuario.NombreLogin = d.generarNombreUsuario(nombre + " " + apellido);
                 usuario.Privilegio = 2;
+                
                 usuario.Contraseña = d.generarClave2();
 
                 d.registrarUsuario(usuario);
@@ -125,27 +127,16 @@ namespace proyectoBanco
                 Ejecutivo ejec = new Ejecutivo();
                 ejec.Nombre = nombre + " " + apellido;
                 ejec.Rut = rut;
+                ejec.Correo = correo;
                 ejec.Usuario = d.getIDUduario();
 
                 d.crearEjecutivo(ejec);
-
                 limpiarEjecutivoCrear();
-
-
             }
             else
             {
                 MessageBox.Show("alguna casilla de dato se encuentra en blanco", "faltan datos", MessageBoxButtons.OK);
             }
-
-
-            txtEjecutivoNombre.ResetText();
-            txtEjecutivoApellido.ResetText();
-            txtEjecutivoRut.ResetText();
-
-            gridEjecutivo.DataSource = d.getEjecutivos();
-
-
         }
 
         private void limpiarEjecutivoCrear()
@@ -163,19 +154,23 @@ namespace proyectoBanco
             String nombre = txtEjecutivoNombre.Text;
             String apellido = txtEjecutivoApellido.Text;
             String rut = txtEjecutivoRut.Text;
-
+            String correo = txtCorreoEjecutivo.Text;
             Ejecutivo ejec = new Ejecutivo();
-            ejec.Id = id;
-            ejec.Nombre = nombre + " " + apellido;
-            ejec.Rut = rut;
-            ejec.Usuario = d.getIDUduario();
 
-            d.actualizarEjecutivo(ejec);
-            txtEjecutivoNombre.ResetText();
-            txtEjecutivoApellido.ResetText();
-            txtEjecutivoRut.ResetText();
+            if (nombre != "" || apellido != "" || rut != "" || correo != "")
+            {                
+                ejec.Id = id;
+                ejec.Nombre = nombre + " " + apellido;
+                ejec.Rut = rut;
+                ejec.Usuario = d.getIDUduario();
+                d.actualizarEjecutivo(ejec);
+                limpiarEjecutivoCrear();
+            }
+            else
+            {
+                MessageBox.Show("alguna casilla de dato se encuentra en blanco", "faltan datos", MessageBoxButtons.OK);
 
-            limpiarEjecutivoCrear();
+            }            
         }
 
         private void btnEjecutivoCancelar_Click(object sender, EventArgs e)
@@ -202,6 +197,11 @@ namespace proyectoBanco
         }
 
         private void lblAdminNombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

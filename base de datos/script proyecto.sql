@@ -6,6 +6,7 @@ go
 create database banco;
 go
 use banco;
+--use proyectoCA;
 
 create table ciudad(
 	id int not null identity(1,1),
@@ -38,10 +39,28 @@ insert into usuario values ('ejec1','ejec',2);
 insert into usuario values ('user1','user1',3);
 insert into usuario values ('user2','user2',3);
 
+--<<<<<<< HEAD
+--=======
+
+create table administrador(
+	id int not null identity(1,1),
+	rut varchar(20),
+	nombre varchar(50),
+	correo varchar (100),
+	usuario int,
+	foreign key(usuario) references usuario(id),
+	primary key(id),
+);
+
+insert into administrador values('111-1','Emilio','emilio@correo',1);
+
+
+-->>>>>>> 13c7e6dd526069a4c7cd810e6af1e1a12f52896a
 create table ejecutivo(
 	id int not null identity(1,1),
 	rut varchar(20),
 	nombre varchar(100),
+	correo varchar (100),
 	usuario int,
 	foreign key(usuario) references usuario(id),
 	primary key(id),
@@ -49,7 +68,7 @@ create table ejecutivo(
 
 --select*from usuario;
 --select*from ejecutivo
-insert into ejecutivo values('222-2','Emilio Ejec',2);
+insert into ejecutivo values('222-2','Emilio Ejec','emilio@correo',2);
 
 --select*from cliente;
 --select DATEDIFF(YEAR, '1987/05/22', GETDATE());
@@ -101,20 +120,6 @@ insert into cuenta values('11111', null, '$10000000000000', getDate(), null, 1);
 insert into cuenta values('12345', 1, '$10000', getDate(), 1, 1);
 insert into cuenta values('13354', 2, '$20000', getDate(), 1, 1);
 insert into cuenta values('11223', 3, '$30000', getDate(), 1, 1);
-
-create table administrador(
-	id int not null identity(1,1),
-	rut varchar(20),
-	nombre varchar(50),
-	usuario int,
-	cuenta int,
-	foreign key(usuario) references usuario(id),
-	foreign key(cuenta) references cuenta(id),
-	primary key(id),
-);
-
-insert into administrador values('Emilio','111-1',1, 1);
-
 
 create table tarjeta_tranferencia(
 	id int not null identity (1,1),

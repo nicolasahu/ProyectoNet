@@ -50,6 +50,8 @@
             this.btnEjecutivoCrear = new System.Windows.Forms.Button();
             this.gridEjecutivo = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblCorreo = new System.Windows.Forms.Label();
+            this.txtCorreoEjecutivo = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCiudad)).BeginInit();
@@ -167,6 +169,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtCorreoEjecutivo);
+            this.tabPage2.Controls.Add(this.lblCorreo);
             this.tabPage2.Controls.Add(this.txtEjecutivoApellido);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.txtEjecutivoRut);
@@ -286,6 +290,23 @@
             this.tabPage3.Text = "Estadisticas";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblCorreo
+            // 
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Location = new System.Drawing.Point(212, 35);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(41, 13);
+            this.lblCorreo.TabIndex = 19;
+            this.lblCorreo.Text = "Correo:";
+            // 
+            // txtCorreoEjecutivo
+            // 
+            this.txtCorreoEjecutivo.Location = new System.Drawing.Point(291, 30);
+            this.txtCorreoEjecutivo.Name = "txtCorreoEjecutivo";
+            this.txtCorreoEjecutivo.Size = new System.Drawing.Size(100, 20);
+            this.txtCorreoEjecutivo.TabIndex = 20;
+            this.txtCorreoEjecutivo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,5 +354,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtEjecutivoApellido;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCorreoEjecutivo;
+        private System.Windows.Forms.Label lblCorreo;
     }
 }
