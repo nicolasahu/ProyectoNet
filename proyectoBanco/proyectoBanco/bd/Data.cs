@@ -308,7 +308,7 @@ namespace proyectoBanco.bd
         {
             Cliente c = null;
             query = "select*from cliente where id="+idCliente;
-            Console.Write(query);
+            Console.WriteLine(query);
             conexion.ejecutar(query);
 
             if (conexion.rs.Read())
@@ -344,7 +344,7 @@ namespace proyectoBanco.bd
 
         public List<Cliente> getClientesSinCuenta() {
             List<Cliente> clientes = new List<Cliente>();
-            query = "select*from cliente where id not in (select cliente from cuenta)";
+            query = "select*from cliente where id not in (select cliente from cuenta where cuenta.cliente is not null)";
             conexion.ejecutar(query);
 
             Cliente c;
@@ -939,7 +939,9 @@ namespace proyectoBanco.bd
 
         //realizar transferencia
         public void realizarTransferencia(Transferencia trans) {
-            query = "insert into transferencia values('"+trans.Monto+"', getDate(), "+trans.CuentaOrigen+", "+trans.CuentaDestino+", "+trans.Tipo+", '"+trans.Comentario+"')";
+            //query = "insert into transferencia values('"+trans.Monto+"', getDate(), "+trans.CuentaOrigen+", "+trans.CuentaDestino+", "+trans.Tipo+", '"+trans.Comentario+"')";
+            query = "exec realizarTransferencia '"+trans.Monto+"' , "+trans.CuentaOrigen+" ,"+trans.CuentaDestino+" , "+trans.Tipo+" , '"+trans.Comentario+"'";
+            Console.WriteLine(query);
             conexion.ejecutar(query);
         }
 

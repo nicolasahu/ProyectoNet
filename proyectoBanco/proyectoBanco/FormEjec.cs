@@ -59,7 +59,7 @@ namespace proyectoBanco
         private void button1_Click(object sender, EventArgs e)
         {
             String monto = txtMonto_AprobarCredito.Text;
-            int cuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value); ;
+            int cuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value);
 
             Credito c = new Credito();
             c.Cuenta = cuenta;
@@ -71,6 +71,8 @@ namespace proyectoBanco
             Transferencia trans = new Transferencia();
             trans.CuentaOrigen = Cuenta.ADMIN;
             trans.CuentaDestino = cuenta;
+            trans.Tipo = Transferencia.CREDITO;
+            trans.Comentario = "Credito consumo aprobado";
             trans.Monto = monto;
 
             d.realizarTransferencia(trans);
@@ -78,6 +80,7 @@ namespace proyectoBanco
             //cambios
             txtMonto_AprobarCredito.ResetText();
             actualizarCreditos();
+            cargarClientes(ejec);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -86,24 +89,23 @@ namespace proyectoBanco
             Cliente cliente = d.getClientePorID(id_cliente);
 
             //adjudicar
-            Cuenta c=new Cuenta();
-            c.Cliente = id_cliente;
-            c.Ejecutivo = ejec.Id;
-            c.NumCuenta = d.generarNumeroCuenta();
-            c.Saldo = "0";
-            
-            c.Saldo = d.generarSaldo(cliente); //definir segun edad
-            d.registrarCuenta(c);
+            Cuenta cuenta=new Cuenta();
+            cuenta.Cliente = id_cliente;
+            cuenta.Ejecutivo = ejec.Id;
+            cuenta.NumCuenta = d.generarNumeroCuenta();
+            cuenta.Saldo = "0";
+            d.registrarCuenta(cuenta);
+            cuenta.Id = d.getIDCuenta();
             //d.RegistrarTarjetaTranferenciaCliente
-
-
+            
             Transferencia trans = new Transferencia();
             trans.Monto= d.generarSaldo(cliente); //definir segun edad
             trans.CuentaOrigen = Cuenta.ADMIN;
-            trans.CuentaDestino = c.Id;
+            trans.CuentaDestino = cuenta.Id;
             trans.Comentario = "Abono inicial";
             trans.Tipo = Transferencia.ABONO;
             d.realizarTransferencia(trans);
+            //d.enviarMensaje();
 
             cargarClientesDisponibles();
             cargarClientes(ejec);

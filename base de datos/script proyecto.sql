@@ -118,7 +118,7 @@ select*from cliente where id=5
 --select*from cuenta where ejecutivo=1;
 --select cliente from cuenta;
 --select*from cuenta;
---select*from cliente where id not in (select cliente from cuenta);
+--select*from cliente where id not in (select cliente from cuenta where cuenta.cliente is not null);
 
 
 
@@ -138,7 +138,6 @@ create table tarjeta_tranferencia(
 insert into tarjeta_tranferencia values('NuMeRosTaRjEtA123',4);
 
 --select*from tarjeta_tranferencia;
---drop table tipoTransferencia;
 create table tipoTransferencia(
 	id int not null identity(1,1),
 	tipo varchar(50),
@@ -229,3 +228,12 @@ go
 
 --exec correoTransferencia 1;
 --select nombre_completo from cliente where id=(select cO.cliente as 'Cliente origen' from transferencia t, cuenta cO, cuenta cD where cO.id = t.cuentaO and cD.id=t.cuentaD and t.id=1);
+
+create procedure realizarTransferencia @monto money, @cuentaO int, @cuentaD int, @tipo int, @comentario varchar(500) as
+	insert into transferencia values(@monto, getDate(), @cuentaO, @cuentaD, @tipo, @comentario);
+	update cuenta set saldo=saldo+@monto where id=@cuentaD;
+	update cuenta set saldo=saldo-@monto where id=@cuentaO;
+go
+
+--exec realizarTransferencia 30000 , 1 ,4 , 2 , 'Abono inicial';
+
