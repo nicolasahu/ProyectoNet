@@ -37,29 +37,43 @@ namespace proyectoBanco
 
             if (c == null)
             {
-                /*Crear Usuario*/
-                Usuario usuario = new Usuario();
-                String nombre = txtCrearCliente_Nombre.Text + " " + txtCrearCliente_Apellido.Text;
-                usuario.NombreLogin = d.generarNombreUsuario(nombre);
-                usuario.Contraseña = d.generarClave2();
-                usuario.Privilegio = 3; //privilegio cliente
-                d.registrarUsuario(usuario);
+                String nombre, apellido, correo, direccion;
+                nombre = txtCrearCliente_Nombre.Text;
+                apellido = txtCrearCliente_Apellido.Text;
+                correo = txtCrearCliente_Correo.Text;
+                direccion = txtCrearCliente_Direccion.Text;
 
-                /*Crear Cliente*/
-                Cliente cliente = new Cliente();
-                Ciudad ciudad= (Ciudad)cboCrearCliente_Ciudad.SelectedItem;
-                cliente.Ciudad = ciudad.Id;
-                cliente.Correo = txtCrearCliente_Correo.Text;
-                cliente.Direccion = txtCrearCliente_Direccion.Text;
-                cliente.Usuario = d.getIDUduario();
-                cliente.Rut = rut;                
-                cliente.NombreCompleto = nombre;
-                cliente.FechaNacimiento = dtCrearCliente_Nacimiento.Value.ToString();
-                //metodo data
-                d.RegistrarCliente(cliente);
+                if (nombre != "" || apellido != "" || correo != "" || direccion != "")
+                {
+                    /*Crear Usuario*/
+                    Usuario usuario = new Usuario();
+                    String nombreCompleto = nombre + " " + apellido;
+                    usuario.NombreLogin = d.generarNombreUsuario(nombreCompleto);
+                    usuario.Contraseña = d.generarClave2();
+                    usuario.Privilegio = 3; //privilegio cliente
+                    d.registrarUsuario(usuario);
 
-                limpiarCreacionCliente();
-                MessageBox.Show("Cliente ha sido creado exitosamente!");
+                    /*Crear Cliente*/
+
+                    Cliente cliente = new Cliente();
+                    Ciudad ciudad = (Ciudad)cboCrearCliente_Ciudad.SelectedItem;
+                    cliente.Ciudad = ciudad.Id;
+                    cliente.Correo = correo;
+                    cliente.Direccion = direccion;
+                    cliente.Usuario = d.getIDUduario();
+                    cliente.Rut = rut;
+                    cliente.NombreCompleto = nombreCompleto;
+                    cliente.FechaNacimiento = dtCrearCliente_Nacimiento.Value.ToString();
+                    //metodo data
+                    d.RegistrarCliente(cliente);
+
+                    limpiarCreacionCliente();
+                    MessageBox.Show("Cliente ha sido creado exitosamente!");
+                }
+                else
+                {
+                    MessageBox.Show("alguna de las casillas se encuentra vacia", "faltan datos", MessageBoxButtons.OK);
+                }
             }
             else {
                 MessageBox.Show("Usuario ya existe");

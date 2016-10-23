@@ -642,59 +642,399 @@ namespace proyectoBanco.bd
 
         public Boolean verificarCodigoTarjeta(char columna, char fila, int num, int idCuenta)
         {
-            String numvalidacion ;
             Boolean existe = false;
             TarjetaTranferencia t = getTarjeta(idCuenta);
             String[] vectornumeros = t.Numeros.Split('-');
 
             if (columna.Equals('a'))
             {
-                for (int i = 0; i < 5; i++)
+                if (fila == 1)
                 {
-                    
-
-
+                    if (vectornumeros[0] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
                 }
-
-
-
+                else if (fila == 2)
+                {
+                    if (vectornumeros[10] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[20] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[30] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[40] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('b'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[1] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[11] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[21] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[31] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[41] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('c'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[2] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[12] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[22] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[32] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[42] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('d'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[3] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[13] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[23] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[33] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[43] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('e'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[4] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[14] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[24] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[34] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[44] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('f'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[5] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[15] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[25] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[35] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[45] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('g'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[6] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[16] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[26] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[36] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[46] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('h'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[7] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[17] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[27] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[37] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[47] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('i'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[8] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[18] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[28] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[38] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[48] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
             else if (columna.Equals('j'))
             {
+                if (fila == 1)
+                {
+                    if (vectornumeros[9] == num.ToString())
+                    {
+                        existe = true;
+                    }
 
+                }
+                else if (fila == 2)
+                {
+                    if (vectornumeros[19] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 3)
+                {
+                    if (vectornumeros[29] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 4)
+                {
+                    if (vectornumeros[39] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
+                else if (fila == 5)
+                {
+                    if (vectornumeros[49] == num.ToString())
+                    {
+                        existe = true;
+                    }
+                }
             }
 
             return existe;

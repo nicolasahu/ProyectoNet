@@ -59,25 +59,33 @@ namespace proyectoBanco
         private void button1_Click(object sender, EventArgs e)
         {
             String monto = txtMonto_AprobarCredito.Text;
-            int cuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value); ;
+            if (monto != "")
+            {
+                int cuenta = Convert.ToInt32(gridCuentasAdjudicadas.CurrentRow.Cells[0].Value); ;
 
-            Credito c = new Credito();
-            c.Cuenta = cuenta;
-            c.Monto = monto;
-            c.Ejecutivo = ejec.Id;
+                Credito c = new Credito();
+                c.Cuenta = cuenta;
+                c.Monto = monto;
+                c.Ejecutivo = ejec.Id;
+
+                d.aprobarCredito(c);
+
+                Transferencia trans = new Transferencia();
+                trans.CuentaOrigen = Cuenta.ADMIN;
+                trans.CuentaDestino = cuenta;
+                trans.Monto = monto;
+
+                d.realizarTransferencia(trans);
+
+                //cambios
+                txtMonto_AprobarCredito.ResetText();
+                actualizarCreditos();
+            }
+            else
+            {
+                MessageBox.Show("casilla de monto vacia", "casilla en blanco", MessageBoxButtons.OK);
+            }
             
-            d.aprobarCredito(c);
-
-            Transferencia trans = new Transferencia();
-            trans.CuentaOrigen = Cuenta.ADMIN;
-            trans.CuentaDestino = cuenta;
-            trans.Monto = monto;
-
-            d.realizarTransferencia(trans);
-
-            //cambios
-            txtMonto_AprobarCredito.ResetText();
-            actualizarCreditos();
         }
 
         private void button2_Click(object sender, EventArgs e)

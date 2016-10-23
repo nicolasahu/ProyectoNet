@@ -1,0 +1,10 @@
+correo :proyecto.banco.cliente@gmail.com
+password: banco123456
+
+
+correo= administrador@proyectobanco.com
+clave=banco123456
+
+
+correo=proyectonet@proyectobanco.com
+clave =banco123456
