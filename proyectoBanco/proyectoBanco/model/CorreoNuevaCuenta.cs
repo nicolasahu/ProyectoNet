@@ -14,6 +14,7 @@ namespace proyectoBanco.model
         private String contrasennia;
         private String nombreEjecutivo;
         private String tarjeta;
+        private String direccionCorreo;
 
         public string NumeroCuenta
         {
@@ -90,6 +91,19 @@ namespace proyectoBanco.model
             set
             {
                 tarjeta = value;
+            }
+        }
+
+        public string DireccionCorreo
+        {
+            get
+            {
+                return direccionCorreo;
+            }
+
+            set
+            {
+                direccionCorreo = value;
             }
         }
     }

@@ -816,7 +816,7 @@ namespace proyectoBanco.bd
             return tabla;
             
         }
-        /*-------------------------CRUD CORREO*/
+        /*-------------------------CRUD CORREO--------------------------*/
 
         public void enviarMensaje(string correoEmisor, string clave, string correoReseptor, string asunto, string mensaje)
         {
@@ -857,6 +857,7 @@ namespace proyectoBanco.bd
                 correo.Contrasennia = conexion.rs[3].ToString();
                 correo.NombreEjecutivo = conexion.rs[4].ToString();
                 correo.Tarjeta = conexion.rs[5].ToString();
+                correo.DireccionCorreo = conexion.rs[6].ToString();
             }
 
             conexion.cerrar();
@@ -881,6 +882,8 @@ namespace proyectoBanco.bd
                 correo.NombreCliente_destino = clienteDestino.NombreCompleto;
                 correo.RutCliente_origen = clienteOrigen.Rut;
                 correo.RutCliente_destino = clienteDestino.Rut;
+                correo.DireccionCliente_origen = clienteOrigen.Correo;
+                correo.DireccionCliente_destino = clienteDestino.Correo;
             }
 
             conexion.cerrar();            

@@ -17,6 +17,8 @@ namespace proyectoBanco.model
         String numeroCuenta_origen;
         String numeroCuenta_destino;
         String comentario_Transferencia;
+        String direccionCliente_origen;
+        String direccionCliente_destino;
 
         public string NombreCliente_destino
         {
@@ -132,6 +134,32 @@ namespace proyectoBanco.model
             set
             {
                 comentario_Transferencia = value;
+            }
+        }
+
+        public string DireccionCliente_origen
+        {
+            get
+            {
+                return direccionCliente_origen;
+            }
+
+            set
+            {
+                direccionCliente_origen = value;
+            }
+        }
+
+        public string DireccionCliente_destino
+        {
+            get
+            {
+                return direccionCliente_destino;
+            }
+
+            set
+            {
+                direccionCliente_destino = value;
             }
         }
     }

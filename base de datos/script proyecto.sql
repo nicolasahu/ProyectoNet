@@ -210,7 +210,8 @@ select
 	usuario.nombre_login,
 	ejecutivo.nombre,
 	usuario.contraseña,	
-	tarjeta_tranferencia.numeros
+	tarjeta_tranferencia.numeros,
+	cliente.correo
 from cuenta 
 	inner join ejecutivo on ejecutivo.id = cuenta.ejecutivo 
 	inner join cliente on cliente.id=cuenta.cliente
