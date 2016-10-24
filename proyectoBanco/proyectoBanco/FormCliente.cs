@@ -19,6 +19,7 @@ namespace proyectoBanco
         private Usuario user;
         private int idUser;
         private Cuenta cuenta;
+
         public FormCliente(int idUsuario)
         {
             InitializeComponent();
@@ -43,6 +44,13 @@ namespace proyectoBanco
         {
             lblClienteNombre.Text = "Bienvenido(a) "+c.NombreCompleto;
             lblClienteRUT.Text = c.Rut;
+        }
+
+        public void generarCodigo()
+        {
+            lblCodigo1.Text = d.retornarClaveTranferencia();
+            lblCodigo2.Text = d.retornarClaveTranferencia();
+            lblCodigo3.Text = d.retornarClaveTranferencia();
         }
 
         private void btnCambiarContraseña_Click(object sender, EventArgs e)
@@ -70,6 +78,52 @@ namespace proyectoBanco
             }
             else {
                 errorCambiarContraseña.SetError(txtContraseñaActual, "Contraseña actual incorrecta");
+            }
+        }
+
+        private void btnRealizarTransferencia_Click(object sender, EventArgs e)
+        {
+            String Codigo1 = lblCodigo1.Text;
+            String Codigo2 = lblCodigo2.Text;
+            String Codigo3 = lblCodigo3.Text;
+            int codigoNum1, codigoNum2, codigoNum3;
+            codigoNum1 = Convert.ToInt32(txtCodigoTransferencia1.Text);
+            codigoNum2 = Convert.ToInt32(txtCodigoTransferencia2.Text);
+            codigoNum3 = Convert.ToInt32(txtCodigoTransferencia3.Text);
+
+            Boolean cod1, cod2, cod3;
+            char columna, fila;
+            cuenta = d.getCuentaPorCliente(c);//retorna datos de una cuenta por cliente
+            columna = Convert.ToChar(Codigo1[0]);
+            fila = Convert.ToChar(Codigo1[1]);
+            cod1 = d.verificarCodigoTarjeta(columna, fila, codigoNum1, cuenta.Id);
+            MessageBox.Show(columna + "-fila=" + fila, "weas", MessageBoxButtons.OK);
+
+
+            columna = Convert.ToChar(Codigo2[0]);
+            fila = Convert.ToChar(Codigo2[1]);
+            cod2 = d.verificarCodigoTarjeta(columna, fila, codigoNum2, cuenta.Id);
+
+
+            columna = Convert.ToChar(Codigo3[0]);
+            fila = Convert.ToChar(Codigo3[1]);
+
+            cod3 = d.verificarCodigoTarjeta(columna, fila, codigoNum3, cuenta.Id);
+            MessageBox.Show(cod1 + "-" + cod2 + "-" + cod3, "boolean", MessageBoxButtons.OK);
+            MessageBox.Show(cuenta.Id.ToString(), "id cuenta", MessageBoxButtons.OK);
+
+
+
+
+
+            if (cod1 & cod2 & cod3)
+            {
+                MessageBox.Show("exelente paso", "exelente", MessageBoxButtons.OK);
+
+            }
+            else
+            {
+                MessageBox.Show("error en clave", "error", MessageBoxButtons.OK);
             }
         }
     }

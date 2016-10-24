@@ -1214,30 +1214,52 @@ namespace proyectoBanco.bd
             return tabla;
             
         }
+
+        public String retornarClaveTranferencia()
+        {
+            String letra, numero;
+            letra = GenerarLetraCodigo();
+            numero = GenerarNumeroCodigo().ToString();
+
+
+            return letra + numero;
+        }
+
+        /*generar codigo*/
+        public String GenerarLetraCodigo()
+        {
+
+            int numletra = random.Next(97, 107);
+            String letra = Convert.ToChar(numletra).ToString();
+            return letra;
+        }
+        /*rango numeros 1-9*/
+        public int GenerarNumeroCodigo()
+        {
+
+            int num; ;
+            return num = random.Next(1, 6);
+        }
         /*-------------------------CRUD CORREO--------------------------*/
 
-        public void enviarMensaje(string correoEmisor, string clave, string correoReseptor, string asunto, string mensaje)
+        public void enviarMensaje(String correoEmisor, String clave, String correoReceptor, String asunto, String mensaje)
         {
+            SmtpClient cliente = new SmtpClient();
+            cliente.Host = "Banco.com";
+            cliente.Port = 465;
+            cliente.EnableSsl = false;
+            cliente.UseDefaultCredentials = false;
+            cliente.Credentials = new NetworkCredential(correoEmisor, clave);
+
             MailMessage correo = new MailMessage();
             correo.To.Add(new MailAddress(correoEmisor));
-            correo.From = new MailAddress(correoReseptor);
+            correo.From = new MailAddress(correoReceptor);
             correo.Subject = asunto;
-            correo.Body = "<h1>bienvenido a este banco</h1>"+//mensaje
-                        "";
+            correo.Body = "<h1>bienvenido a este banco</h1>";//mensaje
             correo.IsBodyHtml = true;
             correo.Priority = MailPriority.Normal;
 
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "Banco.com";
-            smtp.Port = 2525;
-            smtp.EnableSsl = false;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential(correoEmisor, clave);
-
-
-
-
-            smtp.Send(correo);
+            cliente.Send(correo);
             correo.Dispose();
         }
 

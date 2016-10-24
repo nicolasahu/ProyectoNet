@@ -45,9 +45,9 @@
             this.txtCodigoTransferencia3 = new System.Windows.Forms.TextBox();
             this.txtCodigoTransferencia2 = new System.Windows.Forms.TextBox();
             this.txtCodigoTransferencia1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblCodigo3 = new System.Windows.Forms.Label();
+            this.lblCodigo2 = new System.Windows.Forms.Label();
+            this.lblCodigo1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtComentarioTransferencia = new System.Windows.Forms.TextBox();
             this.txtMontoTransferencia = new System.Windows.Forms.TextBox();
@@ -56,14 +56,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumCuentaDestinatario = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtContraseñaActual = new System.Windows.Forms.TextBox();
-            this.txtContraseñaNueva = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnCambiarContraseña = new System.Windows.Forms.Button();
             this.txtContraseñaConfirmar = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnCambiarContraseña = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
+            this.txtContraseñaNueva = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtContraseñaActual = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.errorCambiarContraseña = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -156,7 +156,10 @@
             // 
             this.gridHistorico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridHistorico.Location = new System.Drawing.Point(8, 72);
+            this.gridHistorico.MultiSelect = false;
             this.gridHistorico.Name = "gridHistorico";
+            this.gridHistorico.ReadOnly = true;
+            this.gridHistorico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridHistorico.Size = new System.Drawing.Size(523, 308);
             this.gridHistorico.TabIndex = 25;
             // 
@@ -183,9 +186,9 @@
             this.Transferencia.Controls.Add(this.txtCodigoTransferencia3);
             this.Transferencia.Controls.Add(this.txtCodigoTransferencia2);
             this.Transferencia.Controls.Add(this.txtCodigoTransferencia1);
-            this.Transferencia.Controls.Add(this.label10);
-            this.Transferencia.Controls.Add(this.label9);
-            this.Transferencia.Controls.Add(this.label8);
+            this.Transferencia.Controls.Add(this.lblCodigo3);
+            this.Transferencia.Controls.Add(this.lblCodigo2);
+            this.Transferencia.Controls.Add(this.lblCodigo1);
             this.Transferencia.Controls.Add(this.label7);
             this.Transferencia.Controls.Add(this.txtComentarioTransferencia);
             this.Transferencia.Controls.Add(this.txtMontoTransferencia);
@@ -209,6 +212,7 @@
             this.btnRealizarTransferencia.TabIndex = 13;
             this.btnRealizarTransferencia.Text = "Realizar Transferencia";
             this.btnRealizarTransferencia.UseVisualStyleBackColor = true;
+            this.btnRealizarTransferencia.Click += new System.EventHandler(this.btnRealizarTransferencia_Click);
             // 
             // txtCodigoTransferencia3
             // 
@@ -231,32 +235,32 @@
             this.txtCodigoTransferencia1.Size = new System.Drawing.Size(36, 20);
             this.txtCodigoTransferencia1.TabIndex = 10;
             // 
-            // label10
+            // lblCodigo3
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(336, 224);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(20, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "C6";
+            this.lblCodigo3.AutoSize = true;
+            this.lblCodigo3.Location = new System.Drawing.Point(336, 224);
+            this.lblCodigo3.Name = "lblCodigo3";
+            this.lblCodigo3.Size = new System.Drawing.Size(20, 13);
+            this.lblCodigo3.TabIndex = 9;
+            this.lblCodigo3.Text = "C6";
             // 
-            // label9
+            // lblCodigo2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(233, 224);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(20, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "B4";
+            this.lblCodigo2.AutoSize = true;
+            this.lblCodigo2.Location = new System.Drawing.Point(233, 224);
+            this.lblCodigo2.Name = "lblCodigo2";
+            this.lblCodigo2.Size = new System.Drawing.Size(20, 13);
+            this.lblCodigo2.TabIndex = 8;
+            this.lblCodigo2.Text = "B4";
             // 
-            // label8
+            // lblCodigo1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(124, 224);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(20, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "A8";
+            this.lblCodigo1.AutoSize = true;
+            this.lblCodigo1.Location = new System.Drawing.Point(124, 224);
+            this.lblCodigo1.Name = "lblCodigo1";
+            this.lblCodigo1.Size = new System.Drawing.Size(20, 13);
+            this.lblCodigo1.TabIndex = 7;
+            this.lblCodigo1.Text = "A8";
             // 
             // label7
             // 
@@ -333,39 +337,24 @@
             this.tabPage2.Text = "Cambiar contraseña";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // label14
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(150, 100);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(94, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Contraseña Actual";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(206, 49);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(110, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Complete los campos:";
             // 
-            // txtContraseñaActual
+            // btnCambiarContraseña
             // 
-            this.txtContraseñaActual.Location = new System.Drawing.Point(271, 97);
-            this.txtContraseñaActual.Name = "txtContraseñaActual";
-            this.txtContraseñaActual.PasswordChar = '*';
-            this.txtContraseñaActual.Size = new System.Drawing.Size(100, 20);
-            this.txtContraseñaActual.TabIndex = 1;
-            // 
-            // txtContraseñaNueva
-            // 
-            this.txtContraseñaNueva.Location = new System.Drawing.Point(271, 133);
-            this.txtContraseñaNueva.Name = "txtContraseñaNueva";
-            this.txtContraseñaNueva.PasswordChar = '*';
-            this.txtContraseñaNueva.Size = new System.Drawing.Size(100, 20);
-            this.txtContraseñaNueva.TabIndex = 3;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(150, 136);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(96, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Nueva Contraseña";
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(153, 250);
+            this.btnCambiarContraseña.Name = "btnCambiarContraseña";
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(218, 23);
+            this.btnCambiarContraseña.TabIndex = 6;
+            this.btnCambiarContraseña.Text = "Cambiar Contraseña";
+            this.btnCambiarContraseña.UseVisualStyleBackColor = true;
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
             // 
             // txtContraseñaConfirmar
             // 
@@ -384,24 +373,39 @@
             this.label13.TabIndex = 4;
             this.label13.Text = "Confirme Contraseña";
             // 
-            // btnCambiarContraseña
+            // txtContraseñaNueva
             // 
-            this.btnCambiarContraseña.Location = new System.Drawing.Point(153, 250);
-            this.btnCambiarContraseña.Name = "btnCambiarContraseña";
-            this.btnCambiarContraseña.Size = new System.Drawing.Size(218, 23);
-            this.btnCambiarContraseña.TabIndex = 6;
-            this.btnCambiarContraseña.Text = "Cambiar Contraseña";
-            this.btnCambiarContraseña.UseVisualStyleBackColor = true;
-            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
+            this.txtContraseñaNueva.Location = new System.Drawing.Point(271, 133);
+            this.txtContraseñaNueva.Name = "txtContraseñaNueva";
+            this.txtContraseñaNueva.PasswordChar = '*';
+            this.txtContraseñaNueva.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseñaNueva.TabIndex = 3;
             // 
-            // label14
+            // label12
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(206, 49);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(110, 13);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Complete los campos:";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(150, 136);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Nueva Contraseña";
+            // 
+            // txtContraseñaActual
+            // 
+            this.txtContraseñaActual.Location = new System.Drawing.Point(271, 97);
+            this.txtContraseñaActual.Name = "txtContraseñaActual";
+            this.txtContraseñaActual.PasswordChar = '*';
+            this.txtContraseñaActual.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseñaActual.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(150, 100);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(94, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Contraseña Actual";
             // 
             // errorCambiarContraseña
             // 
@@ -452,9 +456,9 @@
         private System.Windows.Forms.TextBox txtNumCuentaDestinatario;
         private System.Windows.Forms.TextBox txtMontoTransferencia;
         private System.Windows.Forms.TextBox txtComentarioTransferencia;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblCodigo3;
+        private System.Windows.Forms.Label lblCodigo2;
+        private System.Windows.Forms.Label lblCodigo1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCodigoTransferencia1;
         private System.Windows.Forms.TextBox txtCodigoTransferencia3;
