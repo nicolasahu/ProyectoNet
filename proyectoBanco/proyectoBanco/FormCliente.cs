@@ -22,6 +22,13 @@ namespace proyectoBanco
             d = new Data();
             c = d.getClientePorUsuario(idUsuario);
             cargarDatos();
+            cargarHistorico();
+        }
+
+        private void cargarHistorico()
+        {
+            Cuenta cuenta = d.getCuentaPorCliente(c);
+            gridHistorico.DataSource = d.getHistorico(cuenta);
         }
 
         private void cargarDatos()

@@ -16,6 +16,7 @@ namespace proyectoBanco.bd
     class Data
     {
         private Conexion conexion;
+        private Conexion1 conexion1;
         private Cliente cliente;
         private String query;
         private Random random;
@@ -23,6 +24,7 @@ namespace proyectoBanco.bd
         public Data()
         {
             conexion = new Conexion("banco");
+            conexion1 = new Conexion1("banco");
             random = new Random();
         }
 
@@ -309,22 +311,22 @@ namespace proyectoBanco.bd
             Cliente c = null;
             query = "select*from cliente where id="+idCliente;
             Console.WriteLine(query);
-            conexion.ejecutar(query);
+            conexion1.ejecutar(query);
 
-            if (conexion.rs.Read())
+            if (conexion1.rs.Read())
             {
                 c = new Cliente();
-                c.Id = Convert.ToInt32(conexion.rs[0]);
-                c.Rut = conexion.rs[1].ToString();
-                c.NombreCompleto = conexion.rs[2].ToString();
-                c.Direccion = conexion.rs[3].ToString();
-                c.Ciudad = Convert.ToInt32(conexion.rs[4]);
-                c.Correo = conexion.rs[5].ToString();
-                c.FechaNacimiento = conexion.rs[6].ToString();
-                c.Usuario = Convert.ToInt32(conexion.rs[7]);
+                c.Id = Convert.ToInt32(conexion1.rs[0]);
+                c.Rut = conexion1.rs[1].ToString();
+                c.NombreCompleto = conexion1.rs[2].ToString();
+                c.Direccion = conexion1.rs[3].ToString();
+                c.Ciudad = Convert.ToInt32(conexion1.rs[4]);
+                c.Correo = conexion1.rs[5].ToString();
+                c.FechaNacimiento = conexion1.rs[6].ToString();
+                c.Usuario = Convert.ToInt32(conexion1.rs[7]);
             }
 
-            conexion.cerrar();
+            conexion1.cerrar();
             return c;
         }
 
@@ -541,6 +543,26 @@ namespace proyectoBanco.bd
             }
 
             return numeros;
+        }
+
+        public Cuenta getCuentaPorCliente(Cliente cliente) {
+            Cuenta cuenta =null;
+
+            query = "select*from cuenta where cliente="+cliente.Id;
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read()) {
+                cuenta = new Cuenta();
+                cuenta.Id = Convert.ToInt32(conexion.rs[0]);
+                cuenta.NumCuenta = conexion.rs[1].ToString();
+                cuenta.Cliente = Convert.ToInt32(conexion.rs[2]);
+                cuenta.Saldo = conexion.rs[3].ToString();
+                cuenta.FechaCreacion = conexion.rs[4].ToString();
+                cuenta.Ejecutivo = Convert.ToInt32(conexion.rs[5]);
+            }
+
+            conexion.cerrar();
+            return cuenta;
         }
 
         public String generarSaldo(Cliente c)
@@ -1311,5 +1333,56 @@ namespace proyectoBanco.bd
             query = "insert into credito values("+c.Cuenta+", getDate(), 1, "+c.Ejecutivo+",'"+c.Monto+"')";
             conexion.ejecutar(query);
         }
+
+        /*------------------------crud historico------------------------*/
+        public List<Historico> getHistorico(Cuenta c)
+        {
+            List<Historico> historicos = new List<Historico>();
+            //transferencias recibidas.
+            query = "select*from transferencia where cuentaD="+c.Id+" or cuentaO="+c.Id;
+            conexion.ejecutar(query);
+            Console.WriteLine(query);
+
+            int id=1;
+            Cliente origen;
+            Cliente destino;
+            Historico historico = new Historico();
+            int saldo = 0;
+            int idOrigen;
+            int idDestino;
+            int monto;
+            while (conexion.rs.Read()) {
+                historico.Id = id;
+
+                idOrigen = Convert.ToInt32(conexion.rs[3]);
+                idDestino = Convert.ToInt32(conexion.rs[4]);
+
+                origen = getClientePorID(idOrigen);
+                destino = getClientePorID(idDestino);
+
+                historico.Tipo = "Transferencia desde " + origen.NombreCompleto + " a " + destino.NombreCompleto;
+                monto = Convert.ToInt32(conexion.rs[1]);
+
+                if (origen.Id == c.Id) {
+                    //transferencia realizada-->monto negativo
+                    historico.Monto = "-" + monto.ToString();
+                    saldo = saldo - monto;
+                    historico.Saldo = saldo.ToString();
+                }
+                else{
+                    //transferencias recibidas
+                    historico.Monto = monto.ToString();
+                    saldo = saldo + monto;
+                    historico.Saldo = saldo.ToString();
+                }
+                
+                historicos.Add(historico);
+                id++;
+            }
+
+            conexion.cerrar();
+            return historicos;
+        }
+
     }
 }

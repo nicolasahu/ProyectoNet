@@ -90,11 +90,11 @@ create table cliente(
 );
 
 --select*from ejecutivo where usuario=2
-
-insert into cliente values('333-3','ElMejorCliente', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);
-insert into cliente values('444-4','ElMejorCliente2', 'NuncaMuerta123', 1, 'correo2@dominio.cl', '21/10/1982',4);
 insert into cliente values('000-0','RepresentanteLegal', 'BancoEstado123', 1, 'correo2@dominio.cl', '21/10/1882',1);
-insert into cliente values('444-4','ElMejorCliente3', 'NuncaMuerta321', 1, 'correo2@dominio.cl', '21/10/1991',4);
+insert into cliente values('333-3','ElMejorCliente1', 'SiempreViva123', 1, 'correo@dominio.cl', '21/10/1992',3);
+insert into cliente values('444-4','ElMejorCliente2', 'NuncaMuerta123', 1, 'correo2@dominio.cl', '21/10/1982',4);
+
+--insert into cliente values('444-4','ElMejorCliente3', 'NuncaMuerta321', 1, 'correo2@dominio.cl', '21/10/1991',4);
 
 create table cuenta(
 	id int not null identity(1,1),
@@ -161,7 +161,7 @@ create table transferencia(
 );
 
 --select*from cuenta;
-insert into transferencia values('40000', getDate(), 2, 1, 1,'Pago Servicios');
+insert into transferencia values('40000', getDate(), 2, 3, 1,'Pago Servicios');
 
 --select*from transferencia;
 create table credito(
@@ -237,3 +237,8 @@ go
 
 --exec realizarTransferencia 30000 , 1 ,4 , 2 , 'Abono inicial';
 
+--select*from transferencia where cuentaD=5 or cuentaO=5;
+
+--select*from cuenta where cliente=2;
+--select*from cliente inner join usuario on cliente.usuario=usuario.id;
+--select*from usuario;
