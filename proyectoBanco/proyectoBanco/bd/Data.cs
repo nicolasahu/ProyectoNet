@@ -442,6 +442,20 @@ namespace proyectoBanco.bd
             return a;
         }
 
+        public int getcuentasPorMes(int mes)
+        {
+            int cont = 0;
+            query = "select count(*)from cuenta " +
+                    "where fecha_creacion like '2016-" + mes + "-%'";
+            conexion.ejecutar(query);
+            while (conexion.rs.Read())
+            {
+                cont = Convert.ToInt32(conexion.rs[0]);
+            }
+            conexion.cerrar();
+            return cont;
+        }
+
 
         /*.......................crud cuentas............................*/
 

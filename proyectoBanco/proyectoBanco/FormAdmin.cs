@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace proyectoBanco
 {
@@ -24,6 +25,7 @@ namespace proyectoBanco
             a = d.getAdministrador(idUsuario);
             cargarDatos();
             cargarTablas();
+            cargarGafricos();
         }
 
         private void cargarDatos()
@@ -204,6 +206,24 @@ namespace proyectoBanco
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        public void cargarGafricos()
+        {
+            String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio",
+                            "Julio","Agosto","Septiembre", "Octubre","Noviembre","Diciembre" };
+            int[] cuentas = {d.getcuentasPorMes(1), d.getcuentasPorMes(2), d.getcuentasPorMes(3), d.getcuentasPorMes(4),
+                             d.getcuentasPorMes(5), d.getcuentasPorMes(6), d.getcuentasPorMes(7), d.getcuentasPorMes(8),
+                             d.getcuentasPorMes(9), d.getcuentasPorMes(10),d.getcuentasPorMes(11),d.getcuentasPorMes(12) };
+            chart1.Titles.Add("Cuentas por mes");
+
+            for (int i = 0; i < meses.Length; i++)
+            {
+                Series serie = chart1.Series.Add(meses[i]);
+
+                serie.Label = cuentas[i].ToString();
+                serie.Points.Add(cuentas[i]);
+            }
         }
     }
 }

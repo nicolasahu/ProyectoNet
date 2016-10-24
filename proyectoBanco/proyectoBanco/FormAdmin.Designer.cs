@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.lblAdminNombre = new System.Windows.Forms.Label();
             this.lblAdminRUT = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -39,6 +41,8 @@
             this.btnCiudadCrear = new System.Windows.Forms.Button();
             this.gridCiudad = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtCorreoEjecutivo = new System.Windows.Forms.TextBox();
+            this.lblCorreo = new System.Windows.Forms.Label();
             this.txtEjecutivoApellido = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtEjecutivoRut = new System.Windows.Forms.TextBox();
@@ -50,13 +54,14 @@
             this.btnEjecutivoCrear = new System.Windows.Forms.Button();
             this.gridEjecutivo = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lblCorreo = new System.Windows.Forms.Label();
-            this.txtCorreoEjecutivo = new System.Windows.Forms.TextBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCiudad)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEjecutivo)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAdminNombre
@@ -189,6 +194,23 @@
             this.tabPage2.Text = "Ejecutivos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // txtCorreoEjecutivo
+            // 
+            this.txtCorreoEjecutivo.Location = new System.Drawing.Point(291, 30);
+            this.txtCorreoEjecutivo.Name = "txtCorreoEjecutivo";
+            this.txtCorreoEjecutivo.Size = new System.Drawing.Size(100, 20);
+            this.txtCorreoEjecutivo.TabIndex = 20;
+            this.txtCorreoEjecutivo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // lblCorreo
+            // 
+            this.lblCorreo.AutoSize = true;
+            this.lblCorreo.Location = new System.Drawing.Point(212, 35);
+            this.lblCorreo.Name = "lblCorreo";
+            this.lblCorreo.Size = new System.Drawing.Size(41, 13);
+            this.lblCorreo.TabIndex = 19;
+            this.lblCorreo.Text = "Correo:";
+            // 
             // txtEjecutivoApellido
             // 
             this.txtEjecutivoApellido.Location = new System.Drawing.Point(291, 8);
@@ -282,6 +304,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.chart1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -290,22 +313,17 @@
             this.tabPage3.Text = "Estadisticas";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // lblCorreo
+            // chart1
             // 
-            this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Location = new System.Drawing.Point(212, 35);
-            this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(41, 13);
-            this.lblCorreo.TabIndex = 19;
-            this.lblCorreo.Text = "Correo:";
-            // 
-            // txtCorreoEjecutivo
-            // 
-            this.txtCorreoEjecutivo.Location = new System.Drawing.Point(291, 30);
-            this.txtCorreoEjecutivo.Name = "txtCorreoEjecutivo";
-            this.txtCorreoEjecutivo.Size = new System.Drawing.Size(100, 20);
-            this.txtCorreoEjecutivo.TabIndex = 20;
-            this.txtCorreoEjecutivo.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(6, 6);
+            this.chart1.Name = "chart1";
+            this.chart1.Size = new System.Drawing.Size(506, 241);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
             // 
             // FormAdmin
             // 
@@ -325,6 +343,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridEjecutivo)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,5 +376,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCorreoEjecutivo;
         private System.Windows.Forms.Label lblCorreo;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
