@@ -31,14 +31,14 @@ namespace proyectoBanco.bd
         /*-------------------------crud usuario-----------------------------*/
         public void registrarUsuario(Usuario usu)
         {
-            query = "insert into usuario values('"+usu.NombreLogin+"','"+usu.Contraseña+"','"+usu.Privilegio+"') ";
+            query = "insert into usuario values('" + usu.NombreLogin + "','" + usu.Contraseña + "','" + usu.Privilegio + "') ";
             conexion.ejecutar(query);
         }
 
         public List<Cuenta> getCuentas(Ejecutivo e)
         {
             List<Cuenta> cuentas = new List<Cuenta>();
-            query = "select*from cuenta where ejecutivo="+e.Id+"";
+            query = "select*from cuenta where ejecutivo=" + e.Id + "";
             conexion.ejecutar(query);
 
             /*
@@ -50,7 +50,7 @@ namespace proyectoBanco.bd
                 private int ejecutivo;
                 private Boolean activo;
             */
-            
+
             Cuenta c;
             while (conexion.rs.Read()) {
                 c = new Cuenta();
@@ -76,7 +76,7 @@ namespace proyectoBanco.bd
             usuario = nombre.ElementAt(0).ToString() + apellido;
             usuario = usuario.ToLower();
 
-            query = "select count(*) from usuario where nombre_login like '%"+usuario+"%'";
+            query = "select count(*) from usuario where nombre_login like '%" + usuario + "%'";
             conexion.ejecutar(query);
 
             String n = "";
@@ -84,7 +84,7 @@ namespace proyectoBanco.bd
                 n = conexion.rs[0].ToString();
             }
 
-            if (n!="0") {
+            if (n != "0") {
                 usuario = usuario + n;
             }
 
@@ -206,17 +206,17 @@ namespace proyectoBanco.bd
 
         public void actualizarUsuario(Usuario usu)
         {
-            query = "update usuario set nombre_login='"+usu.NombreLogin+"', contraseña='"+usu.Contraseña+"' where id='"+usu.Id+"'";
+            query = "update usuario set nombre_login='" + usu.NombreLogin + "', contraseña='" + usu.Contraseña + "' where id='" + usu.Id + "'";
             conexion.ejecutar(query);
         }
 
         /*Login*/
         public Usuario getUsuario(String nombreLogin) {
-            Usuario u=null;
+            Usuario u = null;
             query = "select * from usuario where nombre_login='" + nombreLogin + "'";
             conexion.ejecutar(query);
 
-            if (conexion.rs.Read()){
+            if (conexion.rs.Read()) {
                 u = new Usuario();
                 u.Id = Convert.ToInt32(conexion.rs[0]);
                 u.NombreLogin = conexion.rs[1].ToString();
@@ -226,6 +226,28 @@ namespace proyectoBanco.bd
 
             conexion.cerrar();
             return u;
+        }
+
+        public void cambiarContraseñaUsuario(Usuario user) {
+            query = "update usuario set contraseña='"+user.Contraseña+"' where id="+user.Id;
+            Console.WriteLine(query);
+            conexion.ejecutar(query);
+        }
+
+        public Usuario getUsuarioPorID(int idUsuario) {
+            Usuario user = new Usuario();
+            query = "select*from usuario where id=" + idUsuario;
+            conexion.ejecutar(query);
+
+            if (conexion.rs.Read()) {
+                user.Id = idUsuario;
+                user.NombreLogin = conexion.rs[1].ToString();
+                user.Contraseña = conexion.rs[2].ToString();
+                user.Privilegio = Convert.ToInt32(conexion.rs[3]);
+            }
+
+            conexion.cerrar();
+            return user;
         }
 
         /*Obtener ultimo id creado*/

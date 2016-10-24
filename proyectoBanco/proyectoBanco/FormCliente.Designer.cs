@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblClienteRUT = new System.Windows.Forms.Label();
             this.lblClienteNombre = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -54,10 +55,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumCuentaDestinatario = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtContraseñaActual = new System.Windows.Forms.TextBox();
+            this.txtContraseñaNueva = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtContraseñaConfirmar = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnCambiarContraseña = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.errorCambiarContraseña = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridHistorico)).BeginInit();
             this.Transferencia.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCambiarContraseña)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClienteRUT
@@ -83,6 +96,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.Transferencia);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(17, 46);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -301,6 +315,98 @@
             this.txtNumCuentaDestinatario.Size = new System.Drawing.Size(100, 20);
             this.txtNumCuentaDestinatario.TabIndex = 0;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.btnCambiarContraseña);
+            this.tabPage2.Controls.Add(this.txtContraseñaConfirmar);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.txtContraseñaNueva);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.txtContraseñaActual);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(539, 397);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "Cambiar contraseña";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(150, 100);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(94, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Contraseña Actual";
+            // 
+            // txtContraseñaActual
+            // 
+            this.txtContraseñaActual.Location = new System.Drawing.Point(271, 97);
+            this.txtContraseñaActual.Name = "txtContraseñaActual";
+            this.txtContraseñaActual.PasswordChar = '*';
+            this.txtContraseñaActual.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseñaActual.TabIndex = 1;
+            // 
+            // txtContraseñaNueva
+            // 
+            this.txtContraseñaNueva.Location = new System.Drawing.Point(271, 133);
+            this.txtContraseñaNueva.Name = "txtContraseñaNueva";
+            this.txtContraseñaNueva.PasswordChar = '*';
+            this.txtContraseñaNueva.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseñaNueva.TabIndex = 3;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(150, 136);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(96, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Nueva Contraseña";
+            // 
+            // txtContraseñaConfirmar
+            // 
+            this.txtContraseñaConfirmar.Location = new System.Drawing.Point(271, 171);
+            this.txtContraseñaConfirmar.Name = "txtContraseñaConfirmar";
+            this.txtContraseñaConfirmar.PasswordChar = '*';
+            this.txtContraseñaConfirmar.Size = new System.Drawing.Size(100, 20);
+            this.txtContraseñaConfirmar.TabIndex = 5;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(150, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(105, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Confirme Contraseña";
+            // 
+            // btnCambiarContraseña
+            // 
+            this.btnCambiarContraseña.Location = new System.Drawing.Point(153, 250);
+            this.btnCambiarContraseña.Name = "btnCambiarContraseña";
+            this.btnCambiarContraseña.Size = new System.Drawing.Size(218, 23);
+            this.btnCambiarContraseña.TabIndex = 6;
+            this.btnCambiarContraseña.Text = "Cambiar Contraseña";
+            this.btnCambiarContraseña.UseVisualStyleBackColor = true;
+            this.btnCambiarContraseña.Click += new System.EventHandler(this.btnCambiarContraseña_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(206, 49);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(110, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Complete los campos:";
+            // 
+            // errorCambiarContraseña
+            // 
+            this.errorCambiarContraseña.ContainerControl = this;
+            // 
             // FormCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,6 +424,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridHistorico)).EndInit();
             this.Transferencia.ResumeLayout(false);
             this.Transferencia.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorCambiarContraseña)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,5 +460,15 @@
         private System.Windows.Forms.TextBox txtCodigoTransferencia3;
         private System.Windows.Forms.TextBox txtCodigoTransferencia2;
         private System.Windows.Forms.Button btnRealizarTransferencia;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnCambiarContraseña;
+        private System.Windows.Forms.TextBox txtContraseñaConfirmar;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtContraseñaNueva;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtContraseñaActual;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ErrorProvider errorCambiarContraseña;
     }
 }
